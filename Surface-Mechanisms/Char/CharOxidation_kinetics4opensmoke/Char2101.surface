@@ -1,0 +1,825 @@
+MATERIAL BIOCHAR																												
+																												
+!Site density mol/cm2																												
+SITE/HYDROGEN/   SDEN/ 5.0e-9/   																												
+																												
+H(S)        
+CO(S)																												
+C2O2(S)/2/        																												
+Cg(S)           ! graphitic surface carbon   
+Cm(S)		    ! mature surface carbon																									
+Cy(S)           ! young surface carbon										   																	
+A(S)            ! active surface ashes
+U(S)            ! unreactive surface ashes
+																																																			
+END																												
+																												
+!Density in g/cm3																												
+BULK 																												
+																												
+H(B)/1.5/																												
+CO(B)/1.5/																												
+C2O2(B)/1.5/
+
+Cg(B)/2.0/		! graphitic bulk carbon   																																																					
+Cm(B)/1.8/		! mature bulk carbon   																										
+Cy(B)/1.5/		! young bulk carbon   																										
+
+A(B)/1.5/       ! active bulk ashes
+U(B)/1.5/		! unreactive bulk ashes																										
+IB(B)/1.5/      ! non-exposable bulk ashes
+
+! fake species to enforce site density conservation in opensmoke (hard-coded names)															
+SI(B)/1.5/    !reactions Increasing number of Active Sites (set 1)																			
+NO(B)/1.5/    !reactions Decreasing number of Active Sites (set 2)																		
+OK(B)/1.5/    !reactions keeping a Constant number of Active Sites (set 0)
+
+! fake species to identify and employ volumetric bulk reactions 																												
+V(B)/1.5/      !required to employ volumetric bulk species concentration (FORD used to specify how many volumetric bulk species are required)																												
+VS(B)/1.5/     !required to identify volumetric bulk reactions																												
+  																												
+END																												
+																												
+!Units: cm, mol, s																			
+REACTIONS              NONCON               																	
+
+! *********************************************************************************************
+! DECOMPOSITION OF INITIAL SURFACE PSEUDO-SPECIES
+! *********************************************************************************************
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Hydrogen pseudo-species  H(S)																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!----H(S)+O2													
+																												
+		H(S)+O2=>0.5H2O+0.75O2			5.00E+10	0	27500																		
+		FORD/NO(B) 1/																							
+		DUPLICATE																										
+																												
+	    2Cy(B)+	H(S)+O2=>0.5H2O+0.75O2	+2Cy(S)		5.00E+10	0	27000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																										
+	    2Cm(B)+	H(S)+O2=>0.5H2O+0.75O2	+2Cm(S)		5.00E+10	0	28500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																										
+	    2Cg(B)+	H(S)+O2=>0.5H2O+0.75O2	+2Cg(S)		5.00E+10	0	30000																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																										
+	    2H(B)+H(S)+O2=>0.5H2O+0.75O2	+2H(S)		5.00E+10	0	25000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																										
+	    2CO(B)+H(S)+O2=>0.5H2O+0.75O2	+2CO(S)		5.00E+10	0	25000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																										
+	    C2O2(B)+H(S)+O2=>0.5H2O+0.75O2	+C2O2(S)		5.00E+10	0	25000																					
+	    FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																										
+	    2A(B)+H(S)+O2=>0.5H2O+0.75O2	+2A(S)		5.00E+10	0	30000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																										
+	    2U(B)+H(S)+O2=>0.5H2O+0.75O2	+2U(S)		5.00E+10	0	30000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+		DUPLICATE																																
+						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Carboxyl pseudo-species  C2O2(S)																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																					
+
+!----C2O2(S)----																											
+		C2O2(S)=>CO2+0.33Cy(S)+0.34Cm(S)+0.33Cg(S)			2.00E+08	0	31500														
+		FORD/NO(B) 1/																						
+																												
+	    2Cy(B)+	C2O2(S)=>CO2+Cy(S)	+2Cy(S)		2.00E+08	0	31000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	C2O2(S)=>CO2+Cm(S)	+2Cm(S)		2.00E+08	0	32500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	C2O2(S)=>CO2+Cg(S)	+2Cg(S)		2.00E+08	0	34000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	C2O2(S)=>CO2+0.5Cy(S)+0.5Cm(S)	+2H(S)		2.00E+08	0	29000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	C2O2(S)=>CO2+0.5Cy(S)+0.5Cm(S)	+2CO(S)		2.00E+08	0	29000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	C2O2(S)=>CO2+0.5Cy(S)+0.5Cm(S)	+C2O2(S)		2.00E+08	0	29000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	C2O2(S)=>CO2+0.33Cy(S)+0.34Cm(S)+0.33Cg(S)	+2A(S)		2.00E+08	0	34000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	C2O2(S)=>CO2+0.33Cy(S)+0.34Cm(S)+0.33Cg(S)	+2U(S)		2.00E+08	0	34000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+	!----C2O2(S)->CO(S)----																											
+		C2O2(S)=>CO(S)+CO			4.00E+10	0	41500													
+		FORD/NO(B) 1/																					
+																												
+	    2Cy(B)+	C2O2(S)=>CO(S)+CO	+2Cy(S)		4.00E+10	0	41000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	C2O2(S)=>CO(S)+CO	+2Cm(S)		4.00E+10	0	42500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	C2O2(S)=>CO(S)+CO	+2Cg(S)		4.00E+10	0	44000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	C2O2(S)=>CO(S)+CO	+2H(S)		4.00E+10	0	39000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	C2O2(S)=>CO(S)+CO	+2CO(S)		4.00E+10	0	39000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	C2O2(S)=>CO(S)+CO	+C2O2(S)		4.00E+10	0	39000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	C2O2(S)=>CO(S)+CO	+2A(S)		4.00E+10	0	44000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	C2O2(S)=>CO(S)+CO	+2U(S)		4.00E+10	0	44000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/				
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Carbonyl pseudo-species  CO(S)																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!----CO(S)----																											
+		CO(S)=>CO			1.00E+14	0	60500												
+		FORD/NO(B) 1/																
+																		
+	    2Cy(B)+	CO(S)=>CO	+2Cy(S)		1.00E+14	0	60000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	CO(S)=>CO	+2Cm(S)		1.00E+14	0	61500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	CO(S)=>CO	+2Cg(S)		1.00E+14	0	63000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	CO(S)=>CO	+2H(S)		1.00E+14	0	58000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	CO(S)=>CO	+2CO(S)		1.00E+14	0	58000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	CO(S)=>CO	+C2O2(S)		1.00E+14	0	58000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	CO(S)=>CO	+2A(S)		1.00E+14	0	63000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	CO(S)=>CO	+2U(S)		1.00E+14	0	63000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+	!----CO(S)->CO2----																											
+		CO(S)+0.5O2=>CO2			4.00E+14	1	50500											
+		FORD/NO(B) 1/																				
+		FORD/O2 1/																										
+																												
+	    2Cy(B)+	CO(S)+0.5O2=>CO2	+2Cy(S)		4.00E+14	1	50000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/																										
+	    2Cm(B)+	CO(S)+0.5O2=>CO2	+2Cm(S)		4.00E+14	1	51500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/																										
+	    2Cg(B)+	CO(S)+0.5O2=>CO2	+2Cg(S)		4.00E+14	1	53000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/																										
+	    2H(B)+	CO(S)+0.5O2=>CO2	+2H(S)		4.00E+14	1	48000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/																										
+	    2CO(B)+	CO(S)+0.5O2=>CO2	+2CO(S)		4.00E+14	1	48000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/																										
+	    C2O2(B)+	CO(S)+0.5O2=>CO2	+C2O2(S)		4.00E+14	1	48000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/																										
+	    2A(B)+	CO(S)+0.5O2=>CO2	+2A(S)		4.00E+14	1	53000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/																										
+	    2U(B)+	CO(S)+0.5O2=>CO2	+2U(S)		4.00E+14	1	53000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/O2 1/			
+
+! *********************************************************************************************
+! CARBON REACTIONS
+! *********************************************************************************************
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Carbon-Carbon Dual-Site Oxygen Adsorption																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																														
+
+    																	
+		2Cg(S)+O2 =>	2CO(S)		1.00E+22	0	40000															
+		FORD/OK(B) 1/																			
+		2Cm(S)+O2 =>	2CO(S)		1.00E+22	0	37000																	
+		FORD/OK(B) 1/																										
+		2Cy(S)+O2 =>	2CO(S)		1.00E+22	0	34000																					
+		FORD/OK(B) 1/																										
+		Cg(S)+Cm(S)+O2 =>	2CO(S)		1.00E+22	0	38500																					
+		FORD/OK(B) 1/																										
+		Cy(S)+Cm(S)+O2 =>	2CO(S)		1.00E+22	0	35500																					
+		FORD/OK(B) 1/																										
+		Cg(S)+Cy(S)+O2 =>	2CO(S)		1.00E+22	0	37000																		
+		FORD/OK(B) 1/																										
+																												
+		2Cg(S)+O2 =>C2O2(S)			5E+19	0	29000									
+		FORD/OK(B) 1/																										
+		2Cm(S)+O2 =>C2O2(S)			5.00E+19	0	26000								
+		FORD/OK(B) 1/												
+		2Cy(S)+O2 =>C2O2(S)			5.00E+19	0	23000						
+		FORD/OK(B) 1/												
+		Cg(S)+Cm(S)+O2 =>C2O2(S)			5.00E+19	0	27500										
+		FORD/OK(B) 1/																
+		Cy(S)+Cm(S)+O2 =>C2O2(S)			5.00E+19	0	24500					
+		FORD/OK(B) 1/																
+		Cg(S)+Cy(S)+O2 =>C2O2(S)			5.00E+19	0	26000					
+		FORD/OK(B) 1/																
+																			
+		2Cg(S)+O2 =>	CO+CO(S)		6E+23	0	50000							
+		FORD/OK(B) 1/																
+		2Cm(S)+O2 =>	CO+CO(S)		6.00E+23	0	47000						
+		FORD/OK(B) 1/																
+		2Cy(S)+O2 =>	CO+CO(S)		6.00E+23	0	44000						
+		FORD/OK(B) 1/																
+		Cg(S)+Cm(S)+O2 =>	CO+CO(S)		6.00E+23	0	48500						
+		FORD/OK(B) 1/																	
+		Cy(S)+Cm(S)+O2 =>	CO+CO(S)		6.00E+23	0	45500						
+		FORD/OK(B) 1/																	
+		Cg(S)+Cy(S)+O2 =>	CO+CO(S)		6.00E+23	0	47000						
+	
+    
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Carbon-Hydrogen Dual-Site Oxygen Adsorption																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																																										   																						
+																												
+																												
+	!----H(S)+Cg(S)+O2																											
+		H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2			8.00E+18	0	22500												
+		FORD/NO(B) 1/																
+																												
+	    2Cy(B)+	H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cy(S)		8.00E+18	0	22000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cm(S)		8.00E+18	0	23500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cg(S)		8.00E+18	0	25000																					
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2H(S)		8.00E+18	0	20000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2CO(S)		8.00E+18	0	20000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+C2O2(S)		8.00E+18	0	20000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2A(S)		8.00E+18	0	25000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	H(S)+Cg(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2U(S)		8.00E+18	0	25000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+																												
+	!----H(S)+Cm(S)+O2																											
+		H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2			8.00E+18	0	21000																		
+		FORD/NO(B) 1/														
+																												
+	    2Cy(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cy(S)		8.00E+18	0	20500																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cm(S)		8.00E+18	0	22000																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cg(S)		8.00E+18	0	23500																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2H(S)		8.00E+18	0	18500																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2CO(S)		8.00E+18	0	18500																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+C2O2(S)		8.00E+18	0	18500																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2A(S)		8.00E+18	0	23500																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	H(S)+Cm(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2U(S)		8.00E+18	0	23500																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+	!----H(S)+Cy(S)+O2																											
+		H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2					    8.00E+18	0	19500																
+		FORD/NO(B) 1/																							
+																												
+	    2Cy(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cy(S)		8.00E+18	0	19000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cm(S)		8.00E+18	0	20500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2Cg(S)		8.00E+18	0	22000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2H(S)		8.00E+18	0	17000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2CO(S)		8.00E+18	0	17000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+C2O2(S)		8.00E+18	0	17000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2A(S)		8.00E+18	0	22000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	H(S)+Cy(S)+O2 => 0.5C2O2(S)+0.5H2O+0.25O2	+2U(S)		8.00E+18	0	22000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Complex Enhanced Dual-Site Oxygen Adsorption																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+																												
+	!----Cg(S)+CO(S)->CO																											
+		Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2			5.00E+19	0	28500									
+		FORD/NO(B) 1/																	
+																												
+	    2Cy(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2Cy(S)		5.00E+19	0	28000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2Cm(S)		5.00E+19	0	29500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2Cg(S)		5.00E+19	0	31000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2H(S)		5.00E+19	0	26000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2CO(S)		5.00E+19	0	26000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+C2O2(S)		5.00E+19	0	26000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2A(S)		5.00E+19	0	31000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	Cg(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2U(S)		5.00E+19	0	31000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+	!----Cm(S)+CO(S)																											
+		Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2			5.00E+19	0	27000																		
+		FORD/NO(B) 1/																							
+																												
+	    2Cy(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2Cy(S)		5.00E+19	0	26500																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2Cm(S)		5.00E+19	0	28000																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2Cg(S)		5.00E+19	0	29500	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2H(S)		5.00E+19	0	24500																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2CO(S)		5.00E+19	0	24500																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+C2O2(S)		5.00E+19	0	24500																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2A(S)		5.00E+19	0	29500																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	Cm(S) + CO(S) + O2 => CO + CO(S)+0.5O2	+2U(S)		5.00E+19	0	29500																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+	!----Cy(S)+CO(S)																											
+		Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2			5.00E+19	0	25500																		
+		FORD/NO(B) 1/														
+																												
+	    2Cy(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+2Cy(S)		5.00E+19	0	25000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+2Cm(S)		5.00E+19	0	26500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+2Cg(S)		5.00E+19	0	28000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+     	2H(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+2H(S)		5.00E+19	0	23000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+2CO(S)		5.00E+19	0	23000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+C2O2(S)		5.00E+19	0	23000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+2A(S)		5.00E+19	0	28000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	Cy(S) + CO(S) + O2 => CO + CO(S) + 0.5O2	+2U(S)		5.00E+19	0	28000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+	!----Cg(S)+CO(S)																											
+		Cg(S) + CO(S) + O2 => CO2 + CO(S)			3.00E+19	0	24500												
+		FORD/NO(B) 1/																						
+																												
+	    2Cy(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+2Cy(S)		3.00E+19	0	24000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+2Cm(S)		3.00E+19	0	25500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+2Cg(S)		3.00E+19	0	27000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+2H(S)		3.00E+19	0	22000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+2CO(S)		3.00E+19	0	22000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+C2O2(S)		3.00E+19	0	22000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+2A(S)		3.00E+19	0	27000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	Cg(S) + CO(S) + O2 => CO2 + CO(S)	+2U(S)		3.00E+19	0	27000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+																												
+	!----Cm(S)+CO(S)																											
+		Cm(S) + CO(S) + O2 => CO2 + CO(S)			3.00E+19	0	23000																	
+		FORD/NO(B) 1/																							
+																												
+	    2Cy(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+2Cy(S)		3.00E+19	0	22500																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+2Cm(S)		3.00E+19	0	24000																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+2Cg(S)		3.00E+19	0	25500	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+2H(S)		3.00E+19	0	20500																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+2CO(S)		3.00E+19	0	20500																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+C2O2(S)		3.00E+19	0	20500																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+2A(S)		3.00E+19	0	25500																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	Cm(S) + CO(S) + O2 => CO2 + CO(S)	+2U(S)		3.00E+19	0	25500																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+																												
+	!----Cy(S)+CO(S)																											
+		Cy(S) + CO(S) + O2 => CO2 + CO(S)			3.00E+19	0	21500
+		FORD/NO(B) 1/																							
+																												
+	    2Cy(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+2Cy(S)		3.00E+19	0	21000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cm(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+2Cm(S)		3.00E+19	0	22500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2Cg(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+2Cg(S)		3.00E+19	0	24000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2H(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+2H(S)		3.00E+19	0	19000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2CO(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+2CO(S)		3.00E+19	0	19000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+	    C2O2(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+C2O2(S)		3.00E+19	0	19000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2A(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+2A(S)		3.00E+19	0	24000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+	    2U(B)+	Cy(S) + CO(S) + O2 => CO2 + CO(S)	+2U(S)		3.00E+19	0	24000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/
+        																										
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Graphitization Reactions																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																												
+																																																							
+																												
+	!----Graphitization---																											
+																												
+		Cy(B)=>Cm(B)	3.00E+10	0	80000	!MAFFEI1	/10 as opensmoke misunderstands the unit of measure due to V(B) (required to identify volumetric reactions)																					
+		FORD/V(B) 1/																										
+		FORD/VS(B) 1/																										
+		Cm(B)=>Cg(B)	3.00E+02	0	50000	!MAFFEI2	/10 as opensmoke misunderstands the unit of measure due to V(B) (required to identify volumetric reactions)																					
+		FORD/V(B) 1/																										
+		FORD/VS(B) 1/																										
+		DUPLICATE																										
+		Cm(B)=>Cg(B)	1.00E+10	0	110000	!MAFFEI3	/10 as opensmoke misunderstands the unit of measure due to V(B) (required to identify volumetric reactions)																					
+		FORD/V(B) 1/																										
+		FORD/VS(B) 1/																										
+		DUPLICATE																										
+																												
+		Cy(S)=>Cm(S)	3.00E+11	0	80000	!MAFFEI1		3.00E+11	80000																			
+		Cm(S)=>Cg(S)	3.00E+03	0	50000	!MAFFEI2		3.00E+03	50000																			
+		DUPLICATE																										
+		Cm(S)=>Cg(S)	1.00E+11	0	110000	!MAFFEI3		1.00E+11	110000																			
+		DUPLICATE																										
+																												
+! *********************************************************************************************
+! ASHES REACTIONS
+! *********************************************************************************************
+																												
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Ashes-Enhanced Carbon Oxidation																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																					
+
+        A(S)+O2+	Cg(S)=>CO(S)+	A(S)+0.5O2		2E+20	0	26000																			
+		FORD/OK(B) 1/																										
+		FORD/A(S)	1	/																								
+	    A(S)+O2+	Cg(S)=>0.5C2O2(S)+	A(S)+0.5O2		1E+18	0	15000																
+		FORD/OK(B) 1/																								
+		FORD/A(S)	1	/																								
+	    A(S)+O2+	Cm(S)=>CO(S)+	A(S)+0.5O2		2.00E+20	0	24500																					
+		FORD/OK(B) 1/																										
+		FORD/A(S)	1	/																								
+	    A(S)+O2+	Cm(S)=>0.5C2O2(S)+	A(S)+0.5O2		1.00E+18	0	13500																					
+		FORD/OK(B) 1/																										
+		FORD/A(S)	1	/																								
+	    A(S)+O2+	Cy(S)=>CO(S)+	A(S)+0.5O2		2.00E+20	0	23000																					
+		FORD/OK(B) 1/																										
+		FORD/A(S)	1	/																								
+	    A(S)+O2+	Cy(S)=>0.5C2O2(S)+	A(S)+0.5O2		1.00E+18	0	12000																					
+		FORD/OK(B) 1/																										
+		FORD/A(S)	1	/	
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Ashes-Enhanced Hydrogen Oxidation																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																					
+
+		A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)			1.00E+17	0	11500														
+		FORD/NO(B) 1/																						
+		FORD/A(S)	1	/																								
+																												
+	    2Cy(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+2Cy(S)		1.00E+17	0	11000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cm(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+2Cm(S)		1.00E+17	0	12500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cg(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+2Cg(S)		1.00E+17	0	14000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2H(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+2H(S)		1.00E+17	0	9000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2CO(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+2CO(S)		1.00E+17	0	9000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    C2O2(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+C2O2(S)		1.00E+17	0	9000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2A(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+2A(S)		1.00E+17	0	14000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2U(B)+	A(S)+H(S)+O2=>0.5H2O+0.75O2+A(S)	+2U(S)		1.00E+17	0	14000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/	
+        
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Ashes-Enhanced Carbonyl Decomposition																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																									
+
+		A(S)+CO(S)=>CO+A(S)			3.00E+15	0	27500													
+		FORD/NO(B) 1/																							
+		FORD/A(S)	1	/																								
+																												
+	    2Cy(B)+	A(S)+CO(S)=>CO+A(S)	+2Cy(S)		3.00E+15	0	27000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cm(B)+	A(S)+CO(S)=>CO+A(S)	+2Cm(S)		3.00E+15	0	28500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cg(B)+	A(S)+CO(S)=>CO+A(S)	+2Cg(S)		3.00E+15	0	30000																					
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2H(B)+	A(S)+CO(S)=>CO+A(S)	+2H(S)		3.00E+15	0	25000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2CO(B)+	A(S)+CO(S)=>CO+A(S)	+2CO(S)		3.00E+15	0	25000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    C2O2(B)+	A(S)+CO(S)=>CO+A(S)	+C2O2(S)		3.00E+15	0	25000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2A(B)+	A(S)+CO(S)=>CO+A(S)	+2A(S)		3.00E+15	0	30000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2U(B)+	A(S)+CO(S)=>CO+A(S)	+2U(S)		3.00E+15	0	30000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+																												
+		A(S)+CO(S)+O2=>CO2+A(S)+0.5O2			4.00E+15	1	17500													
+		FORD/NO(B) 1/																							
+		FORD/A(S)	1	/																								
+																												
+	    2Cy(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+2Cy(S)		4.00E+15	1	17000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cm(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+2Cm(S)		4.00E+15	1	18500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cg(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+2Cg(S)		4.00E+15	1	20000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2H(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+2H(S)		4.00E+15	1	15000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2CO(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+2CO(S)		4.00E+15	1	15000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    C2O2(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+C2O2(S)		4.00E+15	1	15000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2A(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+2A(S)		4.00E+15	1	20000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2U(B)+	A(S)+CO(S)+O2=>CO2+A(S)+0.5O2	+2U(S)		4.00E+15	1	20000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/				
+        
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Ashes-Enhanced Carboxyl Decomposition																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        A(S)+C2O2(S)=>CO2+0.33Cy(S)+0.34Cm(S)+0.33Cg(S)+A(S)			2.00E+14	0	17500														
+		FORD/NO(B) 1/																	
+		FORD/A(S)	1	/																								
+																												
+	    2Cy(B)+	A(S)+C2O2(S)=>CO2+Cy(S)+A(S)	+2Cy(S)		2.00E+14	0	17000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cm(B)+	A(S)+C2O2(S)=>CO2+Cm(S)+A(S)	+2Cm(S)		2.00E+14	0	18500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cg(B)+	A(S)+C2O2(S)=>CO2+Cg(S)+A(S)	+2Cg(S)		2.00E+14	0	20000	!NO																				
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2H(B)+	A(S)+C2O2(S)=>CO2+0.5Cy(S)+0.5Cm(S)+A(S)	+2H(S)		2.00E+14	0	15000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2CO(B)+	A(S)+C2O2(S)=>CO2+0.5Cy(S)+0.5Cm(S)+A(S)	+2CO(S)		2.00E+14	0	15000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    C2O2(B)+	A(S)+C2O2(S)=>CO2+0.5Cy(S)+0.5Cm(S)+A(S)	+C2O2(S)		2.00E+14	0	15000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2A(B)+	A(S)+C2O2(S)=>CO2+0.33Cy(S)+0.34Cm(S)+0.33Cg(S)+A(S)	+2A(S)		2.00E+14	0	20000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2U(B)+	A(S)+C2O2(S)=>CO2+0.33Cy(S)+0.34Cm(S)+0.33Cg(S)+A(S)	+2U(S)		2.00E+14	0	20000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+																												
+		A(S)+C2O2(S)=>CO+CO(S)+A(S)			7.00E+16	0	27500														
+		FORD/NO(B) 1/						
+		FORD/A(S)	1	/																								
+																												
+	    2Cy(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+2Cy(S)		7.00E+16	0	27000																					
+		FORD/Cy(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cm(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+2Cm(S)		7.00E+16	0	28500																					
+		FORD/Cm(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2Cg(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+2Cg(S)		7.00E+16	0	30000																			
+		FORD/Cg(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2H(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+2H(S)		7.00E+16	0	25000																					
+		FORD/H(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2CO(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+2CO(S)		7.00E+16	0	25000																					
+		FORD/CO(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    C2O2(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+C2O2(S)		7.00E+16	0	25000																					
+		FORD/C2O2(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2A(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+2A(S)		7.00E+16	0	30000																					
+		FORD/A(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/																								
+	    2U(B)+	A(S)+C2O2(S)=>CO+CO(S)+A(S)	+2U(S)		7.00E+16	0	30000																					
+		FORD/U(B) 1/																										
+		FORD/SI(B) 1/																										
+		FORD/A(S)	1	/	
+        
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                       Ashes Deactivation																						
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!																												
+                        																												
+	!----A(S)---																						
+																												
+		2A(S)=>2U(S)			5E+20	0	55000																				
+		FORD/OK(B) 1/																										
+		U(S)+A(S)=>2U(S)			5.00E+20	0	55000																					
+		FORD/OK(B) 1/																										
+																																																								
+		2A(B)=>2U(B)			7E+07	0	55000	!	*100 as opensmoke misunderstands the unit of measure due to V(B) (should be *1000 but he does only *10)																
+		FORD/V(B) 2/																										
+		FORD/VS(B) 1/																										
+		U(B)+A(B)=>2U(B)			7.00E+07	0	55000	!																				
+		FORD/V(B) 2/																										
+		FORD/VS(B) 1/																										
+																												
+	    																							
+																								
+																												
+																							
+																												
+																				
+																												
+																									
+																												
+																												
+END																												
+END																												

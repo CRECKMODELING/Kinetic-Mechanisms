@@ -1,0 +1,1158 @@
+!"A comprehensive kinetic framework for solid carbon deposition and hydrogen production from the pyrolysis of light
+!                                             hydrocarbons streams."
+!                                        
+!Francesco Serse (a), Zhaobin Ding §(b), Mauro Bracconi (b), Matteo Maestri §(b), Andrea Nobili (a), Clarissa Giudici (a), Alessio Frassoldati (a), Tiziano Faravelli (a),
+!                                       Alberto Cuoci (a), Matteo Pelucchi* (a).
+!                                        
+!               a) CRECK Modelling Lab, Department of Chemistry Materials and Chemical Engineering, Politecnico di Milano, Italy.
+!               b) LCCP Department of Energy, Politecnico di Milano, Italy.
+!               § current affiliation: School of Chemical Engineering and Technology, Sun Yat-Sen University (SYSU), Guangzhou, China.
+
+
+                                        
+!Corresponding authors:
+!*matteo.pelucchi@polimi.it
+!§matteo.maestri@polimi.it
+
+MATERIAL SOLID
+
+! Site density mol/cm2
+! Original value: 8e14 #/cm2 corresponding to 1.33e-9 mol/cm2
+
+SITE/CARBON/   SDEN/ 1.33E-09/
+
+! ARMCHAIR surface
+	C.(S)/1/
+	H(S)/1/
+	CH3(S)/1/
+	CHCH.(S)/1/
+	CH2CH2.(S)/1/
+	CCH(S)/1/
+	CH.CH2(S)/1/
+	CHCH2(S)/1/
+	p1(S)/1/
+	C6H6.(S)/1/
+	C6H6(S)/1/
+	C6H5.(S)/1/
+	C6H5#(S)/1/
+	CH2.(S)/1/
+	CH2CH2(S)/1/
+	CH2c5(S)/1/
+	CH.c5(S)/1/
+	CHCH3c5(S)/1/
+	C.CH3c5(S)/1/
+	p3(S)/1/
+	p4(S)/1/
+	p5(S)/1/
+	p6(S)/1/
+	p7(S)/1/
+	C10H8.(1)(S)/1/
+	C10H8(1)(S)/1/
+	phenylac.1(S)/1/
+	styrene.1(S)/1/
+	styrene1(S)/1/
+
+
+! ZIGZAG surface
+	CHCH2CH2.Bz(S)/1/
+	CHCH2CH2Bz(S)/1/   
+	Hz(S)/1/
+	C.z(S)/1/
+	CH3z(S)/1/
+	CH2.z(S)/1/
+	CH2CHCH.z(S)/1/
+	CH2Bz(S)/1/
+	CHCHz(S) /1/
+	CH.Bz(S)/1/
+	CHCH3Bz(S)/1/
+	C.CH3Bz(S)/1/
+	CCH2Bz(S)/1/
+	CCH.Bz(S)/1/
+	CH2CH2CH2.z(S)/1/
+	CH2CH2z(S)/1/
+	CCHCH3Bz(S)/1/
+	CCHCH2.Bz(S)/1/
+	CHC.z(S)/1/
+	CHCCHCH.z(S)/1/
+	CHCCH2CH2.z(S)/1/
+	CHCCH3z(S)/1/
+	CHCCH2.z(S)/1/
+	CHCCH2c5z(S)/1/
+	CHCCH.c5z(S)/1/
+	CHCCHCH3c5z(S)/1/
+	CHCC.CH3c5z(S)/1/
+	CHC.CH3z(S)/1/ 
+	CHCHCH2.z(S)/1/ 
+	CHCH.z(S)/1/
+	CH2CH2.z(S)/1/
+	CHCHCH3z(S)/1/
+	CH2CH2CH3z(S)/1/
+	CH.CH2CH3z(S)/1/
+	CH2CH3z(S)/1/
+	CHCHCH.Bz(S)/1/
+	CHCHCHBz(S)/1/
+    C7H7(S)/1/	   
+    C7H6.(S)/1/ 
+END
+
+!Density in g/cm3
+BULK C(B)/2.00/  
+END
+
+
+
+
+!Units: cm, mol, s
+
+REACTIONS   NONCON
+
+! ------------------------------------------------------------------- !
+! Section 1: ARMCHAIR SITES (reactions 1-131)
+! ------------------------------------------------------------------- !
+
+! ------------------------------------------------------------------- !
+! Formation of a C.(S) site by hydrogen abstraction on armchair sites
+! Group: 1
+! Reactions: 1-16
+! ------------------------------------------------------------------- !
+
+C(B)+H(S)+H=>C.(S)+H2	       	1.67E+07		1.9		14383 	! Modified[FS] 
+
+C.(S)+H2=>C(B)+H(S)+H	        9755	  	2.6		5453		! Modified[FS]  
+
+C(B)+H(S)+CH3=>C.(S)+CH4		1.13E+03               2.7            15110  ! Modified[FS] 
+
+C.(S)+CH4=>C(B)+H(S)+CH3		4.48E+08 	        1.3		8530 	! Modified[FS] 
+
+C(B)+H(S)+C2H3=>C.(S)+C2H4		1.00E+11		0		13000
+
+C.(S)+C2H4=>C(B)+H(S)+C2H3		4.72E+11		0		9866
+
+C(B)+H(S)+C2H5=>C.(S)+C2H6		1.00E+11		0		15000
+
+C.(S)+C2H6=>C(B)+H(S)+C2H5		5.10E+11		0		2608
+
+C(B)+H(S)+C4H3=>C.(S)+C4H4		1.05E+11		0		20000
+
+C.(S)+C4H4=>C(B)+H(S)+C4H3		8.01E+12		0		-620
+
+C(B)+H(S)+CH2CHCH2=>C.(S)+C3H6		1.05E+11		0		20000	! Modified[FS] C3H5-A is the new name for CH2CHCH2
+
+C.(S)+C3H6=>C(B)+H(S)+CH2CHCH2		4.54E+10		0		-5888	! Modified[FS] C3H5-A is the new name for CH2CHCH2
+
+C(B)+H(S)+C7H7=>C.(S)+C7H8		7.63E+13		0		35866
+
+C.(S)+C7H8=>C(B)+H(S)+C7H7		7.90E+13		0		12000
+
+C(B)+H(S)+INDENYL=>C.(S)+INDENE	6.40E+13		0		42637
+
+C.(S)+INDENE=>C(B)+H(S)+INDENYL	1.00E+14		0		12000
+
+
+
+! ------------------------------------------------------------------- !
+! Formation of C.(S) sites by initiation
+! Group: 2
+! Reactions: 17-18
+! ------------------------------------------------------------------- !
+
+C(B)+H(S)=>C.(S)+H				1.78E+16	0	112512
+
+C.(S)+H=>C(B)+H(S)				1.00E+14	0	0
+
+
+! ------------------------------------------------------------------- !
+! Deposition of acetylene (C2H2) on armchair sites
+! Group: 3
+! Reactions: 19-24
+! ------------------------------------------------------------------- !
+
+C.(S)+C2H2=>C(B)+CHCH.(S)	4.15E+22	-2.68	17464  ! Modified[FS] 
+	                                                                                                            
+C(B)+CHCH.(S)=>C.(S)+C2H2	3.01E+46	-10.5	50746  ! Modified[FS] 
+
+! Surface coverage reactions: CHCH.(S)
+
+  CHCH.(S)=>2C(B)+2H(S)		2.30E+11	0	400 
+  COV /H(S) 0 1 0 / 
+  DUPLICATE
+
+  H(S)=>H					2.30E+11	0	400
+  COV /CHCH.(S) 0 1 0 /
+  DUPLICATE
+  
+! Surface coverage reactions: CHCH.(S)
+
+	CHCH.(S)=>2C(B)+2H(S)	8.13E+09	0.136	2090
+	COV /C.(S) 0 1 0 /
+	DUPLICATE	
+
+	C.(S)=>C(B)				8.13E+09	0.136	2090
+	COV /CHCH.(S) 0 1 0 /
+	DUPLICATE
+
+
+! ------------------------------------------------------------------- !
+! Deposition of ethylene (C2H4) on armchair sites
+! Group: 4
+! Reactions: 25-36
+! ------------------------------------------------------------------- !
+
+! Addition of C2H4 on C.(S)
+
+C.(S)+C2H4=>C(B)+CH2CH2.(S)		1.25E+12    0.000      6200  ! Modified[FS] 
+
+C(B)+CH2CH2.(S)=>C.(S)+C2H4	    3.01E+46	-10.5	50746  ! Modified[FS] 
+
+! Modified[FS] Added reaction
+! Ask FS why it is commented
+! CH.CH2(S)+C(B)=>C2H2+C(B)+H         1.60E+11    0.000     68000
+
+! Surface coverage reactions: CH2CH2.(S)
+! CH2CH2.(S) cyclization
+
+	CH2CH2.(S)=>CH2CH2(S)	2.30E+11	0	400 	! Modified[FS] 
+	COV /H(S) 0 1 0 /
+	
+	H(S)=>H				2.30E+11	0	400           
+	COV /CH2CH2.(S) 0 1 0 /
+	DUPLICATE
+
+! CH.CH2(S) from metathesis
+
+CH2CH2(S)+H=>CH.CH2(S)+H2			1.10E+05	2.5		-1900
+
+CH.CH2(S)+H2=>CH2CH2(S)+H			8.99E+03	2.5		26362
+
+CH2CH2(S)+CH3=>CH.CH2(S)+CH4		2.00E+11	0		7300
+
+CH.CH2(S)+CH4=>CH2CH2(S)+CH3		5.00E+11	0		35992
+
+! CH.CH2(S) by C-H rupture
+
+CH2CH2(S)=>CH.CH2(S)+H				2.60E+14	0		77100
+
+CH.CH2(S)+H=>CH2CH2(S)				4.97E+12	0		915.5
+
+! CH2CH2(S) dehydrogenation
+
+CH2CH2(S)=>2C(B)+2H(S)+H2			2.51E+13	0		59034   
+
+! Aromatic structure from beta-scission
+
+CH.CH2(S)=>2C(B)+2H(S)+H			4.96E+11	0		20733   
+
+
+! ------------------------------------------------------------------- !
+! Deposition of propyne (PC3H4) on armchair sites
+! Group: 5
+! Reactions: 37-40
+! ------------------------------------------------------------------- !
+
+! Addition of PC3H4 on C.(S)
+
+C.(S)+PC3H4=>C(B)+p1(S)	    4.12E+22	-2.68	17464     
+
+C(B)+p1(S)=>C.(S)+PC3H4	    3.01E+46	-10.5	50746   
+
+
+! Surface coverage reactions: p1(S)
+! p1(s) cyclization
+
+	p1(S)=>2C(B)+H(S)+CH3(S)	2.30E+11	0	400	
+	COV /H(S) 0 1 0 /		
+
+	H(S)=>H						2.30E+11	0	400  
+	COV /p1(S) 0 1 0 /
+	DUPLICATE
+
+
+! ------------------------------------------------------------------- !
+! Deposition of propene (C3H6) on armchair sites
+! Group: 6
+! Reactions: 41-51
+! ------------------------------------------------------------------- !
+
+! Addition of C3H6 on C.(S)
+
+C.(S)+C3H6=>C(B)+p3(S)		2.5E+12	0	6200  
+
+
+! Surface coverage reactions: p3(S)
+
+	p3(S)=>p4(S)			2.30E+11	0	400
+	COV /H(S) 0 1 0 /
+
+	H(S)=>H					2.30E+11	0	400
+	COV /p3(S) 0 1 0 /
+	DUPLICATE
+
+
+p4(S)+H=>p5(S)+H2			1.10E+05	2.5		-1900
+
+p5(S)+H2=>p4(S)+H			8.99E+03	2.5		26362
+	
+p4(S)+CH3=>p5(S)+CH4		2.00E+11	0		7300
+
+p5(S)+CH4=>p4(S)+CH3		5.00E+11	0		35922
+
+p4(S)=>p5(S)+H				2.60E+14	0		77100
+
+p5(S)+H=>p4(S)				4.97E+12	0		915
+
+p5(S)=>2C(B)+H(S)+CH3(S)+H	4.96E+11	0		20733
+
+p5(S)=>2C(B)+H(S)+CH3+H(S)	1.20E+13	-0.1	30200
+
+
+
+! ------------------------------------------------------------------- !
+! Deposition of propadiene (AC3H4) on armchair sites
+! Group: 7
+! Reactions: 52-57
+! ------------------------------------------------------------------- !
+
+! Addition of AC3H4 on C.(S)
+C.(S)+AC3H4=>C(B)+p6(S)		2.5E+12	0		6200 	
+
+
+! Surface coverage reactions: p6(S)
+
+	p6(S)=>p7(S)			2.30E+11	0		400
+	COV /H(S) 0 1 0 /
+
+	H(S)=>H					2.30E+11	0		400
+	COV /p6(S) 0 1 0 /
+	DUPLICATE
+
+		
+p7(S)+H=>2C(B)+H2+CH2.(S)+H(S)			1.10E+05	2.5		-1900
+
+p7(S)+CH3=>2C(B)+CH4+CH2.(S)+H(S)		2.00E+11	0		7300
+
+p7(S)=>2C(B)+H+CH2.(S)+H(S)				2.60E+14	0		77100
+
+
+
+! ------------------------------------------------------------------- !
+! Deposition of benzene (C6H6) on armchair sites
+! Group: 8
+! Reactions: 58-68
+! ------------------------------------------------------------------- !
+
+! Addition of C6H6 on C.(S)
+
+C.(S)+C6H6=>C(B)+C6H6.(S)	 4.68E+12      0		6400 
+                                                                                                                                                                                                    
+C(B)+C6H6.(S)=>C.(S)+C6H6	4.5E+46    -10.5	50746   
+
+
+! Surface coverage reactions: C6H6.(S)
+
+	C6H6.(S)=>C6H6(S)		2.30E+11	0	400 	
+	COV /H(S) 0 1 0 /		
+
+	H(S)=>H					2.30E+11	0	400
+	COV /C6H6.(S) 0 1 0 /
+	DUPLICATE
+
+! C6H5.(S) by metathesis
+		
+C6H6(S)+H=>C6H5.(S)+H2			1.10E+05	2.5	-1900
+
+C6H5.(S)+H2=>C6H6(S)+H			8.99E+03	2.5	26362
+
+C6H6(S)+CH3=>C6H5.(S)+CH4			2.00E+11	0	7300
+
+C6H5.(S)+CH4=>C6H6(S)+CH3			5.00E+11	0	35992
+
+! C6H5.(S) by C-H rupture
+
+C6H6(S)=>C6H5.(S)+H				2.60E+14	0	77100
+
+C6H5.(S)+H=>C6H6(S)				4.97E+12	0	915.5
+
+! Aromatic structure via beta-scission
+! The original reaction produces 4 H(S) sites
+  C6H5.(S)=>6C(B)+4H(S)+H			4.96E+11	0	20733
+! An alternative version is proposed in Ruvituso (2016)
+! C6H5.(S)=>6C(B)+2H(S)+2Hz(S)+H	        4.96E+11	0	20733
+
+
+! ------------------------------------------------------------------- !
+! Deposition of phenyl radicals (C6H5) on armchair sites
+! Group: 9
+! Reactions: 69-72
+! ------------------------------------------------------------------- !
+
+! Phenyl radical deposition
+
+C.(S)+C6H5=>C(B)+C6H5#(S)		3.00E+12	0	0  
+
+C(B)+C6H5#(S)=>C.(S)+C6H5		4.30E+15	0	112695  
+
+
+! Surface coverage reactions: C6H5#(S)
+! Consommation de C6H5#(S)
+  
+	C6H5#(S)=>C6H5.(S)		2.30E+11	0	400
+	COV /C.(S) 0 1 0 /		
+
+	C.(S) => C(B)			2.30E+11	0	400
+	COV /C6H5#(S) 0 1 0 /
+	DUPLICATE
+
+
+! ------------------------------------------------------------------- !
+! Deposition of naphtalene (C10H8) on armchair sites
+! Group: 10
+! Reactions: 73-76
+! ------------------------------------------------------------------- !
+
+! Addition of C10H8 on C.(S)
+
+C.(S)+C10H8=>C(B)+C10H8.(1)(S)		3.26E+12	0	6400 
+
+
+! Surface coverage reactions: C10H8.(1)(S)
+
+	C10H8.(1)(S)=>C10H8(1)(S)	2.30E+11	0	400 	
+	COV /H(S) 0 1 0 /	
+		
+	H(S)=>H	        		2.30E+11	0	400
+	COV /C10H8.(1)(S) 0 1 0 /
+	DUPLICATE
+
+! The original reaction produces 6 H(S) sites
+C10H8(1)(S)=>10C(B)+6H(S)+H2				2.51E+13	0	59034
+! An alternative version is proposed in Ruvituso (2016)
+! C10H8(1)(S)=>10C(B)+2H(S)+4Hz(S)+H2			2.51E+13	0	59034  
+
+
+
+! ------------------------------------------------------------------- !
+! Deposition of phenylacetylene (C6H5C2H) on armchair sites
+! Group: 11
+! Reactions: 77-79
+! ------------------------------------------------------------------- !
+
+! Addition of C6H5C2H on C.(S)
+
+C.(S)+C6H5C2H=>C(B)+phenylac.1(S)   8.30E+22	-2.68	17464  
+
+
+! Surface coverage reactions: phenylac.1(S)
+
+	! Corrected reaction
+	phenylac.1(S)=>2C(B)+H(S)+C6H5#(S)	2.30E+11	0	400
+	COV /H(S) 0 1 0 /
+
+	H(S)=>H				2.30E+11	0	400
+	COV /phenylac.1(S) 0 1 0 /
+	DUPLICATE
+  
+
+! ------------------------------------------------------------------- !
+! Deposition of styrene (C6H5C2H3) on armchair sites
+! Group: 12
+! Reactions: 80-83
+! ------------------------------------------------------------------- !
+
+! Addition of C6H5C2H3 on C.(S)
+
+C.(S)+C6H5C2H3=>C(B)+styrene.1(S)		2.50E+12	0	6200   
+
+! Surface coverage reactions: styrene.1(S)
+  
+	styrene.1(S)=>styrene1(S)	2.30E+11	0	400 	
+	COV /H(S) 0 1 0 /
+
+	H(S)=>H				2.30E+11	0	400
+	COV /styrene.1(S) 0 1 0 /
+	DUPLICATE
+
+styrene1(S)=>2C(B)+H(S)+C6H5#(S)+H2		2.51E+13	0	59034
+
+
+! ------------------------------------------------------------------- !
+! Deposition of C2H radicals on armchair sites
+! Group: 13
+! Reactions: 84-89
+! ------------------------------------------------------------------- !
+
+C.(S)+C2H=>C(B)+CCH(S)		2.81E+12	0	0
+
+C(B)+CCH(S)=>C.(S)+C2H		3.78E+15	0	138500
+
+H(S)+C2H=>CCH(S)+H			1.32E+11	0	6400
+
+CCH(S)+H=>H(S)+C2H			3.59E+12	0	28580
+
+
+! Surface coverage reactions: CCH(S)
+
+	CCH(S)=>C.(S)+C(B)+H(S)	2.30E+11	0	400
+	COV /C.(S) 0 1 0 /		
+
+	C.(S)=>C(B)				2.30E+11	0	400
+	COV /CCH(S)  0 1 0 /
+	DUPLICATE
+
+		
+	
+! ------------------------------------------------------------------- !
+! Deposition of C2H3 radicals on armchair sites
+! Group: 14
+! Reactions: 90-99
+! ------------------------------------------------------------------- !
+
+C.(S)+C2H3=>C(B)+CHCH2(S)		5.00E+12	0	0  
+
+C(B)+CHCH2(S)=>C.(S)+C2H3		7.51E+15	0	111255
+
+H(S)+C2H3=>CHCH2(S)+H			1.32E+11	0	6400
+
+CHCH2(S)+H=>H(S)+C2H3			6.68E+12	0	5143
+
+
+! Surface coverage reactions: CHCH2(S)
+  
+	CHCH2(S)=>CH.CH2(S)			2.30E+11	0	400
+	COV /C.(S) 0 1 0 /			
+
+	C.(S)=>C(B)				2.30E+11	0	400
+	COV /CHCH2(S)  0 1 0 /
+	DUPLICATE
+
+
+CHCH2(S)+H=>CHCH.(S)+H2			2.05E+07	1.93	12950
+
+CHCH.(S)+H2=>CHCH2(S)+H			1.56E+06	1.93	8018
+
+CHCH2(S)+CH3=>CHCH.(S)+CH4		3.15E+11	0		16000
+
+CHCH.(S)+CH4=>CHCH2(S)+CH3		5.89E+11	0		11498
+
+
+! ------------------------------------------------------------------- !
+! Deposition of methyl radicals (CH3) on armchair sites
+! Group: 15
+! Reactions: 100-131
+! ------------------------------------------------------------------- !
+
+! Creation of a CH3(S) site by termination
+
+C.(S)+CH3=>C(B)+CH3(S)		3.00E+13	0		0  
+
+C(B)+CH3(S)=>C.(S)+CH3		1.04E+16	0		99658  
+
+! Creation of a CH3(S) site by ipso-addition
+
+H(S)+CH3=>H+CH3(S)			7.50E+12	0		20954 
+
+H+CH3(S)=>H(S)+CH3			1.74E+14	0		8100
+
+! Creation of a CH2.(S) site via metathesis or C-H rupture
+
+CH3(S)+H=>CH2.(S)+H2		3.40E+02	3.44	3100
+
+CH2.(S)+H2=>CH3(S)+H		4.75E+01	3.44	18901
+
+CH3(S)+CH3=>CH2.(S)+CH4		1.60E+12	0		11000
+
+CH2.(S)+CH4=>CH3(S)+CH3		6.83E+12	0		27331
+
+CH3(S)=>CH2.(S)+H			1.53E+15	0		88645
+
+CH2.(S)+H=>CH3(S)			5.00E+13	0		0
+
+! Reaction between two neighbours CH2.(S)
+! Corrected reaction
+! CH2.(S)=>CH2CH2(S)			8.13E+09	0.136	2090
+CH2.(S)=>0.5CH2CH2(S)			8.13E+09	0.136	2090
+COV/CH2.(S) 0.00 1.00 0.00/
+!probability of presence of species CH2.(S) taken into account
+
+! Corrected reaction
+! CH2.(S)+C(B)=>C(B)			8.13E+09	0.136	2090
+CH2.(S)+C(B)=>2C(B)+H2			8.13E+09	0.136	2090
+COV/CH2.(S) 0.00 1.00 0.00/
+!probability of presence of species CH2.(S) taken into account
+
+! 5-cycle formation from CH2.(S)
+! Surface coverage reactions: CH2.(S)
+  
+	CH2.(S)=>CH2c5(S)		3.60E+11	0	14300
+	COV /H(S) 0 1 0 /			
+
+	H(S)=>H			3.60E+11	0	14300
+	COV /CH2.(S)  0 1 0 /
+	DUPLICATE
+
+! CH2c5(S) consumption by metathesis
+
+CH2c5(S)+H=>CH.c5(S)+H2			2.20E+08	1.77	3000
+
+CH.c5(S)+H2=>CH2c5(S)+H			1.04E+07	1.77	24000
+
+CH2c5(S)+CH3=>CH.c5(S)+CH4		3.10E+11	0		5500
+
+CH.c5(S)+CH4=>CH2c5(S)+CH3		4.50E+11	0		26984
+
+CH2c5(S)=>CH.c5(S)+H			9.00E+15	0		83482
+
+CH.c5(S)+H=>CH2c5(S)			2.00E+13	0		0
+
+! CH3 radical deposition on a CH.c5(S) site
+
+CH.c5(S)+CH3=>CHCH3c5(S)		1.00E+13	0		0
+
+CHCH3c5(S)=>CH.c5(S)+CH3		1.45E+16	0		70118
+
+! Metathesis and amorcage on CHCH3c5(S) sites
+
+CHCH3c5(S)+H=>C.CH3c5(S)+H2		2.20E+08	1.77	3000
+
+C.CH3c5(S)+H2=>CHCH3c5(S)+H		2.36E+07	1.77	31305
+
+CHCH3c5(S)+CH3=>C.CH3c5(S)+CH4	3.10E+11	0		5500
+
+C.CH3c5(S)+CH4=>CHCH3c5(S)+CH3	1.02E+12	0		34236
+
+CHCH3c5(S)=>C.CH3c5(S)+H		4.00E+15	0		76140
+
+C.CH3c5(S)+H=>CHCH3c5(S)		1.00E+14	0		0
+
+! Pyrocarbon formation
+
+C.CH3c5(S)=>2C(B)+2H(S)+H		3.00E+13	0		51500
+
+C.CH3c5(S)=>CH.CH2(S)			5.54E+10	0		30474
+
+! CHCH3c5(S) site creation by ipso-addition
+
+CH2c5(S)+CH3=>CHCH3c5(S)+H		5.73E+11	0		14563
+
+CHCH3c5(S)+H=>CH2c5(S)+CH3		1.00E+13	0		1200
+
+
+
+
+! ------------------------------------------------------------------- !
+! Section 2: ZIG-ZAG SITES (reactions 132-184)
+! ------------------------------------------------------------------- !
+
+! ------------------------------------------------------------------- !
+! Formation of C.z(S) sites by hydrogen abstraction on zig-zag sites
+! Group: 16
+! Reactions: 132-135
+! ------------------------------------------------------------------- !
+
+! C.z(S) creation by metathesis
+
+C(B)+Hz(S)+H=>C.z(S)+H2		1.67E+07	 1.9		14383 	! Modified[FS] 
+
+C.z(S)+H2=>C(B)+Hz(S)+H	     9.96E+03	         2.76		5453   ! Modified[FS]   
+
+C(B)+Hz(S)+CH3=>C.z(S)+CH4		1.13E+03        2.7           15110   ! Modified[FS] 
+
+C.z(S)+CH4=>C(B)+Hz(S)+CH3		4.48E+07	 1.3		8530    ! Modified[FS] 
+
+
+
+! Modified[FS] The following set of commented reactions was not available in the original mechanism.
+! Ask FS why they have been commented.
+
+! C(B)+H(S)+C2H3=>C.(S)+C2H4		1.00E+11		0		13000
+
+! C.(S)+C2H4=>C(B)+H(S)+C2H3		4.72E+11		0		9866
+
+! C(B)+H(S)+C2H5=>C.(S)+C2H6		1.00E+11		0		15000
+
+! C.(S)+C2H6=>C(B)+H(S)+C2H5		5.10E+11		0		2608
+
+! C(B)+H(S)+C4H3=>C.(S)+C4H4		1.05E+11		0		20000
+
+! C.(S)+C4H4=>C(B)+H(S)+C4H3		8.01E+12		0		-620
+
+! C(B)+H(S)+C3H5-A=>C.(S)+C3H6	1.05E+11		0		20000
+
+! C.(S)+C3H6=>C(B)+H(S)+C3H5-A	4.54E+10		0		-5888
+
+! C(B)+H(S)+C7H7=>C.(S)+C7H8		7.63E+13		0		35866
+
+! C.(S)+C7H8=>C(B)+H(S)+C7H7		7.90E+13		0		12000
+
+! C(B)+H(S)+INDENYL=>C.(S)+INDENE	6.40E+13		0		42637
+
+! C.(S)+INDENE=>C(B)+H(S)+INDENYL	1.00E+14		0		12000
+
+! ------------------------------------------------------------------- !
+! Formation of C.z(S) sites by C-H bond cleavage
+! Group: 17
+! Reactions: 136-137
+! ------------------------------------------------------------------- !
+
+! C.z(S) creation by C-H rupture
+
+C(B)+Hz(S)=>C.z(S)+H			1.78E+16	0	112512
+
+C.z(S)+H=>C(B)+Hz(S)			1.00E+14	0	0
+
+
+! ------------------------------------------------------------------- !
+! Addition of three carbon atoms on zig-zag sites: C2H2+CH3
+! Group: 18
+! Reactions: 138-149
+! ------------------------------------------------------------------- !
+
+! Route: C2H2+C1
+
+C.z(S)+C2H2=>C(B)+CHCH.z(S)			4.15E+22	-2.68	17464     
+
+C(B)+CHCH.z(S)=>C.z(S)+C2H2			3.01E+46	-10.5	50746
+
+CHCH.z(S)+CH3=>CHCHCH3z(S)			6.26E+12	0		0
+
+CHCHCH3z(S)=>CHCH.z(S)+CH3			9.12E+14	0		97540
+
+CHCHCH3z(S)+H=>CHCHCH2.z(S)+H2		1.70E+05	2.5		2490
+
+CHCHCH2.z(S)+H2=>CHCHCH3z(S)+H		5.68E+04	2.5		20312
+
+CHCHCH3z(S)+CH3=>CHCHCH2.z(S)+CH4	2.20E+00	3.5		5675
+
+CHCHCH2.z(S)+CH4=>CHCHCH3z(S)+CH3	2.25E+01	3.5		23928
+
+CHCHCH3z(S)=>CHCHCH2.z(S)+H			2.18E+15	0		86629
+
+CHCHCH2.z(S)+H=>CHCHCH3z(S)	   		1.80E+13	0		0
+
+
+! Surface coverage reactions: CHCHCH2.z(S)
+  
+	CHCHCH2.z(S)=>CH2Bz(S)+CHCHz(S)	   	2.30E+11	0	400
+	COV /Hz(S) 0 1 0 /		
+
+	Hz(S)=>H							2.30E+11	0	400
+	COV /CHCHCH2.z(S) 0 1 0 /	
+	DUPLICATE
+
+
+! ------------------------------------------------------------------- !
+! Addition of three carbon atoms on zig-zag sites: C2H4+CH3
+! Group: 19
+! Reactions: 150-159
+! ------------------------------------------------------------------- !
+
+! Route: C2H4+C1
+
+C.z(S)+C2H4=>C(B)+CH2CH2.z(S)		1.25E+12 	0	6200   
+                                               
+C(B)+CH2CH2.z(S)=>C.z(S)+C2H4	3.01E+46   -10.5	50746   
+
+CH2CH2.z(S)+CH3=>CH2CH2CH3z(S)	6.45E+12	0		0
+
+CH2CH2CH3z(S)=>CH2CH2.z(S)+CH3	5.54E+14	0		84480
+
+CH2CH2CH3z(S)+H=>CH.CH2CH3z(S)+H2	3.79E+14	0		12359
+
+CH.CH2CH3z(S)+H2=>CH2CH2CH3z(S)+H	5.17E+13	0		32149
+
+CH2CH2CH3z(S)=>CH.CH2CH3z(S)+H	3.21E+15	0		84665
+
+CH.CH2CH3z(S)+H=>CH2CH2CH3z(S)	1.00E+14	0		0
+
+CH.CH2CH3z(S)=>CHCHCH3z(S)+H		1.00E+14	0		51500
+
+CHCHCH3z(S)+H=>CH.CH2CH3z(S)		3.12E+13	0		4347
+
+
+! ------------------------------------------------------------------- !
+! Addition of three carbon atoms on zig-zag sites : CH3+CH3+CH3
+! Group: 20
+! Reactions: 160-177
+! ------------------------------------------------------------------- !
+
+! Route: C1+C1+C1
+
+CH2.z(S)+CH3=>CH2CH3z(S)			5E+12 	0	0        
+
+CH2CH3z(S)=>CH2.z(S)+CH3			3.38E+15	0	73551
+
+CH2CH3z(S)+H=>CH2CH2.z(S)+H2		7.00E+08	1.5	7400
+
+CH2CH2.z(S)+H2=>CH2CH3z(S)+H		9.96E+07	1.5	11725
+
+CH2CH3z(S)+CH3=>CH2CH2.z(S)+CH4		7.50E-08	6	5800
+
+CH2CH2.z(S)+CH4=>CH2CH3z(S)+CH3		1.30E-07	6	10556
+
+CH2CH3z(S)=>CH2CH2.z(S)+H			9.90E+13	0	100140
+
+CH2CH2.z(S)+H=>CH2CH3z(S)			3.34E+12	0	0
+
+! Route: C1+C2
+
+! Creation of a CH2.z(S) site
+
+C.z(S)+CH3=>C(B)+CH3z(S)			3.00E+13	0		0
+
+C(B)+CH3z(S)=>C.z(S)+CH3			1.04E+16	0		99658
+
+Hz(S)+CH3=>H+CH3z(S)				7.50E+12	0		20954
+
+H+CH3z(S)=>Hz(S)+CH3				1.74E+14	0		8100
+
+CH3z(S)+H=>CH2.z(S)+H2			3.40E+02	3.44	3100
+
+CH2.z(S)+H2=>CH3z(S)+H			4.75E+01	3.44	18901
+
+CH3z(S)+CH3=>CH2.z(S)+CH4			1.60E+12	0		11000
+
+CH2.z(S)+CH4=>CH3z(S)+CH3			6.83E+12	0		27331
+
+CH3z(S)=>CH2.z(S)+H					1.53E+15	0		88645
+
+CH2.z(S)+H=>CH3z(S)					5.00E+13	0		0
+	
+
+! ------------------------------------------------------------------- !
+! Addition of three carbon atoms on zig-zag sites: CH3+C2H2
+! Group: 21
+! Reactions: 178-180
+! ------------------------------------------------------------------- !
+
+! C2H2 addition on a CH2.z(S) site
+
+CH2.z(S)+C2H2=>CH2CHCH.z(S)		3.20E+13	0	24480   
+
+! Surface coverage reactions: CH2CHCH.z(S)
+
+	CH2CHCH.z(S)=>CH2Bz(S)+CHCHz(S)	2.30E+11	0	400
+	COV /Hz(S) 0 1 0 /	
+
+	Hz(S)=>H				2.30E+11	0	400
+	COV /CH2CHCH.z(S)  0 1 0 /	
+	DUPLICATE
+
+
+! ------------------------------------------------------------------- !
+! Addition of three carbon atoms on zig-zag sites: CH3+C2H4
+! Group: 22
+! Reactions: 181-184
+! ------------------------------------------------------------------- !
+
+! C2H4 addition on a CH2.z(S) site
+
+CH2.z(S)+C2H4=>CH2CH2CH2.z(S)	    	3.20E+13	0	28480 
+
+
+! Surface coverage reactions: CH2CH2CH2.z(S)
+
+	CH2CH2CH2.z(S)=>CH2Bz(S)+CH2CH2z(S)	2.30E+11	0	400
+	COV /Hz(S) 0 1 0 /		
+
+	Hz(S)=>H							2.30E+11	0	400
+	COV /CH2CH2CH2.z(S)  0 1 0 /
+	DUPLICATE
+
+CH2CH2z(S)=>CHCHz(S)+H2					2.51E+13	0	59034
+
+
+! ------------------------------------------------------------------- !
+! Consumption of CH2Bz(S) sites
+! Group: 23
+! Reactions: 185-219
+! ------------------------------------------------------------------- !
+
+CH2Bz(S)+H=>CH.Bz(S)+H2					2.20E+08	1.77	3000
+
+CH.Bz(S)+H2=>CH2Bz(S)+H					1.04E+07	1.77	24000
+
+CH2Bz(S)+CH3=>CH.Bz(S)+CH4				3.10E+11	0		5500
+
+CH.Bz(S)+CH4=>CH2Bz(S)+CH3				4.50E+11	0		26984
+
+CH2Bz(S)=>CH.Bz(S)+H					9.00E+15	0		83482
+
+CH.Bz(S)+H=>CH2Bz(S)					2.00E+13	0		0
+
+CH.Bz(S)+CH3=>CHCH3Bz(S)				1.00E+13	0		0
+
+CHCH3Bz(S)=>CH.Bz(S)+CH3				1.45E+16	0		70118
+
+CHCH3Bz(S)+H=>C.CH3Bz(S)+H2				2.20E+08	1.77	3000
+
+C.CH3Bz(S)+H2=>CHCH3Bz(S)+H				2.36E+07	1.77	31305
+
+CHCH3Bz(S)+CH3=>C.CH3Bz(S)+CH4			3.10E+11	0		5500
+
+C.CH3Bz(S)+CH4=>CHCH3Bz(S)+CH3			1.02E+12	0		34236
+
+CHCH3Bz(S)=>C.CH3Bz(S)+H				4.00E+15	0		76140
+
+C.CH3Bz(S)+H=>CHCH3Bz(S)				1.00E+14	0		0
+
+! Corrected reaction
+! C.CH3Bz(S)=>CCH2Bz(S)					3.00E+13	0		51500
+C.CH3Bz(S)=>CCH2Bz(S)+H					3.00E+13	0		51500
+
+CCH2Bz(S)+H=>CCH.Bz(S)+H2				2.55E+07	1.93	12950
+
+CCH.Bz(S)+H2=>CCH2Bz(S)+H				1.56E+06	1.93	8018
+
+CCH2Bz(S)+CH3=>CCH.Bz(S)+CH4			3.15E+11	0		16000
+
+CCH.Bz(S)+CH4=>CCH2Bz(S)+CH3			5.89E+11	0		11498
+
+CCH2Bz(S)+CH3=>CCHCH3Bz(S)+H			3.30E+11	0		15900
+
+CCHCH3Bz(S)+H=>CCH2Bz(S)+CH3			7.86E+12	0		3836
+
+CCH.Bz(S)+CH3=>CCHCH3Bz(S)				2.50E+13	0		0
+
+CCHCH3Bz(S)=>CCH.Bz(S)+CH3				4.15E+16	0		97315
+
+CCHCH3Bz(S)+H=>CCHCH2.Bz(S)+H2			1.70E+05	2.5		2490
+
+CCHCH2.Bz(S)+H2=>CCHCH3Bz(S)+H			5.68E+04	2.5		20312
+
+CCHCH3Bz(S)+CH3=>CCHCH2.Bz(S)+CH4		2.20E+00	3.5		5675
+
+CCHCH2.Bz(S)+CH4=>CCHCH3Bz(S)+CH3		2.25E+01	3.5		23928
+
+CCHCH3Bz(S)=>CCHCH2.Bz(S)+H				2.18E+15	0		86630
+
+CCHCH2.Bz(S)+H=>CCHCH3Bz(S)				1.80E+13	0		0
+
+
+! Surface coverage reactions: CCHCH2.Bz(S)
+  
+	CCHCH2.Bz(S)=>2C(B)+Hz(S)+CH2Bz(S)	3.60E+11	0	14300
+	COV /Hz(S) 0 1 0 /	
+
+	Hz(S)=>H							3.60E+11	0	14300
+	COV /CCHCH2.Bz(S)  0 1 0 /	
+	DUPLICATE
+
+
+! Surface coverage reactions: CCH2Bz(S)
+
+	CCH2Bz(S)=>2C(B)+Hz(S)+H			3.60E+11	0	14300
+	COV /CHC.z(S) 0 1 0 /			
+
+	CHC.z(S)=>2C(B)+Hz(S)				3.60E+11	0	14300
+	COV /CCH2Bz(S) 0 1 0 /
+
+
+! Surface coverage reactions: CCH.Bz(S)
+  
+	CCH.Bz(S)=>2C(B)+Hz(S)				3.60E+11	0	14300
+	COV /CHCHz(S) 0 1 0 /			
+
+	CHCHz(S)=>2C(B)+Hz(S)+H				3.60E+11	0	14300
+	COV /CCH.Bz(S) 0 1 0 /
+
+
+! ------------------------------------------------------------------- !
+! Consumption of CHCHz(S) sites
+! Group: 24
+! Reactions: 220-262
+! ------------------------------------------------------------------- !
+
+CHCHz(S)+H=>CHC.z(S)+H2					5.00E+07	1.8		16800
+
+CHC.z(S)+H2=>CHCHz(S)+H					1.45E+07	1.8		8734
+
+CHCHz(S)+CH3=>CHC.z(S)+CH4				6.66E+11	0		15000
+
+CHC.z(S)+CH4=>CHCHz(S)+CH3				1.47E+12	0		7370
+
+CHCHz(S)+CH3=>CHCCH3z(S)+H				7.50E+12	0		20954
+
+CHCCH3z(S)+H=>CHCHz(S)+CH3				1.74E+14	0		8100
+
+CHCHz(S)=>CHC.z(S)+H					1.78E+16	0		112512
+
+CHC.z(S)+H=>CHCHz(S)					1.00E+14	0		0
+
+CHC.z(S)+C2H2=>CHCCHCH.z(S)				4.15E+22	-2.68	17464
+
+CHCCHCH.z(S)=>CHC.z(S)+C2H2				3.01E+46	-10.5	50746
+
+
+! Surface coverage reactions: CHCCHCH.z(S)
+
+	CHCCHCH.z(S)=>2C(B)+Hz(S)+CHCHz(S)	3.60E+11	0		14300
+	COV /Hz(S) 0 1 0 /
+
+	Hz(S)=>H							3.60E+11	0		14300
+	COV /CHCCHCH.z(S) 0 1 0 /
+	DUPLICATE
+
+CHC.z(S)+C2H4=>CHCCH2CH2.z(S)			1.25E+12	0		6200
+
+CHCCH2CH2.z(S)=>CHC.z(S)+C2H4			3.01E+46	-10.5	50746
+
+
+! Surface coverage reactions: CHCCH2CH2.z(S)
+
+	CHCCH2CH2.z(S)=>2C(B)+Hz(S)+CH2CH2z(S)	3.60E+11	0	14300
+	COV /Hz(S) 0 1 0 /			
+
+	Hz(S)=>H								3.60E+11	0	14300
+	COV /CHCCH2CH2.z(S) 0 1 0 /
+	DUPLICATE
+
+
+CHC.z(S)+CH3=>CHCCH3z(S)					3.00E+13	0		0
+
+CHCCH3z(S)=>CHC.z(S)+CH3					1.04E+16	0		99658
+
+CHCCH3z(S)+H=>CHCCH2.z(S)+H2				3.40E+02	3.44	3100
+
+CHCCH2.z(S)+H2=>CHCCH3z(S)+H				4.75E+01	3.44	18901
+
+CHCCH3z(S)+CH3=>CHCCH2.z(S)+CH4				1.60E+12	0		11000
+
+CHCCH2.z(S)+CH4=>CHCCH3z(S)+CH3				6.83E+12	0		27331
+
+CHCCH3z(S)=>CHCCH2.z(S)+H					1.53E+15	0		88645
+
+CHCCH2.z(S)+H=>CHCCH3z(S)					5.00E+13	0		0
+
+
+! Surface coverage reactions: CHCCH2.z(S)
+  
+	CHCCH2.z(S)=>CHCCH2c5z(S)				3.60E+11	0	14300
+	COV /Hz(S) 0 1 0 /	
+			
+	Hz(S)=>H								3.60E+11	0	14300
+	COV /CHCCH2.z(S) 0 1 0 /	
+	DUPLICATE
+
+
+CHCCH2c5z(S)+H=>CHCCH.c5z(S)+H2				2.20E+08	1.77	3000
+
+CHCCH.c5z(S)+H2=>CHCCH2c5z(S)+H				1.04E+07	1.77	24000
+
+CHCCH2c5z(S)+CH3=>CHCCH.c5z(S)+CH4			3.10E+11	0		5500
+
+CHCCH.c5z(S)+CH4=>CHCCH2c5z(S)+CH3			4.50E+11	0		26984
+
+CHCCH2c5z(S)=>CHCCH.c5z(S)+H				9.00E+15	0		83482
+
+CHCCH.c5z(S)+H=>CHCCH2c5z(S)				2.00E+13	0		0
+
+CHCCH2c5z(S)+CH3=>CHCCHCH3c5z(S)+H			5.73E+11	0		14563
+
+CHCCHCH3c5z(S)+H=>CHCCH2c5z(S)+CH3			1.00E+13	0		1200
+
+CHCCH.c5z(S)+CH3=>CHCCHCH3c5z(S)			1.00E+13	0		0
+
+CHCCHCH3c5z(S)=>CHCCH.c5z(S)+CH3			1.45E+16	0		70118
+
+CHCCHCH3c5z(S)+H=>CHCC.CH3c5z(S)+H2			2.20E+08	1.77	3000
+
+CHCC.CH3c5z(S)+H2=>CHCCHCH3c5z(S)+H			2.36E+07	1.77	31305
+
+CHCCHCH3c5z(S)+CH3=>CHCC.CH3c5z(S)+CH4		3.10E+11	0		5500
+
+CHCC.CH3c5z(S)+CH4=>CHCCHCH3c5z(S)+CH3		1.02E+12	0		34236
+
+CHCCHCH3c5z(S)=>CHCC.CH3c5z(S)+H			4.00E+15	0		76140
+
+CHCC.CH3c5z(S)+H=>CHCCHCH3c5z(S)			1.00E+14	0		0
+
+! TOCHECK: in Fournet CHEMKIN E=5150, but in the Word file is 51500
+CHCC.CH3c5z(S)=>2C(B)+Hz(S)+CHCHz(S)+H		3.00E+13	0		51500
+
+
+! ------------------------------------------------------------------- !
+! Addition of three carbon atoms on zig-zag sites: propyne deposition
+! Group: 25
+! Reactions: 263-275
+! ------------------------------------------------------------------- !
+
+! Propyne addition
+
+! Corrected reaction
+!C.z(S)+PC3H4=>CHC.CH3z(S)			8.30E+22	-2.68	17464
+C.z(S)+PC3H4=>CHC.CH3z(S)+C(B)		8.30E+22	-2.68	17464  
+
+! Corrected reaction
+! CHC.CH3z(S)=>C.z(S)+PC3H4			3.01E+46	-10.5	50746
+CHC.CH3z(S)+C(B)=>C.z(S)+PC3H4		3.01E+46	-10.5	50746  
+
+CHC.CH3z(S)=>CHCHCH2.z(S)			3.00E+10	1	35700
+
+CH.Bz(S)+C2H2=>CHCHCH.Bz(S)			3.20E+13	0	24480
+
+
+! Surface coverage reactions: CHCHCH.Bz(S)
+
+  CHCHCH.Bz(S)=>CHCHCHBz(S)					2.30E+11	0		400
+  COV /Hz(S) 0 1 0 /				
+
+  Hz(S)=>H									2.30E+11	0		400
+  COV /CHCHCH.Bz(S) 0 1 0 /	
+  DUPLICATE
+
+
+CHCHCHBz(S)+H=>2C(B)+Hz(S)+H2+CH.Bz(S)		2.20E+08	1.8		3000
+
+CHCHCHBz(S)+CH3=>2C(B)+Hz(S)+CH4+CH.Bz(S)	3.10E+11	0		5500
+
+CHCHCHBz(S)=>2C(B)+Hz(S)+H+CH.Bz(S)			8.95E+15	0		83470
+
+CH.Bz(S)+C2H4=>CHCH2CH2.Bz(S)				3.20E+13	0		28480
+
+
+! Surface coverage reactions: CHCH2CH2.Bz(S)
+
+	CHCH2CH2.Bz(S)=>CHCH2CH2Bz(S)			2.30E+11	0		400
+	COV /Hz(S) 0 1 0 /				
+
+	Hz(S)=>H								2.30E+11	0		400
+	COV /CHCH2CH2.Bz(S)  0 1 0 /	
+	DUPLICATE
+
+
+CHCH2CH2Bz(S)=>CHCHCHBz(S)+H2				2.51E+13	0		59034
+
+! Modified [FS]: Added Addition Reaction
+! ------------------------------------------------------------------- !
+! Deposition of benzyl radicals (C6H5CH2 or C7H7) on zig-zag sites 
+! Group: 26
+! Reactions: 276-280
+! ------------------------------------------------------------------- !
+
+! Benzyl radical deposition
+
+C.z(S)+C7H7=>C(B)+C7H7(S)		5.00E+12	0	0   ! Analogy with phenyl radical addition
+
+C(B)+C7H7(S)=>C.z(S)+C7H7		8.00E+16	0	112695  
+
+! H-Abstractions on C7H7(S)
+
+C7H7(S) + H => C7H6.(S) + H2    2.20E+08	1.77	3000     ! Analogy with CH2Bz(S) consumption route
+
+C7H6.(S) + H2 => C7H7(S) + H    1.04E+07	1.77	24000    ! Analogy with CH2Bz(S) consumption route
+
+C7H7(S) + CH3 => C7H6.(S) + CH4     3.10E+11	0		5500     ! Analogy with CH2Bz(S) consumption route
+
+C7H6.(S) + CH4 => C7H7(S) + CH3     4.50E+11	0		26984     ! Analogy with CH2Bz(S) consumption route
+
+! Surface Coverage Reactions
+
+! Ring Formation
+
+    C7H6.(S) => 6C(B) + 4H(S) + CH2Bz(S)      4.96E+11	0	20733 ! Taken by analogy with benzene cyclization reaction 
+    COV /Hz(S) 0 1 0 /				
+
+    Hz(S)=>H									4.96E+11	0	20733
+    COV /C7H6.(S) 0 1 0 /	
+    DUPLICATE
+  
+END
