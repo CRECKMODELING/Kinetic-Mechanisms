@@ -1,0 +1,60 @@
+! If errors are found in the nomenclature please contact us at creckmodeling-dcmc@polimi.it
+
+NAME                    FORMULA     CATEGORY    DESCRIPTION
+
+CELL	                C6H10O5	    Solid	    cellulose
+CELLA	                C6H10O5	    Solid	    active cellulose
+GMSW	                C5H8O4	    Solid	    hemicellulose softwood
+HCE1	                C5H8O4	    Solid	    intermediate hemicellulose
+HCE2	                C5H8O4	    Solid	    intermediate hemicellulose
+ITANN	                C8H4O4	    Solid	    intermediate phenolics
+LIG	                    C11H12O4	Solid	    intermediate lignin
+LIGC	                C15H14O4	Solid	    carbon rich lignin
+LIGCC	                C15H14O4	Solid	    intermediate lignin from LIG-C
+LIGH	                C22H28O9	Solid	    hydrogen rich lignin
+LIGO	                C20H22O10	Solid	    oxygen rich lignin
+LIGOH	                C19H22O8	Solid	    intermediate lignin from LIG-H and -O
+TANN	                C15H12O7	Solid	    phenolics as hydrophilic extractives
+TGL	                    C57H100O7	Solid	    triglycerides as hydrophobic extractives
+XYGR	                C5H8O4	    Solid	    hemicellulose grass
+XYHW	                C5H8O4	    Solid	    hemicellulose hardwood
+C2H4	                C2H4	    Gas	        ethylene
+C2H6	                C2H6	    Gas	        ethane
+CH4	                    CH4	        Gas	        methane
+CO	                    CO	        Gas	        carbon monoxide
+CO2	                    CO2	        Gas	        carbon dioxide
+H2	                    H2	        Gas	        hydrogen
+C2H3CHO	                C3H4O	    Tar	        acrolein
+CH2O	                CH2O	    Tar	        formaldehyde
+C2H5CHO	                C3H6O	    Tar	        propionaldehyde
+C2H5OH	                C2H6O	    Tar	        ethanol
+C5H8O4	                C5H8O4	    Tar	        xylofuranose
+C6H10O5	                C6H10O5	    Tar	        levoglucosan
+C6H5OCH3	            C7H8O	    Tar	        anisole
+C6H5OH	                C6H6O	    Tar	        phenol
+C6H6O3	                C6H6O3	    Tar	        5-(hydroxymethyl)-furfural
+C24H28O4	            C24H28O4	Tar	        LUMPED TAR – Heavy molecular weight lignin
+CH2OHCH2CHO	            C3H6O2	    Tar	        propionic acid
+CH2OHCHO	            C2H4O2	    Tar	        Hydroxyacetaldehyde
+CH3CHO	                C2H4O	    Tar	        acetaldehyde
+CH3CO2H	                C2H4O2	    Tar	        acetic acid
+CH3OH	                CH4O	    Tar	        methanol
+CHOCHO	                C2H2O2	    Tar	        glyoxal
+CRESOL	                C7H8O	    Tar	        cresol
+FURFURAL	            C5H4O2	    Tar	        furan-2-carboxaldehyde(furfural)
+H2O	                    H2O	        Tar	        water
+HCOOH	                CH2O2	    Tar	        formic acid
+MLINO	                C19H34O2	Tar	        methyl linoleate
+U2ME12	                C13H22O2	Tar	        linalyl propionate
+VANILLIN	            C8H8O3	    Tar	        vanillin
+CHAR	                C	        Char	    Char
+CHARO	                CO	        Char	    Oxygenated char
+G{COH2}/COH2S	        CH2O	    Metaplast	Release volatiles at higher temperatures
+G{CO2}/CO2S	            CO2	        Metaplast	Release volatiles at higher temperatures
+G{CO}/COS	            CO	        Metaplast	Release volatiles at higher temperatures
+G{CH3OH}/CH3OHS	        CH4O	    Metaplast	Release volatiles at higher temperatures
+G{CH4}/CH4S	            CH4	        Metaplast	Release volatiles at higher temperatures
+G{C2H4}/C2H4S	        C2H4	    Metaplast	Release volatiles at higher temperatures
+G{C6H5OH}/C6H5OHS   	C6H6O	    Metaplast	Release volatiles at higher temperatures
+G{CH2O}/CH2OS	        CH2O	    Metaplast	Release volatiles at higher temperatures
+G{H2ÿ

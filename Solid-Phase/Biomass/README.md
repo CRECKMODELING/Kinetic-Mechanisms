@@ -1,19 +1,22 @@
 # Biomass-Kinetic-Mechanisms
 
-Biomass degradation kinetic Mechanisms involving:
-- biomass pyrolysis 
-- volatiles secondary pyrolytic, gasification, and combustion reactivity
-- char oxidation reactions
-Further work is underway at CRECK modelling POLIMI to better assess secondary char 
-gasification reactions, effect of ashes and introducing nitrogenated compounds.
+Biomass degradation kinetic mechanisms involving both condensed-phase pyrolysis and 
+secondary gas-phase reactivity of volatiles. 
+The solid-phase kinetic mechanism can be coupled to other [Gas-Phase kinetic mechanisms](../../Gas-Phase) 
+of the same version (current gas-phase version 2003).
+Currently, surface char-oxidation is considered with a [separate heterogeneous mechanism](../../Surface-Mechanisms/Char) 
 
-
-The folders are organized by mechanism type:
-- BIO_2003 is the volumetric biomass degradation mechanism coupled to the gas-phase CRECK_2003
-- CHAR_2101 is the surface oxidation mechanism of char
-
-Further details are given in the subfolders
+The initial composition of the biomass is obtained from biochemical analysis 
+or the updated characterization procedure [(Debiagi et al, 2015)](https://doi.org/10.1021/acs.energyfuels.5b01753) 
+based on the biomass elemental analysis. Two versions are available:
+- The mechanism with only [solid reactions](Solid_only) (60 species, 32 reactions)
+- The [complete mechanism](Solid_gas) with gas-phase reactions as well (650 species, 20000 reactions)
+The lists of species involved in the solid-mechanism is reported in the [list_of_species_solidmechanism](List_of_species_solidmechanism.txt) file
 
 To cite the Kinetic Mechanism refer to the following publications:
-- Biomass       Zou, Debiagi, Amjed, Zhai, Faravelli, Fuel 2023 (under revision) or [Debiagi et al, Production of Biofuels and Chemicals with Pyrolysis (2020)](https://link.springer.com/chapter/10.1007/978-981-15-2732-6_2)
-- Char          [Locaspi et al., En. & Fuel 2021](https://doi.org/10.1021/acs.energyfuels.1c01559)  
+- **Zou, Xun et al** "Kinetic insights into the high-temperature pyrolysis of biomass: Experimental and modeling study", Fuel 2023 *under revision*
+- **Debiagi, Paulo EA et al** "Production of Biofuels and Chemicals with Pyrolysis", Biofuels and Biorefineries (2020) [DOI](https://link.springer.com/chapter/10.1007/978-981-15-2732-6_2)
+- **Debiagi, Paulo EA et al** "A predictive model of biochar formation and characterization", Jounral of Analytical and Applied Pyrolysis 134 (2018): 326-335. [DOI](https://doi.org/10.1016/j.jaap.2018.06.022)
+- **Ranzi, Eliseo et al** "Mathematical Modeling of Fast Biomass Pyrolysis and Bio-Oil Formation. Note I: Kinetic Mechanism of Biomass Pyrolysis", ACS Sustainable Chemistry&Engineering 5 (2017): 2867–2881. [DOI](https://doi.org/10.1021/acssuschemeng.6b03096)
+- **Ranzi, Eliseo et al** "Mathematical Modeling of Fast Biomass Pyrolysis and Bio-Oil Formation. Note II: Secondary Gas-Phase Reactions and Bio-Oil Formation", ACS Sustainable Chemistry&Engineering 5 (2017): 2882–2896. [DOI](https://doi.org/10.1021/acssuschemeng.6b03098)
+

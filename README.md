@@ -19,7 +19,7 @@ The kinetic mechanism are organized according to the reactant-phase:
 - [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels, i.e. [Biomasses](Solid-Phase/Biomass) and [Coal](Solid-Phase/Coal). 
     As discussed in the readme file, the biomass model can be coupled to gas-phase subsets.
 - [Surface](Surface-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications, 
-    e.g. [pyrocarbon deposition](Surface-Mechanisms/CVI-CVD) and [biochar oxidation](Surface-Mechanisms/Biochar)  
+    e.g. [pyrocarbon deposition](Surface-Mechanisms/CVI-CVD) and [biochar oxidation](Surface-Mechanisms/Char)  
     
 All the files reported are text-files with "fake" modifiable extensions. Nevertheless, the following extensions are employed:
 - gas kinetics are identified either by ".CKI" or ".gas" 

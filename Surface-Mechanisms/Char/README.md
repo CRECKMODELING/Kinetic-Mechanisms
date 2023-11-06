@@ -4,14 +4,17 @@ Kinetic mechanism for char oxidation. The model has been validated for chars
 obtained from biomass pyrolysis, but with appropriate characterizations the model
 can be extended to coal and plastic chars.
 To predict the biochar chemical composition, the [biomass pyrolysis kinetic model](../../Solid-Phase/Biomass) can 
-be employed.  
+be employed.
+   
 
 The oxidation CHEMKIN-like surface reaction mechanism is in the subfolders.
 As the chemical evolution of char cannot be decoupled from the physical one,
 the kinetic mechanism requires specific solvers able to enforce the
 consistency of the chemical and physical evolution of the particle.
+The initial char particle is characterized in terms of elemental composition and 
+physical structure as described by [Locaspi et al. (2021)](https://doi.org/10.1021/acs.energyfuels.1c01559).
 
-To this aim, two versions of the mechanism are presented:
+Two versions of the mechanism are presented:
 - [CharOxidation_chemkinlike](CharOxidation_chemkinlike), which reports simply all the reactions involved in the model
 - [CharOxidation_kinetics4opensmoke](CharOxidation_kinetics4opensmoke), which reports the kinetic mechanism in a format suitable for opensmoke.
     Specifically, several fake species are introduced to identify the reaction classes and
