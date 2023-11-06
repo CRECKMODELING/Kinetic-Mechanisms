@@ -1,19 +1,15 @@
 # PS kinetic Mechanisms
 
-In this folder are present the CHEMKIN format files.
-They are divided by the kinetic mechanism prepared:
-The folders are labelled polymer_Nspecies_Nreactions. For instance PS_65_550 
-is the folder of the mechanism with 65 species and 550 reactions.
-The mechanism proposed are:
-- PS_65_550 the published mechanism (10.1016/j.jaap.2023.105960) 
+In this folder are present the CHEMKIN format files of the mechanism:
+- PS_65_550, which is the updated published mechanism [(Locaspi et al., (2023)](https://doi.org/10.1016/j.jaap.2023.105960) 
 
 With respect to the published mechanism, the improvements are:
 - thermochemistry evaluated with group contributions and van Krevelen phase-change
    data. The difference in enthalpy between gas and liquid species is the 
    evaporation enthalpy, above the critical temperature liquid species share
-   the thermodynamic properties of gas-species
+   the thermodynamic properties of gas-species. *Manuscript in preparation*
 - transport properties are evaluated with a simplified approach based on critical
-   properties (see RMG mit)
+   properties, see [Holley et al. (2009)](http://dx.doi.org/10.1016/j.proci.2008.05.067).
 
 In each folder are present the standard CHEMKIN files (gas kinetics, liquid kinetics, 
 thermodynamics, transport) and a sub-folder of LiquidProperties.

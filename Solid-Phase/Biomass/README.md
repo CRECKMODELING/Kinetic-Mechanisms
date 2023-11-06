@@ -4,7 +4,7 @@ Biomass degradation kinetic mechanisms involving both condensed-phase pyrolysis 
 secondary gas-phase reactivity of volatiles. 
 The solid-phase kinetic mechanism can be coupled to other [Gas-Phase kinetic mechanisms](../../Gas-Phase) 
 of the same version (current gas-phase version 2003).
-Currently, surface char-oxidation is considered with a [separate heterogeneous mechanism](../../Surface-Mechanisms/Char) 
+Currently, surface char-oxidation is considered with a [separate heterogeneous mechanism](../../Heterogeneous-Mechanisms/Char) 
 
 The initial composition of the biomass is obtained from biochemical analysis 
 or the updated characterization procedure [(Debiagi et al, 2015)](https://doi.org/10.1021/acs.energyfuels.5b01753) 

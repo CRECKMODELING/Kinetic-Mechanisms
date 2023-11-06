@@ -16,9 +16,9 @@ The kinetic mechanism are organized according to the reactant-phase:
     To aid in choosing the proper kinetic mechanism, refer to the gas-phase [readme subsection](Gas-Phase/README.md#Choice-Kinetic-Mechanism)
 - [Liquid-Phase](Liquid-Phase) mechanisms address decompositio of heavy fuels which degrade before evaporating (e.g. [HFO](Liquid-Phase/HeavyFuelOil)). 
     [Plastics](Liquid-Phase/Plastics) are considered as liquids as their degradation occurs in the molten state. 
-- [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels, i.e. [Biomasses](Solid-Phase/Biomass) and [Coal](Solid-Phase/Coal). 
+- [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels, i.e. [Biomass](Solid-Phase/Biomass) and [Coal](Solid-Phase/Coal). 
     As discussed in the readme file, the biomass model can be coupled to gas-phase subsets.
-- [Surface](Surface-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications, 
+- [Heterogeneous-Surface](Heterogeneous-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications, 
     e.g. [pyrocarbon deposition](Surface-Mechanisms/CVI-CVD) and [biochar oxidation](Surface-Mechanisms/Char)  
     
 All the files reported are text-files with "fake" modifiable extensions. Nevertheless, the following extensions are employed:
