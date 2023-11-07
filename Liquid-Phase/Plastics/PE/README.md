@@ -5,11 +5,12 @@ The folders are labelled polymer_Nspecies_Nreactions. For instance HDPE_42_500
 is the folder of the mechanism with 42 species and 500 reactions.
 The mechanism proposed for HDPE are:
 - [HDPE_120_2500](HDPE_120_2500) the updated published mechanism cantera and 
-    opensmoke compatible [(Locaspi et al. (2022))](https://doi.org/10.1016/j.wasman.2022.11.028)
-- [HDPE_120_3200](HDPE_120_3200) the published mechanism compatible with 
+    opensmoke compatible 
+- [HDPE_120_chemkin](HDPE_120_3200) the published mechanism compatible with 
     chemkin pro bugs (e.g. max 260 characters, duplicates recognized only if 
-    there are less than 6 reactants, etc)
+    there are less than 6 reactants, etc), see [(Locaspi et al. (2022))](https://doi.org/10.1016/j.wasman.2022.11.028)
 - [HDPE_42_500](HDPE_42_500) a further lumped version with lower computational cost.
+
 For LDPE only the [lumpest version](LDPE_42_500) and [chemkin compatible version](LDPE_120_3200)
 are proposed. 
 

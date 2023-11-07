@@ -5,11 +5,14 @@ pyrolytic and gasification reactivity are underway at CRECK modelling POLIMI.
 The kinetic mechanisms are reported also on the [creckmodelling website](https://creckmodeling.chem.polimi.it/)
 
 The folders are organized by polymer type. The available polymer mechanisms are:
-- **Polyethylene (PE)**: [different mechanisms](PE) are available for HDPE and LDPE
+- **Polyethylene (PE)**: different mechanisms are available for HDPE and LDPE
     according to the degree of detail involved in products and radicals description.
-- **Polypropylene (PP)**: a [single mechanism](PP) is reported
-- **Polystyrene (PS)**: the [proposed mechanism](PS) accounts for all structural differences 
-- **Poly(vinyl chloride) (PVC)**: the [proposed mechanism](PVC) accounts for the pure polymer degradation.
+    Specifically, for HDPE the [published](PE/HDPE_120_2500), [chemkin-compatible](PE/HDPE_120_3200) 
+    and [more lumped](PE/HDPE_42_500) versions are availble. For LDPE the [chemkin-compatible](PE/LDPE_120_3200) 
+    and [more lumped](PE/LDPE_42_500) mechanism are reported.
+- **Polypropylene (PP)**: a [single mechanism](PP) is reported.
+- **Polystyrene (PS)**: the proposed [mechanism](PS) accounts for all structural differences. 
+- **Poly(vinyl chloride) (PVC)**: the proposed [mechanism](PVC) accounts for the pure polymer degradation.
 - Further work will address development of models for **PET, PA, PMMA, and PU** and condensed-phase interactions
 
 ## Kinetic Mechanism Description
@@ -24,7 +27,7 @@ functional group approach:
 Thermochemistry has been validated for PE, while for PS it has been implemented
 but without quantitative validation yet.
 Transport parameters are evaluated with a simplified approach based on critical
-temperatures and pressures (see [Holley et al. 2009](http://dx.doi.org/10.1016/j.proci.2008.05.067)).
+temperatures and pressures, see [Holley et al. (2009)](http://dx.doi.org/10.1016/j.proci.2008.05.067).
 The present models cannot be directly coupled to the creck gas-phase mechanism, 
 but further work is underway to assess the secondary gas-phase reactivity.
 
