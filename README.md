@@ -11,15 +11,27 @@ while briefy summaries are reported in each subfolder.
 
 ## Choice of Kinetic Mechanism
 The kinetic mechanism are organized according to the reactant-phase:
-- [Homogeneous Gas-Phase](Gas-Phase) mechanisms address the reactivity of hydrogen, ammonia, gasolines, diesel, etc. 
-    Each of them can be also coupled to the other phase kinetics to study secondary gas-phase reactions. 
-    To aid in choosing the proper kinetic mechanism, refer to the gas-phase [readme subsection](Gas-Phase/README.md#Choice-Kinetic-Mechanism)
-- [Liquid-Phase](Liquid-Phase) mechanisms address decompositio of heavy fuels which degrade before evaporating (e.g. [HFO](Liquid-Phase/HeavyFuelOil)). 
-    [Plastics](Liquid-Phase/Plastics) are considered as liquids as their degradation occurs in the molten state. 
-- [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels, i.e. [Biomass](Solid-Phase/Biomass) and [Coal](Solid-Phase/Coal). 
-    As discussed in the readme file, the biomass model can be coupled to gas-phase subsets.
-- [Heterogeneous-Surface](Heterogeneous-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications, 
-    e.g. [pyrocarbon deposition](Surface-Mechanisms/CVI-CVD) and [biochar oxidation](Surface-Mechanisms/Char)  
+- [Homogeneous Gas-Phase](Gas-Phase) mechanisms address the reactivity of compounds reacting in gas-phase (e.g., hydrogen, gasolines). 
+    These mechanisms can be also coupled to the other phase kinetics to study secondary gas-phase reactions.
+    To choose the proper kinetic mechanism, refer to the gas-phase [readme subsection](Gas-Phase/README.md#choice-of-kinetic-mechanism).
+    In general, kinetic models including pollutants formations are available for:
+     - Carbon Free fuels (e.g., [Hydrogen](Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202) and [Ammonia](Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202)) 
+        and eFuels (e.g., [methanol](Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501) and [DME](Gas-Phase/Gasoline-Biogasoline/TPRF_HT_LT_ALC_ETHERS_356_10171))
+     - [Syngas](Gas-Phase/CoreMechanism_C0-C4/SYNGAS_21_62) and [Natural Gas](Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459)
+     - Gasolines and Biogasoline (refer to the [readme subsection](Gas-Phase/README.md#choice-of-kinetic-mechanism))
+     - Diesels and Biodiesels (refer to the [readme subsection](Gas-Phase/README.md#choice-of-kinetic-mechanism))
+- [Liquid-Phase](Liquid-Phase) mechanisms address decompositio of heavy fuels which thermally decompose before evaporating to gas-phase.
+    The main classes of compounds are:
+     - [Plastics](Liquid-Phase/Plastics), which are considered as liquids as their degradation occurs in the molten state.
+        Kinetic models are currently available for the main polymers ([polyethylene](Liquid-Phase/Plastics/PE), [polypropylene](Liquid-Phase/Plastics/PP),
+        [polystyrene](Liquid-Phase/Plastics/PS), and [poly(vinyl chloride)](Liquid-Phase/Plastics/PVC)) but further work to expand the polymer palette is under-way.
+    - Heavy Fuel Oils [(HFO)](Liquid-Phase/HeavyFuelOil), which are further categorized as SARA or resins.     
+- [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels. The main fuels are:
+     - [Biomass](Solid-Phase/Biomass), accounting also for secondary gas-phase reactions of volatiles. As discussed in the readme file, the biomass model can be coupled to other gas-phase subsets.
+     - [Coal](Solid-Phase/Coal)
+- [Heterogeneous-Surface](Heterogeneous-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications. Currently the mechanism reported involve:
+     - [pyrocarbon deposition](Surface-Mechanisms/CVI-CVD), accounting both Chemical Vapour Infiltration and Deposition and methane pyrolysis.   
+     - [biochar oxidation](Surface-Mechanisms/Char) accounting for secondary heterogeneous reactions of char obtained from biomass   
     
 All the files reported are text-files with "fake" modifiable extensions. Nevertheless, the following extensions are employed:
 - gas kinetics are identified either by ".CKI" or ".gas" 

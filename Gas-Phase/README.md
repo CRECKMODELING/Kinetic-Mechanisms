@@ -30,7 +30,7 @@ The following abbreviations are employed:
 
 |Fuel component	|Real Fuel	|HT	|HT+LT	|HT+NOx	|HT+LT+NOx	|HT+SOOT	|HT+LT+SOOT	|HT+NOx+SOOT	|HT+LT+NOx+SOOT	|
 |-----------------------	|-----------------------	|-----------------------	|-----------------------	|-----------------------	|-----------------------	|-----------------------	|-----------------------	|-----------------------	|-----------------------	|
-|**H2**	|*eFuel/Syngas*	||[*HT*](CarbonFreeFuels_H2-NH3/HYDROGEN_11_20)	|-	|[*HT+NOx*](CarbonFreeFuels_H2-NH3/NH3_31_202)	|-	|[*HT+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041)	|-	|[*HT+NOx+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501)	|-	|
+|**H2**	|*eFuel/Syngas*	|[*HT*](CarbonFreeFuels_H2-NH3/HYDROGEN_11_20)	|-	|[*HT+NOx*](CarbonFreeFuels_H2-NH3/NH3_31_202)	|-	|[*HT+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041)	|-	|[*HT+NOx+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501)	|-	|
 |**NH3**	|*eFuel*	|[*HT*](CarbonFreeFuels_H2-NH3/NH3_31_202)	|-	|[*HT+NOx*](CarbonFreeFuels_H2-NH3/NH3_31_202)	|-	|[*HT+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041)	|-	|[*HT+NOx+SOOT*](Gasoline-Biogasoline/TPRF_HT_ALC_254_7568)	|-	|
 |**CH3OH**	|*eFuel*	|[*HT*](CoreMechanism_C0-C4/C1_C3_HT_114_1999)	|-	|[*HT+NOx*](CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459)	|-	|[*HT+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041)	|-	|[*HT+NOx+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501)	|-	|
 |**CO**	|*Syngas*	|[*HT*](CoreMechanism_C0-C4/SYNGAS_21_62)	|-	|[*HT+NOx*](CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459)	|-	|[*HT+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041)	|-	|[*HT+NOx+SOOT*](Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501)	|-	|
