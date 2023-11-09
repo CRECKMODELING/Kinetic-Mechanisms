@@ -1,0 +1,130 @@
+#OLD_FORMULA      OLD_NAME           NEW_FORMULA      NEW_NAME             DESCRIPTION                          
+!SOLIDS, METAPLASTIC AND CHAR SPECIES
+H2O               ACQUA              H2O1             MOIST                moisture                                    
+H2O               GH2O               H2O1             H2O_M                metaplastic H2O                      
+C1                ASH                K1               ASH                  ashes                                
+C1                CHAR               C1               CHAR                 char                                 
+C1O1              GCOL               C1O1             CO_L_M               CO loose group                       
+C1O2              GCO2S              C1O2             CO2_S_M              CO2 stiff group                      
+C1O2              GCO2               C1O2             CO2_M                CO2 group                            
+C1O2              GCO2TS             C1O2             CO2_TS_M             CO2 group TS                         
+C1H2              GCH2               C1H2             CH2_M                metaplastic hydrocarbons                                     
+C1H2O1            GCOH2              C1H2O1           COH2_M               metaplastic COH2                                     
+C1H4              GCH4               C1H4             CH4_M                metaplastic methane                                     
+C2H1              CHARH              C2H1             CHARH                CHAR WITH HYDROGEN                                 
+C10H8             GCOAL1             C10H8            COAL1_M              MACROMOLECULE 1                      
+C12H11            COAL1              C12H11           COAL1                REFERENCE COAL 1                     
+C12H12O5          GCOAL3             C12H12O5         COAL3_M              MACROMOLECULE 3                      
+C12H12O5          COAL3              C12H12O5         COAL3                REFERENCE COAL 3                     
+C13H14            GBTX2              C13H14           BTX_M                benzene:toluene:xylene 6:3:1                                     
+C14H10O1          COAL2              C14H10O1         COAL2                REFERENCE COAL 2                     
+C10H8             TAR1               C10H8            TAR1_M               52/48 wt.% acenaphtylene/tetralin    
+C14H10O1          TAR2               C14H10O1         TAR2_M               Phenantrenol                         
+C11H10O2          TAR3               C11H10O2         TAR3_M               28/43/29 Coumaryl/Fenantren-4-ol/1-(4-hydroxy-3.5-dimethoxyphenyl)prop-2-en-1-one                                   
+C1                CHARG              C1               CHARG                CHAR AFTER ANNEALING                 
+N1                N1                                  N_1                  REFEREMCE NITROGEN-COAL 1                               
+N1                N2                                  N_2                  REFEREMCE NITROGEN-COAL 2                               
+N1                N3                                  N_3                  REFEREMCE NITROGEN-COAL 3                               
+N1                NH3S                                NH3_M                metaplastic NH3                                                                                                 
+N1                HCNS                                HCN_M                metaplastic HCN                      
+N1                NCHAR                               NCHAR                nitrogen in char                                 
+N1                NTARS                               NTAR_M               metaplastic nitrogen-tar                                                                                                 
+S1                SAL                                 S_AL                                                 
+S1                SARO                                S_ARO                                                 
+S1                STHIO                               S_THIO                                                 
+S1                H2SS               H2S              H2S_M                metaplastic H2S                                                                
+S1                GASS                                GAS_M                metaplastic sulfur-gases                                                                
+S1                SCHAR              S1               SCHAR                sulfur in char                                 
+S1                STARS                               STAR_M               metaplastic sulfur-tar                                                                
+S1                SP                                  S_PYR                pyritic sulfur                                 
+S1                SCHARING                                                 inorganic sulfur in char                             
+S1                SFES                                                                                 
+S1                SS                                  S_SUL                sulfate sulfur                                
+S1                SSOL                                                     sulfate sulfur in char                            
+
+N2                                                                         nitrogen gas
+O2                                                                         oxygen gas
+H2                                                                         hydrogen gas
+H2O                                                                        water vapor
+H2O2                                                                       hydrogen peroxyde
+CO                                                                         carbon monoxide
+CO2                                                                        carbon dioxide
+CH2O                                                                       formaldehyde
+CH4                                                                        methane
+CH3OH                                                                      methanol
+CH3OOH                                                                     formic acid
+C2H2                                                                       acetylene
+CH2CO               
+C2H4                                                                       ethylene
+C2H6                                                                       ethane
+PC3H4               
+AC3H4               
+C2H3CHO             
+C4H4                
+CYC5H6              
+C6H4O2              
+C6H5OH              
+C6H5CHO             
+C6H5C2H             
+C8H10O3             
+INDENE              
+C9H10O2             
+C10H8               
+C10H7OH             
+C10H10              
+TETRALIN            
+C10H7CHO            
+C10H7CH3            
+CH3C10H6OH          
+C11H12O4            
+C12H8               
+C16H10              
+BIN1B               
+O                                                                          radical O
+H                                                                          radical H
+OH                                                                         radical OH
+HO2                                                                        radical OH2
+CH                  
+HCO                 
+CH2S                
+CH2                 
+CH3                 
+CH3O                
+CH3OO               
+C2H                 
+HCCO                
+C2H3                
+CH2CHO              
+C2H5                
+C3H3                
+CH2CHCH2            
+CH3COCH2            
+C4H5                
+CYC5H5              
+C6H5                
+C6H5O               
+C6H4CH3             
+RCRESOLO            
+C6H4C2H             
+C6H5C2H2            
+INDENYL             
+C10H7               
+C10H7O              
+RTETRALIN           
+RTETRAOO            
+C10H7CH2            
+C10H6CH3            
+CH3C10H6O           
+C12H7               
+C14H9               
+C16H9               
+NH3                 
+HCN                 
+NTAR                
+H2S                 
+GAS                 
+STAR               
+SO3                                                                                           
+                                                                                           
+                                                                                           
+                                                                                           

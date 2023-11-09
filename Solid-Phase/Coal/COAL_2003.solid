@@ -1,0 +1,163 @@
+!!!Calibration and validation of a comprehensive kinetic model of coal conversion in inert, air and oxy-fuel conditions using data from multiple test rigs
+!!!P. Debiagi, C. Ontyd, S. Pielsticker, M. Schiemann, T. Faravelli, R. Kneer, C. Hasse, V. Scherer
+!!!FUEL, 290, 2021, 119682
+!!!DOI: doi.org/10.1016/j.fuel.2020.119682
+
+MATERIAL COAL
+
+SOLID
+COAL1          COAL2       COAL3            CHAR            MOIST          ASH
+COAL1_M        COAL3_M     H2O_M            CO_L_M          CO2_S_M        CO2_M            
+CO2_TS_M       CH2_M       COH2_M           CH4_M           BTX_M          TAR1_M                      
+TAR2_M         TAR3_M      CHARG            CHARH           CHAR_CO2       H2_M
+N_COAL1        N_COAL2     N_COAL3          NH3_M           HCN_M          NTAR_M
+NCHAR      
+SAL            SARO        STHIO            H2S_M           CH3SH_M        SCHAR 
+STAR_M         SPYR        SPYR2            SSUL                                                                         
+
+END
+
+REACTIONS
+
+!DEVOLATILIZATION
+COAL1=>COAL1_M+CH2_M+CHAR+.5H2                                                                                                     .5000E+10  0.000  35000.0
+COAL1=>COAL1_M+0.1C2H4+0.2666667C3H6+CHAR+.5H2                                                                                     .1000E+16  0.000  65000.0
+COAL1_M=>9.25CHAR+.75CH4+2.H2+0.5H2_M                                                                                              .2000E+09  0.000  40000.0 
+COAL1_M=>TAR1_M                                                                                                                    .1000E+09  0.000  40000.0
+COAL1_M=>8.75CHAR+1.25CH4+1.5H2             																			           .1000E+15  0.000  75000.0
+COAL1_M=>0.25TETRALIN+0.625C12H8                                                                                                   .2000E+15  0.000  75000.0     
+TAR1_M=>0.25TETRALIN+0.625C12H8                                                                                                    .2500E+13  0.000  50000.0
+TAR1_M+CHARH=>5CHARH+CHAR+CH4                                                                                                      .2500E+11  0.000  32500.0
+TAR1_M+CHAR=>4CHARH+2CHAR+CH4                                                                                                      .2500E+11  0.000  32500.0
+
+COAL2=>4.CHAR+2.94CHARH+.25COAL1+.02BTX_M+.31CH4_M+.11CH2_M+.11COH2_M+.15CO2_S_M+.41H2O_M+.18CO_L_M+.765H2                         .6000E+11  0.000  36000.0
+COAL2=>6.86CHAR+1.13CHARH+.21COAL1+.08BTX_M+.42CH4+.50CO+.1H2O+.3COH2_M+1.48H2+0.1CO_L_M                                           .4000E+19  0.000  63000.0   
+COAL2=>TAR2_M                                                                                                                      .3000E+11  0.000  36000.0
+COAL2=>0.3055555556C10H7CH3+0.3944444444BIN1B+0.25 VANILLIN +0.25 CH2O +0.025 C2H4 + 0.06666675 C3H6 +0.25 CHAR                    .8000E+18  0.000  63000.0     
+TAR2_M=>0.3055555556C10H7CH3+0.3944444444BIN1B+0.25 VANILLIN + 0.25CH2O +0.025 C2H4 + 0.06666675 C3H6 + 0.25CHAR                   .2400E+10  0.000  39000.0
+TAR2_M+CHARH=>4.CHARH+6.75CHAR+H2O_M+1.25CH4                                                                                       .4500E+09  0.000  30000.0
+TAR2_M+CO2_TS_M=>CO2_TS_M+.15CO2_S_M+1.94CHAR+4.CHARH+.25COAL1+.02BTX_M+.3CH4_M+.05CH2_M+.1COH2_M+.4H2O_M+.2CO_L_M+.335H2          .1500E+12  0.000  30000.0
+
+COAL3=>2.73CHAR+1.8CHARH+.22COAL1+.04BTX_M+.2CH3O+.1CH4_M+.11CH2_M+.2H2+.6COH2_M+2.2H2O_M+.1CO2+.38CO2_M+.02CO2_TS_M+CO_L_M        .2000E+11  0.000  33000.0
+COAL3=>COAL3_M                                                                                                                     .5000E+19  0.000  61000.0
+COAL3_M=>1.0CHARH+2.23CHAR+1.9CO+.25CH3O+.17CH4+0.074C2H4+0.19733336C3H6+.5CO2+.65COH2_M+.08BTX_M+.21COAL1+1.2H2O+.48H2            .1200E+09  0.000  30000.0
+COAL3=>TAR3_M+CO2_M+H2O                                                                                                            .1600E+10  0.000  33000.0 
+COAL3=>0.1192411924C10H7CH3+0.1539295393BIN1B+0.3170731707 C6H5OCH3 +0.6585365853 CH2O + 0.3414634146 VANILLIN + 0.03414634246C2H4 + 0.091057 C3H6 +0.6585365853CHAR +CO2+H2O                                     .4000E+19  0.000  61000.0      
+TAR3_M=>0.1192411924C10H7CH3+0.1539295393BIN1B+0.3170731707 C6H5OCH3 +0.6585365853 CH2O + 0.3414634146 VANILLIN + 0.03414634246C2H4 + 0.091057 C3H6 +0.6585365853CHAR                                             .5000E+10  0.000  32500.0
+TAR3_M+CHARH=>4CHARH+2.5CHAR+.2CH4_M+2COH2_M+.8H2+.3CH2_M                                                                          .1400E+12  0.000  30000.0
+
+!METAPLAST RELEASE
+BTX_M=>0.5C10H7CH3+0.75TETRALIN                                                                                                    .4000E+13  0.000  48000.0
+CH4_M=>CH4                                                                                                                         .1000E+04  0.000  17000.0
+CH2_M=>0.1 C2H4 +0.26666667 C3H6                                                                                                   .1000E+04  0.000  17000.0
+CO2_M=>CO2                                                                                                                         .1000E+04  0.000  18000.0
+CO2_S_M=>CO2                                                                                                                       .1000E+03  0.000  18000.0
+ DUPLICATE                                                                                                                                                 
+CO2_S_M=>CO2                                                                                                                       .5000E+12  0.000  65000.0
+ DUPLICATE                                                                                                                                                   
+H2O_M=>H2O                                                                                                                         .1000E+04  0.000  20000.0      
+ DUPLICATE                                                                                                                                                  
+H2O_M=>H2O                                                                                                                         .5000E+14  0.000  60000.0
+ DUPLICATE                                                                                                                                                   
+COH2_M=>CO_L_M+H2                                                                                                                  .1500E+10  0.000  57000.0
+CO_L_M=>CO                                                                                                                         .3000E+03  0.000  20000.0
+CHARH=>2CHAR+0.5H2                                                                                                                 .3000E+12  0.000  62000.0 
+CHAR=>CHARG                                                                                                                        .3000E+04  0.000  50167.0
+ DUPLICATE                                                                                                                                                  
+CHAR=>CHARG                                                                                                                        .1000E+12  0.000 109890.0
+ DUPLICATE                                                                                                                                                  
+CHAR=>CHAR_CO2                                                                                                                     .9000E+08  0.000  12000.0
+FORD / CO2 1 / 
+ASH=>ASH                                                                                                                           .1000E+01  0.000   0000.0
+MOIST=>H2O                                                                                                                         .1000E+01  1.000   8000.0
+ DUPLICATE                                                                                                                                                  
+MOIST=>H2O                                                                                                                         .3000E+11  0.000  26000.0
+ DUPLICATE                                                                                                                                                  
+
+
+!NITROGEN                                                                                                                          
+N_COAL1=>COAL1_M+ .19 CH2_M+.74 H2 +0.07NH3_M+0.05HCN_M+0.88NCHAR                                                                   .2000E+09  0.000  40000.0 
+N_COAL1 => NTAR_M +   .65 TAR1_M + .1 CHAR + 0.4CH2_M                                                                               .4000E+08  0.000  40000.0  
+N_COAL1=> .84 COAL1_M+0.1C2H4+0.2666667C3H6+CHAR+.59 H2  + 0.05NH3 + 0.3 HCN + 0.65 NCHAR                                           .1600E+16  0.000  75000.0
+N_COAL1 =>  C5H5N + 0.17 TETRALIN+0.4 C12H8 + .12 CHAR + 0.038C2H4 + 0.10133335C3H6                                                 .1000E+15  0.000  75000.0
+!!!
+N_COAL2 => 3.24CHAR+2.64CHARH+.25COAL1+.02BTX_M+.11CH2_M+.11COH2_M+.15CO2_S_M+.41H2O_M+.18CO_L_M+.885H2+0.15NH3_M+0.03HCN_M+0.82NCHAR    .7600E+11  0.000  36000.0                                      
+N_COAL2 => NTAR_M  + .5TAR2_M +.5 CO + 1.5 CHAR                                                                                          .5000E+11  0.000  36000.0                   
+N_COAL2 => 1.99CHAR+3.03CHARH+.21COAL1+.08BTX_M+.27CH4+.32CO+.1H2O+.3COH2_M+.18H2O+0.1CO_L_M  + 0.15NH3+0.3HCN+0.55NCHAR                 .3000E+18  0.000  63000.0                                      
+N_COAL2 => 0.08C10H7CH3+0.12BIN1B+0.25 VANILLIN +0.25 CH2O +0.025 C2H4 + 0.06666675 C3H6 +C5H5N +3.22CHAR                                .4000E+18  0.000  63000.0   
+!!!
+N_COAL3=>3.78CHAR+0.5CHARH+.22COAL1+.04BTX_M+.2CH3O+.1CH4_M+.11CH2_M+.2H2+.6COH2_M+2.2H2O_M+.1CO2+.38CO2_M+.02CO2_TS_M+CO_L_M +0.15NH3_M+0.15HCN_M+0.7NCHAR       .4000E+11  0.000  33000.0
+N_COAL3=>0.5TAR3_M+1.5CO2_M+H2O_M+NTAR_M                                                                                                                          .1600E+10  0.000  33000.0 
+N_COAL3=>0.8 COAL3_M + 0.5CO2 +0.275 CH4+0.025CHAR + 0.15NH3+0.1HCN+0.75NCHAR                                                                                     .5000E+19  0.000  61000.0
+N_COAL3=>0.06C10H7CH3+0.0760BIN1B+0.16 C6H5OCH3 +0.33CH2O+0.17VANILLIN+0.017C2H4+0.04533334C3H6+1.5CO2+H2O+0.34CHAR+C5H5N                                         .2000E+19  0.000  61000.0
+!
+!!
+CHAR + NTAR_M => 0.95 CH4 + 3.3 CHAR + 0.05HCN_M+0.1NH3_M+0.85NCHAR                                                                .1100E+11  0.000  32500.0                 
+NTAR_M => C5H5N                                                                                                                    .3800E+09  0.000  33000.0          
+NH3_M => NH3                                                                                                                       .7000E+03  0.000  23000.0                                      
+HCN_M => HCN                                                                                                                       .4000E+03  0.000  23000.0                                      
+NCHAR => HCN + CHAR                                                                                                                .4000E+10  0.000  80000.0                                      
+                                                                                                                                                                                               
+!SULFUR                                                                                                                                                                                       
+SAL =>  0.3H2S_M+0.2CH3SH_M+0.5SCHAR+0.6BTX_M+4.5CHAR+1.5CH4+0.1H2_M                                                               .5500E+11  0.000  33000.0                  
+SAL =>  0.4H2S  +0.3CH3SH  +0.3SCHAR+0.8BTX_M+3.3CHAR+1.4H2                                                                        .4000E+19  0.000  61500.0                                      
+SARO => 0.1H2S_M+0.1CH3SH_M+0.8SCHAR+1.0BTX_M+0.6CHAR+0.3CH4+0.1H2_M                                                               .8000E+10  0.000  36000.0                  
+SARO => 0.2H2S  +0.3CH3SH  +0.5SCHAR+1.0BTX_M+0.7CHAR+0.2H2                                                                        .8500E+18  0.000  65000.0                                      
+STHIO => 0.9SCHAR+0.1CH3SH_M   +.2 BTX_M +1.2 CH4 + 8.1 CHAR                                                                       .5000E+10  0.000  38000.0             
+STHIO => 0.5SCHAR+0.5CH3SH+.3 BTX_M + .45 CH4 +7.15 CHAR                                                                           .2000E+18  0.000  70000.0                                      
+CHAR + STAR_M => SCHAR+ 6.25 CHAR +.5 BTX_M +.25 CH4_M                                                                             .3000E+09 0.000  24000.0  
+SAL => STAR_M     + 2 CH4_M                                                                                                        .1880E-01  3.320  29652.0                                
+SAL => STAR       + 2 CH4                                                                                                          .2840E+18  0.082  61579.0                                     
+SARO => STAR_M    + 2 CH4_M                                                                                                        .1880E-01  3.320  29652.0                                     
+SARO => STAR      + 2 CH4                                                                                                          .2840E+18  0.082  61579.0                                       
+STHIO => STAR_M                                                                                                                    .1880E-01  3.320  29652.0                              
+STHIO => STAR                                                                                                                      .2840E+18  0.082  61579.0                                    
+STAR_M => STAR                                                                                                                     .1190E+11  0.122  35555.0                                      
+SPYR => .5H2S+0.5SCHAR+SPYR2                                                                                                       .1600E+08  0.000  36065.0                   
+SPYR2 => H2S                                                                                                                       .1300E+06  0.000  75731.0
+SSUL => .5 SO2 + 0.5 SCHAR                                                                                                         .1800E+03  0.000  21000.0
+H2S_M => H2S                                                                                                                       .5000E+04  0.000  20000.0
+CH3SH_M => CH3SH                                                                                                                   .2100E+04  0.000  22000.0
+                                                                                                                                                      
+!Metaplast Oxidation                                                                                                                                            
+COH2_M+O2=>H2O+CO2                                                                                                                 .1200E+11  0.000  25667.0  
+CO_L_M+0.5O2=>CO2                                                                                                                  .1200E+11  0.000  32667.0  
+FORD / O2 0.78 /  
+CH2_M+O2=>H2O+CO                                                                                                                   .4000E+11  0.000  25667.0  
+H2_M+0.5O2=>H2O                                                                                                                    .1200E+11  0.000  32667.0  
+FORD / O2 0.78 / 
+
+!!CHAR Oxidation
+CHARH+0.75O2=>0.5H2O+CO+CHAR                                                                                                       .2400E+10  0.000  26667.0 
+FORD / O2 0.78 /                                                                                                                                          
+CHAR+O2=>CO2                                                                                                                       .1460E+12  0.000  30250.0 
+CHAR+0.5O2=>CO                                                                                                                     .6550E+12  0.000  35223.0  
+FORD / O2 0.78 /                                                                                                                                          
+!
+CHAR_CO2+O2=>CO2                                                                                                                   .1460E+12  0.000  33250.0  
+CHAR_CO2+0.5O2=>CO                                                                                                                 .6550E+12  0.000  38223.0  
+FORD / O2 0.78 /                                                                                                                                          
+!
+CHARG+O2=>CO2                                                                                                                      .4600E+11  0.000  37028.0 
+CHARG+0.5O2=>CO                                                                                                                    .2660E+11  0.000  43000.0  
+FORD / O2 0.78 /                                                                                                                                          
+NCHAR+0.5O2=>NO+CHARH                                                                                                              .6550E+12  0.000  36223.0  
+FORD / O2 0.78 /  
+SCHAR+O2=>SO2                                                                                                                      .1460E+12  0.000  30250.0 
+
+!CHAR GASIFICATION H2O
+CHARH+0.5H2O=>H2+0.5CO+1.5CHAR                                                                                                     .4600E+12  0.000  46345.0
+FORD / H2O 1.0 /                                                                                                                                          
+CHAR+H2O=>H2+CO                                                                                                                    .1500E+13  0.000  53034.0
+CHARG+H2O=>H2+CO                                                                                                                   .2900E+12  0.000  53989.0
+
+!CHAR GASIFICATION CO2
+CHARH+0.5CO2=>0.5H2O+0.5CO+2CHAR                                                                                                   .3000E+13  0.000  55184.0
+FORD / CO2 1.0 /                                                                                                                                          
+CHAR+CO2=>2CO                                                                                                                      .8000E+13  0.000  52962.0       
+CHAR_CO2+CO2=>2CO                                                                                                                  .4000E+11  0.000  52962.0       
+CHARG+CO2=>2CO                                                                                                                     .1000E+13  0.000  61395.0
+
+ ! ABSTRACTION REACTIONS
+ 
+END

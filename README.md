@@ -28,7 +28,8 @@ The kinetic mechanism are organized according to the reactant-phase:
     - Heavy Fuel Oils [(HFO)](Liquid-Phase/HeavyFuelOil), which are further categorized as SARA or resins.     
 - [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels. The main fuels are:
      - [Biomass](Solid-Phase/Biomass), accounting also for secondary gas-phase reactions of volatiles. As discussed in the readme file, the biomass model can be coupled to other gas-phase subsets.
-     - [Coal](Solid-Phase/Coal)
+     - [Coal](Solid-Phase/Coal), accounting for detailed release of nitrogen and sulphur pollutants and hetereogeneous char reactivity. 
+        Secondary gas-phase sulphur reactivity will be included in the next releases of the gas-phase mechanism. 
 - [Heterogeneous-Surface](Heterogeneous-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications. Currently the mechanism reported involve:
      - [pyrocarbon deposition](Surface-Mechanisms/CVI-CVD), accounting both Chemical Vapour Infiltration and Deposition and methane pyrolysis.   
      - [biochar oxidation](Surface-Mechanisms/Char) accounting for secondary heterogeneous reactions of char obtained from biomass   

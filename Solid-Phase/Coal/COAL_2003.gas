@@ -1,0 +1,40 @@
+
+ELEMENTS
+C 
+H 
+O
+N
+S
+K
+Ar
+END
+
+SPECIES
+N2                  O2                  H2                  H2O                 H2O2                
+CO                  CO2                 CH2O                CH4                 CH3OH               
+CH3OOH              C2H2                CH2CO               C2H4                C2H6                
+PC3H4               AC3H4               C2H3CHO             C4H4                CYC5H6              
+C6H4O2              C6H5OH              C6H5CHO             C6H5C2H             C8H10O3             
+INDENE              C6H5OCH3            C10H8               C10H7OH             C10H10              
+TETRALIN            C10H7CHO            C10H7CH3            CH3C10H6OH          VANILLIN            
+C12H8               C16H10              BIN1B               O                   H                   
+OH                  HO2                 CH                  HCO                 CH2S                
+C3H6                CH3                 CH3O                CH3OO               C2H                 
+HCCO                C2H3                CH2CHO              C2H5                C3H3                
+CH2CHCH2            CH3COCH2            C4H5                CYC5H5              C6H5                
+C6H5O               C6H4CH3             RCRESOLO            C6H4C2H             C6H5C2H2            
+INDENYL             C10H7               C10H7O              RTETRALIN           RTETRAOO            
+C10H7CH2            C10H6CH3            CH3C10H6O           C12H7               C14H9               
+C16H9               
+NH3                 HCN                 C5H5N               NO
+H2S                 CH3SH               STAR                SO2
+TAR1                Ar                  
+END
+
+
+REACTIONS
+
+N2 => N2 1.E1 .000 10000.0
+
+
+END
