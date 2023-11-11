@@ -6,7 +6,7 @@ All the mechanisms are freely available in CHEMKIN format (compatible with versi
 are self-consistent, i.e. they contain smaller subsets and can be coupled together. 
 Most of the mechanisms are available with or without NOx and soot submodules.
 Please contact us at creckmodeling-dcmc@polimi.it for questions and comments. 
-In-depth descriptions of each mechanisms are available on the [creck website](http://creckmodeling.chem.polimi.it/),
+In-depth descriptions of each mechanism are available on the [creck website](http://creckmodeling.chem.polimi.it/),
 while briefy summaries are reported in each subfolder.
 
 ## Choice of Kinetic Mechanism
