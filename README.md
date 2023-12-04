@@ -31,8 +31,8 @@ The kinetic mechanism are organized according to the reactant-phase:
      - [Coal](Solid-Phase/Coal), accounting for detailed release of nitrogen and sulphur pollutants and hetereogeneous char reactivity. 
         Secondary gas-phase sulphur reactivity will be included in the next releases of the gas-phase mechanism. 
 - [Heterogeneous-Surface](Heterogeneous-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications. Currently the mechanism reported involve:
-     - [pyrocarbon deposition](Surface-Mechanisms/CVI-CVD), accounting both Chemical Vapour Infiltration and Deposition and methane pyrolysis.   
-     - [biochar oxidation](Surface-Mechanisms/Char) accounting for secondary heterogeneous reactions of char obtained from biomass   
+     - [pyrocarbon deposition](Heterogeneous-Mechanisms/CVI-CVD), accounting both Chemical Vapour Infiltration and Deposition and methane pyrolysis.   
+     - [biochar oxidation](Heterogeneous-Mechanisms/Char) accounting for secondary heterogeneous reactions of char obtained from biomass   
     
 All the files reported are text-files with "fake" modifiable extensions. Nevertheless, the following extensions are employed:
 - gas kinetics are identified either by ".CKI" or ".gas" 
