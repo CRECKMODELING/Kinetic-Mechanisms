@@ -7,9 +7,9 @@ The kinetic mechanisms are reported also on the [creckmodelling website](https:/
 The folders are organized by polymer type. The available polymer mechanisms are:
 - **Polyethylene (PE)**: different mechanisms are available for HDPE and LDPE
     according to the degree of detail involved in products and radicals description.
-    Specifically, for HDPE the [published](PE/HDPE_120_2500), [chemkin-compatible](PE/HDPE_120_3200) 
-    and [more lumped](PE/HDPE_42_500) versions are availble. For LDPE the [chemkin-compatible](PE/LDPE_120_3200) 
-    and [more lumped](PE/LDPE_42_500) mechanism are reported.
+    Specifically, for HDPE the [published](PE/HDPE_120_2500), [reduced](PE/HDPE_42_500) 
+    and [skeletal](PE/HDPE_10_10) versions are availble. For LDPE the [chemkin-compatible](PE/LDPE_120_3200), 
+    [reduced](PE/LDPE_42_500) and [skeletal](PE/LDPE_10_10) mechanism are reported.
 - **Polypropylene (PP)**: a [single mechanism](PP) is reported.
 - **Polystyrene (PS)**: the proposed [mechanism](PS) accounts for all structural differences. 
 - **Poly(vinyl chloride) (PVC)**: the proposed [mechanism](PVC) accounts for the pure polymer degradation.

@@ -57,4 +57,7 @@ G{CH4}/CH4S	            CH4	        Metaplast	Release volatiles at higher temper
 G{C2H4}/C2H4S	        C2H4	    Metaplast	Release volatiles at higher temperatures
 G{C6H5OH}/C6H5OHS   	C6H6O	    Metaplast	Release volatiles at higher temperatures
 G{CH2O}/CH2OS	        CH2O	    Metaplast	Release volatiles at higher temperatures
-G{H2ÿ
+G{H2}/H2S	            H2	        Metaplast	Release volatiles at higher temperatures
+G{C2H6}/C2H6S	        C2H6	    Metaplast	Release volatiles at higher temperatures
+G{COSTIFF}/COSTIFFS	    CO	        Metaplast	Release volatiles at higher temperatures
+
