@@ -29,7 +29,7 @@ defined in gas-phase as well.
 With respect to the published mechanism [(Locaspi et al. (2022)](https://doi.org/10.1016/j.wasman.2022.11.028), 
 the improvements are:
 - better agreement with ethylene formation
-- a species representative of the crystalline part is introduced
+- a species representative of the crystalline polymer is introduced
 - stable short chain species are formed directly in gas-phase, while for longer
    compounds able to evaporate evaporation reactions are introduced, see [Locaspi et al. (2023)](https://doi.org/10.1016/j.jaap.2023.105960)  
 - thermochemistry evaluated with group contributions and van Krevelen phase-change

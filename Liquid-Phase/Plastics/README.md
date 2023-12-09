@@ -11,7 +11,9 @@ The folders are organized by polymer type. The available polymer mechanisms are:
     and [skeletal](PE/HDPE_10_10) versions are availble. For LDPE the [chemkin-compatible](PE/LDPE_120_3200), 
     [reduced](PE/LDPE_42_500) and [skeletal](PE/LDPE_10_10) mechanism are reported.
 - **Polypropylene (PP)**: a [single mechanism](PP) is reported.
-- **Polystyrene (PS)**: the proposed [mechanism](PS) accounts for all structural differences. 
+- **Polystyrene (PS)**: the proposed mechanisms account for all structural differences. 
+    The [published](PS/PS_54_550) mechanism and both a [reduced](PS/PS_44_330) 
+    and [skeletal](PS/PS_7_6) version are currently available. 
 - **Poly(vinyl chloride) (PVC)**: the proposed [mechanism](PVC) accounts for the pure polymer degradation.
 - Further work will address development of models for **PET, PA, PMMA, and PU** and condensed-phase interactions
 
