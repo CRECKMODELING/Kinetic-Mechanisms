@@ -1,0 +1,42 @@
+ELEMENTS
+C H O N HE
+END
+SPECIES
+
+N2	HE
+
+!MID-CHAINS
+ P-C40H80-P_S P-C40H80-P  P-C40H79-P  
+
+!END-CHAINS
+ P-C40H81    P-C40H79    P-C40H80    P-C40H80_T  P-C40H78    
+ P-C40H78_A  
+
+!unreactive LMW
+ CH4         C2H6        C3H8        NC4H10      NC5H12      
+ C6H14       NC7H16      C8H18       C9H20       NC10H22     
+ C11H24      NC12H26     NC16H34     C2H4        C3H6        
+ C4H8-1      NC5H10      NC6H12      NC7H14      C8H16       
+ C9H18       NC10H20     C11H22      C12H24      C16H32      
+ C4H6        LC5H8       DIALLYL     C7H12       C8H14       
+ C9H16       C10H18      C11H20      C12H22      C16H30      
+ 
+
+!stable RLMW
+ C20H42          C30H62          C45H92          C60H122        
+ C20H40          C30H60          C45H90          C60H120        
+ C20H38          C30H58          C45H88          C60H118        
+
+!radicals RLMW
+ C20H41          C30H61          C45H91          C60H121        
+ C20H41_T        C30H61_T        C45H91_T        C60H121_T      
+ C20H39          C30H59          C45H89          C60H119        
+ C20H39_T        C30H59_T        C45H89_T        C60H119_T      
+ C20H39_A        C30H59_A        C45H89_A        C60H119_A      
+ C20H37          C30H57          C45H87          C60H117        
+ C20H37_A        C30H57_A        C45H87_A        C60H117_A      
+
+END
+
+REACTIONS
+END

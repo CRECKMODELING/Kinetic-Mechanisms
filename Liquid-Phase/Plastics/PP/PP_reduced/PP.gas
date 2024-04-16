@@ -1,0 +1,39 @@
+ELEMENTS
+C H O N HE
+END
+SPECIES
+
+N2	HE
+
+!MID-CHAINS
+ P-IC30H60-P_S P-IC30H60-P P-IC30H59-P 
+
+!END-CHAINS
+ P-IC30H61t  P-IC30H61h  P-IC30H59t  P-IC30H59h  P-IC30H60t  
+ P-IC30H60h  P-IC30H58t  P-IC30H58h  
+
+!unreactive LMW
+ C2H6        C3H8        IC4H10      NC5H12      IC6H14      
+ IC7H16      IC8H18      IC9H20      IC10H22     IC11H24     
+ IC12H26     IC13H28     IC17H36     IC18H38     IC19H40     
+ C3H6        IC4H8       C5H10-2     IC6H12      IC7H14      
+ IC8H16      IC9H18      IC10H20     IC11H22     IC12H24     
+ IC13H26     IC17H34     IC18H36     IC19H38     IC6H10      
+ IC7H12      IC8H14      IC9H16      IC10H18     IC11H20     
+ IC12H22     IC13H24     IC17H32     IC18H34     IC19H36     
+ 
+
+!stable RLMW
+ IC35H72         IC36H74         IC37H76         IC56H114        IC57H116        IC58H118       
+ IC35H70         IC36H72         IC37H74         IC56H112        IC57H114        IC58H116       
+ IC35H68         IC36H70         IC37H72         IC56H110        IC57H112        IC58H114       
+
+!radicals RLMW
+ IC35H71         IC36H73         IC37H75         IC56H113        IC57H115        IC58H117       
+ IC35H69         IC36H71         IC37H73         IC56H111        IC57H113        IC58H115       
+ IC35H67         IC36H69         IC37H71         IC56H109        IC57H111        IC58H113       
+
+END
+
+REACTIONS
+END

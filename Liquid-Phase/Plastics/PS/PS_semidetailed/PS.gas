@@ -1,0 +1,39 @@
+ELEMENTS
+C H O N HE
+END
+SPECIES
+
+N2	HE
+
+!MID-CHAINS
+ P-C16H16-P  P-C16H15-P  
+
+!END-CHAINS
+ P-C16H17    P-C16H15    P-C16H16    P-C16H16_T  P-C16H14    
+ P-C16H14_A  
+
+!unreactive LMW
+ C8H10       C8H8               C6H4        
+
+!stable RLMW
+ C16H18          C24H26         
+ C16H16          C24H24         
+ C16H14          C24H22         
+
+!radicals RLMW
+ C16H17          C24H25         
+ C16H17_T        C24H25_T       
+                 C24H23         
+ C16H15_T        C24H23_T       
+                 C24H23_A       
+                                
+                 C24H21_A       
+
+!DELUMPED species
+ C7H8        C9H10       C15H16      C15H15_T    C9H12       
+ C6H6        C2H4        C3H6        C4H8-1      
+
+END
+
+REACTIONS
+END

@@ -1,0 +1,36 @@
+ELEMENTS
+C H O N HE
+END
+SPECIES
+
+N2	HE
+
+!MID-CHAINS
+ P-COPhCO-P  P-OCCO-P    P-OTMO-P    P-OCrCO-P   P-OTMrO-P   
+ P-OTrMO-P   
+
+!END-CHAINS
+ P-COPhCOOH  P-COPhCOOD  P-COPhH     P-COPhCOOM  P-OCCOH     
+ P-OCM       P-COPhCOOr  P-COPhr     P-COPhCOOMr P-OCCrOH    
+ P-OCMr      P-OCrM      
+
+!unreactive LMW
+ CO          CO2         H2          CH2O        G-CO        
+ G-H2        G-C2H4      G-COH2      G-COs       G-CH2O      
+ CHARO       CHAR        
+
+!stable RLMW
+ C2H4            CH3CHO          MVT             CH4             EGDA           
+ C6H6            VB              TA              H2O             EGDV           
+ BA              CH2CO           DVT             EGDB            CYEGDE         
+
+!radicals RLMW
+ C2H3           C6H5           BAr            rBA            CH2CHO         
+ VBr            MVTr           TAr            CH3            H              
+ rEGDB          rEGDA          rEGDV          EGDBr          EGDAr          
+ CYEGDEr        
+
+END
+
+REACTIONS
+END

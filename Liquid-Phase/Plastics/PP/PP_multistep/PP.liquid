@@ -1,0 +1,39 @@
+MATERIAL LIQUIDMIX
+LIQUID
+
+!MID-CHAINS
+ P-IC30H60-P_S(L) P-IC30H60-P(L) 
+
+!unreactive LMW
+ C3H6(L)        C5H12(L)       IC4H8(L)     
+ IC6H10(L)      IC9H18(L)      IC15H30(L)     IC30H60(L)     
+
+END
+
+REACTIONS
+
+! Melting reactions
+P-IC30H60-P_S(L)=>P-IC30H60-P(L)                                                                                                                      1.00e+17 0.00 37000
+
+! Evaporation reactions
+IC30H60(L)=>IC30H60               	                                                                                                                  3.00e+11 0.00 40000
+       
+! beta-scission
+P-IC30H60-P(L)=>0.0474683544303797C5H12+0.0474683544303797IC6H10+0.0474683544303797IC9H18+0.142405063291139IC15H30+0.897151898734177IC30H60(L)        6.00e+15 0.00 60000
+P-IC30H60-P(L)=>0.866666667P-IC30H60-P(L)+IC4H8                                                                                                       3.00e+14 0.00 57500
+
+!backbiting-butadiene
+P-IC30H60-P(L)=>C5H12+IC6H10+IC9H18+0.333333333P-IC30H60-P(L)                                                                                         6.00e+16 0.00 65000
+P-IC30H60-P(L)=>IC15H30+0.5P-IC30H60-P(L)                                                                                                             3.00e+17 0.00 67000
+
+!unzipping
+P-IC30H60-P(L)=>0.9P-IC30H60-P(L)+C3H6                                                                                                                7.00e+19 0.00 75000
+
+IC30H60(L)=>0.0946372239747634C5H12+0.0946372239747634IC6H10+0.0946372239747634IC9H18+0.28391167192429IC15H30+0.794952681388013IC30H60(L)             3.00e+15 0.00 60000
+IC30H60(L)=>C3H6+0.2IC15H30+0.8IC30H60(L)                                                                                                             7.00e+19 0.00 75000
+IC30H60(L)=>C5H12+IC6H10+1.833333333IC9H18+0.166666667IC15H30                                                                                         6.00e+16 0.00 65000
+IC30H60(L)=>2IC15H30                                                                                                                                  3.00e+17 0.00 67000
+IC30H60(L)=>IC4H8+0.266666667IC15H30+0.733333333IC30H60(L)                                                                                            3.00e+14 0.00 57500
+
+
+END
