@@ -32,9 +32,9 @@ All mechanisms are validated with ~50 of data from the scientific literature.
 Here are reported few validation comparisons in terms of parity plots of mass-loss profiles 
 and gas-phase yields. 
 
-<img src="../.images/PETvalidation/Parity_dynamic.svg" width="10000" >
+<img src="../../../.images/PETvalidation/Parity_dynamic.svg" width="10000" >
 
-<img src="../.images/PETvalidation/yields.svg" width="10000" >
+<img src="../../../.images/PETvalidation/yields.svg" width="10000" >
 
   
  

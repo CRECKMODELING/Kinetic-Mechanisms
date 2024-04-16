@@ -56,5 +56,5 @@ and gas-phase yields. At T>600°C secondary gas-phase reactions occur which will 
 addressed in further studies.
 The detailed model of [Ranzi et al. (1997)](https://doi.org/10.1016/S0165-2370(97)00032-6) is also reported for comparison.
 
-<img src="../.images/PPvalidation/Parity_dynamic.svg" width="10000" >
+<img src="../../../.images/PPvalidation/Parity_dynamic.svg" width="10000" >
 

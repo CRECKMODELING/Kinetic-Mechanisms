@@ -51,9 +51,9 @@ addressed in further studies.
 The skeletal model is able to reproduce the characteristic degradation times,
 but has significant uncertainties in yields predictions.
 
-<img src="../.images/PSvalidation/Parity_dynamic.svg" width="10000" >
+<img src="../../../.images/PSvalidation/Parity_dynamic.svg" width="10000" >
 
-<img src="../.images/PSvalidation/Parity_yields.svg" width="10000" >
+<img src="../../../.images/PSvalidation/Parity_yields.svg" width="10000" >
 
  
   
