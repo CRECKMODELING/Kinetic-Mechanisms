@@ -23,10 +23,10 @@ The kinetic mechanism are organized according to the reactant-phase:
 - [Liquid-Phase](Liquid-Phase) mechanisms address decompositio of heavy fuels which thermally decompose before evaporating to gas-phase.
     The main classes of compounds are:
      - [Plastics](Liquid-Phase/Plastics), which are considered as liquids as their degradation occurs in the molten state.
-        Kinetic models are currently available for the main polymers ([polyethylene](Liquid-Phase/Plastics/PE), [polypropylene](Liquid-Phase/Plastics/PP),
-        [polystyrene](Liquid-Phase/Plastics/PS), and [poly(vinyl chloride)](Liquid-Phase/Plastics/PVC)) but further work to expand the polymer palette is under-way.
+        Condensed-phase kinetic models are currently available for the main polymers ([polyethylene](Liquid-Phase/Plastics/PE), [polypropylene](Liquid-Phase/Plastics/PP),
+        [polystyrene](Liquid-Phase/Plastics/PS), [poly(ethylene terephthalate)](Liquid-Phase/Plastics/PET) and [poly(vinyl chloride)](Liquid-Phase/Plastics/PVC)) but further work to expand the polymer palette is under-way.
     - Heavy Fuel Oils [(HFO)](Liquid-Phase/HeavyFuelOil), which are further categorized as SARA or resins.
-        The corresponding mechanisms will be published soon.     
+        *The corresponding mechanisms will be published soon*.     
 - [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels. The main fuels are:
      - [Biomass](Solid-Phase/Biomass), accounting also for secondary gas-phase reactions of volatiles. As discussed in the readme file, the biomass model can be coupled to other gas-phase subsets.
      - [Coal](Solid-Phase/Coal), accounting for detailed release of nitrogen and sulphur pollutants and hetereogeneous char reactivity. 
