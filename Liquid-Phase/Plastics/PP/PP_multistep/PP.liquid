@@ -5,8 +5,7 @@ LIQUID
  P-IC30H60-P_S(L) P-IC30H60-P(L) 
 
 !unreactive LMW
- C3H6(L)        C5H12(L)       IC4H8(L)     
- IC6H10(L)      IC9H18(L)      IC15H30(L)     IC30H60(L)     
+ IC30H60(L)     
 
 END
 
@@ -29,6 +28,7 @@ P-IC30H60-P(L)=>IC15H30+0.5P-IC30H60-P(L)                                       
 !unzipping
 P-IC30H60-P(L)=>0.9P-IC30H60-P(L)+C3H6                                                                                                                7.00e+19 0.00 75000
 
+!waxes condensed-phase degradation
 IC30H60(L)=>0.0946372239747634C5H12+0.0946372239747634IC6H10+0.0946372239747634IC9H18+0.28391167192429IC15H30+0.794952681388013IC30H60(L)             3.00e+15 0.00 60000
 IC30H60(L)=>C3H6+0.2IC15H30+0.8IC30H60(L)                                                                                                             7.00e+19 0.00 75000
 IC30H60(L)=>C5H12+IC6H10+1.833333333IC9H18+0.166666667IC15H30                                                                                         6.00e+16 0.00 65000
