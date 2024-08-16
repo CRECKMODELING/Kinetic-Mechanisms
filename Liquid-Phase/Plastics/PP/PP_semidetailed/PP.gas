@@ -6,37 +6,37 @@ SPECIES
 N2	HE
 
 !MID-CHAINS
- P-IC30H60-P_S P-IC30H60-P P-IC30H59-P 
+ P-IC45H90-P_S P-IC45H90-P P-IC45H89-P 
 
 !END-CHAINS
- P-IC30H61t  P-IC30H61h  P-IC30H59t  P-IC30H59h  P-IC30H60t  
- P-IC30H60t_T P-IC30H60h  P-IC30H60h_T P-IC30H58t  P-IC30H58t_A 
- P-IC30H58h  P-IC30H58h_A 
+ P-IC45H91t  P-IC45H91h  P-IC45H89t  P-IC45H89h  P-IC45H90t  
+ P-IC45H90t_T P-IC45H90h  P-IC45H90h_T P-IC45H88t  P-IC45H88t_A 
+ P-IC45H88h  P-IC45H88h_A 
 
 !unreactive LMW
- C2H6        C3H8        IC4H10      NC5H12      IC6H14      
+ C2H6        C3H8        IC4H10      C5H12       IC6H14      
  IC7H16      IC8H18      IC9H20      IC10H22     IC11H24     
- IC12H26     IC13H28     IC17H36     IC18H38     IC19H40     
+ IC12H26     IC13H28     IC14H30     IC15H32     IC16H34     
  C3H6        IC4H8       C5H10-2     IC6H12      IC7H14      
  IC8H16      IC9H18      IC10H20     IC11H22     IC12H24     
- IC13H26     IC17H34     IC18H36     IC19H38     IC6H10      
+ IC13H26     IC14H28     IC15H30     IC16H32     IC6H10      
  IC7H12      IC8H14      IC9H16      IC10H18     IC11H20     
- IC12H22     IC13H24     IC17H32     IC18H34     IC19H36     
+ IC12H22     IC13H24     IC14H26     IC15H28     IC16H30     
  
 
 !stable RLMW
- IC29H60         IC30H62         IC31H64         IC44H90         IC45H92         IC46H94         IC56H114        IC57H116        IC58H118       
- IC29H58         IC30H60         IC31H62         IC44H88         IC45H90         IC46H92         IC56H112        IC57H114        IC58H116       
- IC29H56         IC30H58         IC31H60         IC44H86         IC45H88         IC46H90         IC56H110        IC57H112        IC58H114       
+ IC29H60         IC30H62         IC31H64         IC47H96         IC48H98         IC49H100        IC71H144        IC72H146        IC73H148       
+ IC29H58         IC30H60         IC31H62         IC47H94         IC48H96         IC49H98         IC71H142        IC72H144        IC73H146       
+ IC29H56         IC30H58         IC31H60         IC47H92         IC48H94         IC49H96         IC71H140        IC72H142        IC73H144       
 
 !radicals RLMW
- IC29H59         IC30H61         IC31H63         IC44H89         IC45H91         IC46H93         IC56H113        IC57H115        IC58H117       
- IC29H59_T       IC30H61_T       IC31H63_T       IC44H89_T       IC45H91_T       IC46H93_T       IC56H113_T      IC57H115_T      IC58H117_T     
- IC29H57         IC30H59         IC31H61         IC44H87         IC45H89         IC46H91         IC56H111        IC57H113        IC58H115       
- IC29H57_T       IC30H59_T       IC31H61_T       IC44H87_T       IC45H89_T       IC46H91_T       IC56H111_T      IC57H113_T      IC58H115_T     
- IC29H57_A       IC30H59_A       IC31H61_A       IC44H87_A       IC45H89_A       IC46H91_A       IC56H111_A      IC57H113_A      IC58H115_A     
- IC29H55         IC30H57         IC31H59         IC44H85         IC45H87         IC46H89         IC56H109        IC57H111        IC58H113       
- IC29H55_A       IC30H57_A       IC31H59_A       IC44H85_A       IC45H87_A       IC46H89_A       IC56H109_A      IC57H111_A      IC58H113_A     
+ IC29H59         IC30H61         IC31H63         IC47H95         IC48H97         IC49H99         IC71H143        IC72H145        IC73H147       
+ IC29H59_T       IC30H61_T       IC31H63_T       IC47H95_T       IC48H97_T       IC49H99_T       IC71H143_T      IC72H145_T      IC73H147_T     
+ IC29H57         IC30H59         IC31H61         IC47H93         IC48H95         IC49H97         IC71H141        IC72H143        IC73H145       
+ IC29H57_T       IC30H59_T       IC31H61_T       IC47H93_T       IC48H95_T       IC49H97_T       IC71H141_T      IC72H143_T      IC73H145_T     
+ IC29H57_A       IC30H59_A       IC31H61_A       IC47H93_A       IC48H95_A       IC49H97_A       IC71H141_A      IC72H143_A      IC73H145_A     
+ IC29H55         IC30H57         IC31H59         IC47H91         IC48H93         IC49H95         IC71H139        IC72H141        IC73H143       
+ IC29H55_A       IC30H57_A       IC31H59_A       IC47H91_A       IC48H93_A       IC49H95_A       IC71H139_A      IC72H141_A      IC73H143_A     
 
 END
 

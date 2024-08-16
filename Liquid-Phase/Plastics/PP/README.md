@@ -9,12 +9,8 @@ The mechanism proposed for PS are:
 - [PP_10_12](PP_multistep) a "global" mechanism with significantly lower computational cost. 
 The reduction is performed with the approach proposed by [Pegurri et al. (2023)](https://doi.org/10.1016/j.combustflame.2023.113202).
 
-
-To cite the semi-detailed Kinetic Mechanism refer to the following publications:
-- **Locaspi, Andrea et al.** "Towards a lumped approach for solid plastic waste gasification: Polyethylene and polypropylene pyrolysis." Waste Management 156 (2023): 107-117 [DOI](https://doi.org/10.1016/j.wasman.2022.11.028)
-
-To cite the **Reduced** and the **multistep** Kinetic Mechanisms refer to the following publication:
-- **Locaspi, Andrea et al.** "Reduced-order condensed-phase kinetic models for plastic waste thermochemical recycling: polyethylene, polypropylene, and polystyrene", under review at Chemical Engineering Journal
+To cite the updated mechanisms refer to the following publication:
+- **Locaspi, Andrea et al.** "Reduced-order condensed-phase kinetic models for polyethylene, polypropylene and polystyrene thermochemical recycling", under review at Chemical Engineering Journal
 
 All mechanisms are described in detail in the PhD thesis:
 - **Locaspi Andrea**, "A lumped condensed-phase kinetic model for plastic waste thermochemical recycling", Politecnico di Milano, 2024
@@ -22,9 +18,9 @@ All mechanisms are described in detail in the PhD thesis:
 ## Mechanism description
 
 For all mechanisms the starting polymer at room temperature is described by the species
-P-IC30H60-P_S and P-IC30H60-P which represent the crystalline and amorphous polymer respectively.
+P-PP-P_S and P-PP-P which represent the crystalline and amorphous polymer respectively.
 If the simulation starts above the melting point (170C), the polymer is 
-described only by P-IC30H60-P. Polymer species in OpenSMOKE++ are required to be 
+described only by P-PP-P. Polymer species in OpenSMOKE++ are required to be 
 defined in gas-phase as well but do not have physical meaning.
 
 With respect to the published mechanism [(Locaspi et al. (2022)](https://doi.org/10.1016/j.wasman.2022.11.028), 

@@ -6,26 +6,26 @@ SPECIES
 N2	HE
 
 !MID-CHAINS
- P-C40H80-P_S P-C40H80-P  P-C40H79-P  
+ P-LDPE-P_S  P-LDPE-P    P-NC40H79-P 
 
 !END-CHAINS
- P-C40H81    P-C40H79    P-C40H80    P-C40H78    
+ P-NC40H81   P-NC40H79   P-NC40H80   P-NC40H78   
 
 !unreactive LMW
  CH4         C2H6        C3H8        NC4H10      NC5H12      
- NC7H16      NC16H34     C2H4        C3H6        C4H8-1      
- NC5H10      NC7H14      C16H32      C4H6        LC5H8       
- C7H12       C16H30      
+ NC6H14      NC16H34     C2H4        C3H6        C4H8-1      
+ NC5H10      NC6H12      NC16H32     C4H6        LC5H8       
+ DIALLYL     NC16H30     
 
 !stable RLMW
- C30H62          C58H118        
- C30H60          C58H116        
- C30H58          C58H114        
+ NC30H62         NC60H122       
+ NC30H60         NC60H120       
+ NC30H58         NC60H118       
 
 !radicals RLMW
- C30H61          C58H117        
- C30H59          C58H115        
- C30H57          C58H113        
+ NC30H61         NC60H121       
+ NC30H59         NC60H119       
+ NC30H57         NC60H117       
 
 END
 

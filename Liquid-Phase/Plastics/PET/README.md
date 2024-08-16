@@ -8,17 +8,18 @@ The thermodynamic properties have not been investigated due to lack of data and
 theoretical approaches for aromatic esters.
 
 To cite the Kinetic Mechanisms refer to the following publication:
-- **Locaspi, Andrea et al.** "Kinetic modelling and experimental investigation of PolyEthylene Terephthalate pyrolysis" Chemical Engineering Journal **Under Review**
-
-The mechanism is described in detailed in the PhD thesis:
-- **Locaspi Andrea**, "A lumped condensed-phase kinetic model for plastic waste thermochemical recycling", Politecnico di Milano, 2024
+- **Locaspi, Andrea et al.** "A lumped kinetic model and experimental investigation of Poly(Ethylene Terephthalate) condensed-phase pyrolysis" Chemical Engineering Journal **Under Review**
   
 ## Mechanism description
 
 For all mechanisms, the starting polymer at room temperature is described by the species
 P-COPhCO-P and P-OCCO-P, which represent the terephthalic and glycol moieties of the amorphous polymer
-(present in equimolar ratios). Polymer and char species species in OpenSMOKE++ are 
-required to be defined in gas-phase as well but do not have physical meaning.
+(present in equimolar ratios). The present mechanism considers a single condensed pseudo-phase
+and models char as liquid-phase species. Mechanisms considering two condensed phases
+can be provided upon request. Compared to the mechanisms for the other polymers, 
+phase-change is considered separatedly and not pseudo-reaction is introduced.
+Polymer and char species species in OpenSMOKE++ are required to be defined in 
+gas-phase as well but do not have physical meaning.
 
 In each folder are present the standard CHEMKIN files (gas kinetics, liquid kinetics, 
 thermodynamics, transport) and a sub-folder of LiquidProperties.

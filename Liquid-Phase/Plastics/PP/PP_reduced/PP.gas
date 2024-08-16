@@ -6,32 +6,32 @@ SPECIES
 N2	HE
 
 !MID-CHAINS
- P-IC30H60-P_S P-IC30H60-P P-IC30H59-P 
+ P-PP-P_S    P-PP-P      P-IC45H89-P 
 
 !END-CHAINS
- P-IC30H61t  P-IC30H61h  P-IC30H59t  P-IC30H59h  P-IC30H60t  
- P-IC30H60h  P-IC30H58t  P-IC30H58h  
+ P-IC45H91t  P-IC45H91h  P-IC45H89t  P-IC45H89h  P-IC45H90t  
+ P-IC45H90h  P-IC45H88t  P-IC45H88h  
 
 !unreactive LMW
- C2H6        C3H8        IC4H10      NC5H12      IC6H14      
+ C2H6        C3H8        IC4H10      C5H12       IC6H14      
  IC7H16      IC8H18      IC9H20      IC10H22     IC11H24     
- IC12H26     IC13H28     IC17H36     IC18H38     IC19H40     
+ IC12H26     IC13H28     IC14H30     IC15H32     IC16H34     
  C3H6        IC4H8       C5H10-2     IC6H12      IC7H14      
  IC8H16      IC9H18      IC10H20     IC11H22     IC12H24     
- IC13H26     IC17H34     IC18H36     IC19H38     IC6H10      
+ IC13H26     IC14H28     IC15H30     IC16H32     IC6H10      
  IC7H12      IC8H14      IC9H16      IC10H18     IC11H20     
- IC12H22     IC13H24     IC17H32     IC18H34     IC19H36     
+ IC12H22     IC13H24     IC14H26     IC15H28     IC16H30     
  
 
 !stable RLMW
- IC35H72         IC36H74         IC37H76         IC56H114        IC57H116        IC58H118       
- IC35H70         IC36H72         IC37H74         IC56H112        IC57H114        IC58H116       
- IC35H68         IC36H70         IC37H72         IC56H110        IC57H112        IC58H114       
+ IC29H60         IC30H62         IC31H64         IC59H120        IC60H122        IC61H124       
+ IC29H58         IC30H60         IC31H62         IC59H118        IC60H120        IC61H122       
+ IC29H56         IC30H58         IC31H60         IC59H116        IC60H118        IC61H120       
 
 !radicals RLMW
- IC35H71         IC36H73         IC37H75         IC56H113        IC57H115        IC58H117       
- IC35H69         IC36H71         IC37H73         IC56H111        IC57H113        IC58H115       
- IC35H67         IC36H69         IC37H71         IC56H109        IC57H111        IC58H113       
+ IC29H59         IC30H61         IC31H63         IC59H119        IC60H121        IC61H123       
+ IC29H57         IC30H59         IC31H61         IC59H117        IC60H119        IC61H121       
+ IC29H55         IC30H57         IC31H59         IC59H115        IC60H117        IC61H119       
 
 END
 

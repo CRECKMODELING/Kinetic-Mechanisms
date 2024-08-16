@@ -6,11 +6,11 @@ SPECIES
 N2	HE
 
 !MID-CHAINS
- P-C40H80-P_S P-C40H80-P  
+ P-LDPE-P_S  P-LDPE-P    
 
 !unreactive LMW
- C2H4        C4H6        C3H8        C3H6        NC7H14      
- C16H32      C30H60      
+ C2H4        C4H6        C3H8        C3H6        NC6H12      
+ NC16H32     NC30H60     
 
 END
 
