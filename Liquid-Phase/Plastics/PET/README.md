@@ -8,7 +8,7 @@ The thermodynamic properties have not been investigated due to lack of data and
 theoretical approaches for aromatic esters.
 
 To cite the Kinetic Mechanisms refer to the following publication:
-- **Locaspi, Andrea et al.** "A lumped kinetic model and experimental investigation of Poly(Ethylene Terephthalate) condensed-phase pyrolysis" Chemical Engineering Journal **Under Review**
+- **Locaspi, Andrea et al.** "A lumped kinetic model and experimental investigation of Poly(Ethylene Terephthalate) condensed-phase pyrolysis", Chemical Engineering Journal 500 (2024): 156955. [DOI](https://doi.org/10.1016/j.cej.2024.156955) 
   
 ## Mechanism description
 

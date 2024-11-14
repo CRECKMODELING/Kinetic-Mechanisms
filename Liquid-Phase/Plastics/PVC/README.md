@@ -6,7 +6,8 @@ In this folder are present the CHEMKIN format files of the mechanism::
 No improvement has been currently made. Further work will address:
 - Study of the thermodynamic properties of compounds
 - Modifying the description of the solid residue to be in-line with the biomass 
-   mechanism and PET (mechanism under development currently)
+   and PET mechanisms. Currently, char is represented by C24H12(L) and C24H11CL(L)
+- Update molecular dehydrochlorination reactions based on recent studies
 
 In each folder are present the standard CHEMKIN files (gas kinetics, liquid kinetics, 
 thermodynamics, transport) and a sub-folder of LiquidProperties.
