@@ -1,41 +1,73 @@
 # Kinetic-Mechanisms
-![Logo](.images/intro.svg)
+<p align="center">
+    <img src=".images/intro.svg" alt="Logo" width="600"/>
+</p>
 
-Kinetic Mechanisms for gas, liquid and solid fuels, current version CRECK_2003.
+
+Kinetic Mechanisms for **gas**, **liquid** and **solid** fuels, current version CRECK_2003.
 All the mechanisms are freely available in CHEMKIN format (compatible with version 3.6.2 and above) and 
 are self-consistent, i.e. they contain smaller subsets and can be coupled together. 
-Most of the mechanisms are available with or without NOx and soot submodules.
+<Most of the mechanisms are available with or without NOx and soot submodules.>
 Please contact us at creckmodeling-dcmc@polimi.it for questions and comments. 
-In-depth descriptions of each mechanism are available on the [creck website](http://creckmodeling.chem.polimi.it/),
-while briefy summaries are reported in each subfolder.
 
-## Choice of Kinetic Mechanism
-The kinetic mechanism are organized according to the reactant-phase:
-- [Homogeneous Gas-Phase](Gas-Phase) mechanisms address the reactivity of compounds reacting in gas-phase (e.g., hydrogen, gasolines). 
+## Choice of Kinetic Mechanisms
+The kinetic mechanism are organized according to the reactive-phase:
+- [Homogeneous Gas-Phase](Gas-Phase) mechanisms address compounds reacting in gas-phase (e.g., **H2**, **gasolines**, **diesel**). 
     These mechanisms can be also coupled to the other phase kinetics to study secondary gas-phase reactions.
-    To choose the proper kinetic mechanism, refer to the gas-phase [readme subsection](Gas-Phase/README.md#choice-of-kinetic-mechanism).
-    In general, kinetic models including pollutants formations are available for:
-     - Carbon Free fuels (e.g., [Hydrogen](Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202) and [Ammonia](Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202)) 
-        and eFuels (e.g., [methanol](Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501) and [DME](Gas-Phase/Gasoline-Biogasoline/TPRF_HT_LT_ALC_ETHERS_356_10171))
-     - [Syngas](Gas-Phase/CoreMechanism_C0-C4/SYNGAS_21_62) and [Natural Gas](Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459)
-     - Gasolines and Biogasoline (refer to the [readme subsection](Gas-Phase/README.md#choice-of-kinetic-mechanism))
-     - Diesels and Biodiesels (refer to the [readme subsection](Gas-Phase/README.md#choice-of-kinetic-mechanism))
-- [Liquid-Phase](Liquid-Phase) mechanisms address decompositio of heavy fuels which thermally decompose before evaporating to gas-phase.
-    The main classes of compounds are:
-     - [Plastics](Liquid-Phase/Plastics), which are considered as liquids as their degradation occurs in the molten state.
-        Condensed-phase kinetic models are currently available for the main polymers ([polyethylene](Liquid-Phase/Plastics/PE), [polypropylene](Liquid-Phase/Plastics/PP),
-        [polystyrene](Liquid-Phase/Plastics/PS), [poly(ethylene terephthalate)](Liquid-Phase/Plastics/PET) and [poly(vinyl chloride)](Liquid-Phase/Plastics/PVC)) but further work to expand the polymer palette is under-way.
-    - Heavy Fuel Oils [(HFO)](Liquid-Phase/HeavyFuelOil), which are further categorized as SARA or resins.
-        *The corresponding mechanisms will be published soon*.     
-- [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels. The main fuels are:
-     - [Biomass](Solid-Phase/Biomass), accounting also for secondary gas-phase reactions of volatiles. As discussed in the readme file, the biomass model can be coupled to other gas-phase subsets.
-     - [Coal](Solid-Phase/Coal), accounting for detailed release of nitrogen and sulphur pollutants and hetereogeneous char reactivity. 
-        Secondary gas-phase sulphur reactivity will be included in the next releases of the gas-phase mechanism. 
-- [Heterogeneous-Surface](Heterogeneous-Mechanisms) mechanisms are heterogeneous surface models for a broad range of applications. Currently the mechanism reported involve:
-     - [pyrocarbon deposition](Heterogeneous-Mechanisms/CVI-CVD), accounting both Chemical Vapour Infiltration and Deposition and methane pyrolysis.   
-     - [biochar oxidation](Heterogeneous-Mechanisms/Char) accounting for secondary heterogeneous reactions of char obtained from biomass   
+
+    **For a detailed list of gas-phase kinetic mechanism** &rarr; **[Click here](Gas-Phase/README.md#choice-of-kinetic-mechanism)**.
+    &nbsp; <a href="mailto:creckmodeling-dcmc@polimi.it"> Mail us </a> for other mechanisms!
+    <details>
+    <summary><ins>Quick choice of gas kinetic mechanism</ins></summary>
+    &nbsp; HT = <i>High-Temperature</i>, LT = <i>Low-Temperature</i>, NOx = <i>sub-module for nitrogen-oxides and ammonia</i>, Soot = <i>sub-module for soot particles</i>
+    <ul>
+        <li> <b>Hydrogen</b> (H<sub>2</sub>): &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/HYDROGEN_11_20"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> </li>
+        <li> <b>Ammonia</b> (NH<sub>3</sub>): &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202"> HT </a> &nbsp; &bull; &nbsp;  <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202">HT+NOx</a>  &nbsp; &bull; &nbsp;  <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041">HT+SOOT</a>  &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501">HT+NOx+SOOT</a> </li>
+        <li> <b>Methane</b> (CH<sub>4</sub>): &nbsp;<a href="Gas-Phase/CoreMechanism_C0-C4/C1_C3_HT_114_1999"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> <br>
+        <li> <b>Natural Gas/LPG</b> (C<sub>1</sub>-C<sub>4</sub>): &nbsp;<a href="Gas-Phase/CoreMechanism_C0-C4/C1_C3_HT_114_1999"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> <br>
+        <li> <b>Methanol</b> (CH<sub>3</sub>OH): &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/C1_C3_HT_114_1999"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> </li>
+        <li> <b>DME</b> (CH<sub>3</sub>OCH<sub>3</sub>): &nbsp; <a href="Gas-Phase/Gasoline-Biogasoline/TPRF_HT_LT_ALC_ETHERS_356_10171"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Gasoline-Biogasoline/TPRF_HT_LT_ALC_ETHERS_356_10171"> HT+LT </a> </li>
+        <li><b>Gasoline/Biogasoline</b> &rarr; refer to this <a href="Gas-Phase/Gasoline-Biogasoline/README.md#choice-of-kinetic-mechanism"> readme subsection </a>  </li>
+        <li><b>Jet-fuels</b> &rarr; refer to this <a href="Gas-Phase/Diesel-Biodiesel/README.md#choice-of-kinetic-mechanism"> readme subsection </a> </li>
+        <li><b>Diesel/Biodiesel/Bio-oil</b> &rarr; refer to this <a href="Gas-Phase/Diesel-Biodiesel/README.md#choice-of-kinetic-mechanism"> readme subsection </a> </li>
+    </ul>
+    </details>
+
+- [Liquid-Phase](Liquid-Phase) mechanisms address heavy fuels which decompose before evaporating (e.g., **Plastics**, **Heavy Fuel Oils**).
+    <details>
+    <summary><ins>Quick choice of <b> <a href="Liquid-Phase/Plastics/"> plastics </a> </b> condensed-phase kinetic mechanism</ins></summary>
     
-All the files reported are text-files with "fake" modifiable extensions. Nevertheless, the following extensions are employed:
+    <ul>
+        <li> <b>Polyethylene High-Density </b> (HDPE): &nbsp; <a href="Liquid-Phase/Plastics/PE/HDPE_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/HDPE_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/HDPE_multistep/"> multi-step </a> </li>
+        <li> <b>Polyethylene Low-Density </b> (LDPE): &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_multistep/"> multi-step </a> </li>
+        <li> <b>Polypropylene </b> (PP): &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_multistep/"> multi-step </a> </li>
+        <li> <b>Polystyrene </b> (PS): &nbsp; <a href="Liquid-Phase/Plastics/PS/PS_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PS/PS_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PS/PS_multistep/"> multi-step </a> </li>
+        <li> <b>Poly(ethylene terephthalate) </b> (PET): &nbsp; <a href="Liquid-Phase/Plastics/PET"> semi-detailed </a>  </li>
+        <li> <b>Poly(vinyl chloride) </b> (PVC): &nbsp; <a href="Liquid-Phase/Plastics/PVC"> semi-detailed </a>  </li>
+    </ul>
+    </details>    
+
+    *HFO mechanisms will be published soon*
+
+- [Solid-Phase](Solid-Phase) mechanisms address decomposition of solid fuels (e.g., **Biomass**, **Coal**). 
+    <details open>
+    <summary><ins>Quick choice of solid-phase kinetic mechanism</ins></summary>
+    <ul>
+        <li> <b> <a href="Solid-Phase/Biomass"> Biomass mechanism</a></b>, accounting also for secondary gas-phase reactions of volatiles. </li>
+        <li> <b> <a href="Solid-Phase/Coal"> Coal mechanism</a></b>, accounting for detailed release of N and S pollutants and char reactivity. <i>Secondary gas-phase sulphur reactivity will be included in the next releases of the gas-phase mechanism. </i></li>        
+    </ul>
+    </details>    
+    
+- [Heterogeneous-Surface](Heterogeneous-Mechanisms) mechanisms are heterogeneous surface mechanisms (e.g., **CVI-CVD**, **Char**). 
+    <details open>
+    <summary><ins>Quick choice of surface kinetic mechanism</ins></summary>
+    <ul>
+        <li> <b> <a href="Heterogeneous-Mechanisms/CVI-CVD"> Pyrocarbon deposition mechanism</a></b>, accounting both Chemical Vapour Infiltration and Deposition and methane pyrolysis. </li>
+        <li> <b> <a href="Heterogeneous-Mechanisms/Char"> Biochar oxidation mechanism</a></b>, accounting for secondary heterogeneous reactions of char obtained from biomass.</li>        
+    </ul>
+    </details>    
+    
+All the files reported are text-files with "fake" modifiable extensions. Nevertheless, the **following extensions are employed**:
 - gas kinetics are identified either by ".CKI" or ".gas" 
 - liquid kinetics are identified by ".liquid"
 - solid kinetics are identified by ".solid"
