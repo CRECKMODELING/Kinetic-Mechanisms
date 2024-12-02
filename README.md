@@ -14,13 +14,14 @@ The kinetic mechanism are organized according to the reactive-phase:
 - [**Homogeneous Gas-Phase**](Gas-Phase) mechanisms address compounds reacting in gas-phase (e.g., <ins>H<sub>2</sub>, gasolines, diesels</ins>). 
     
     **For a detailed list** of gas-phase kinetic mechanism &rarr; **[Click here](Gas-Phase/README.md#choice-of-kinetic-mechanism)**.
-    &nbsp; <a href="mailto:creckmodeling-dcmc@polimi.it"> Mail us </a> for other mechanisms!
+    
+    <a href="mailto:creckmodeling-dcmc@polimi.it"> <ins>Mail us</ins> </a> for other mechanisms!
     <details>
     <summary><i><b>Quick choice </b> of gas kinetic mechanism</i></summary>
     &nbsp; HT = <i>High-Temperature</i>, LT = <i>Low-Temperature</i>, NOx = <i>sub-module for nitrogen-oxides and ammonia</i>, Soot = <i>sub-module for soot particles</i>
     <ul>
-        <li> <ins>Hydrogen</ins> (H<sub>2</sub>): &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/HYDROGEN_11_20"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> </li>
-        <li> <ins>Ammonia</ins> (NH<sub>3</sub>): &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202"> HT </a> &nbsp; &bull; &nbsp;  <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202">HT+NOx</a>  &nbsp; &bull; &nbsp;  <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041">HT+SOOT</a>  &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501">HT+NOx+SOOT</a> </li>
+        <li> <ins>Hydrogen</ins> (H<sub>2</sub>): &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/HYDROGEN_11_20"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202"> HT+NOx </a> </li>
+        <li> <ins>Ammonia</ins> (NH<sub>3</sub>): &nbsp; <a href="Gas-Phase/CarbonFreeFuels_H2-NH3/NH3_31_202"> HT </a> </li>
         <li> <ins>Methane</ins> (CH<sub>4</sub>): &nbsp;<a href="Gas-Phase/CoreMechanism_C0-C4/C1_C3_HT_114_1999"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> <br>
         <li> <ins>Natural Gas/LPG</ins> (C<sub>1</sub>-C<sub>4</sub>): &nbsp;<a href="Gas-Phase/CoreMechanism_C0-C4/C1_C3_HT_114_1999"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> <br>
         <li> <ins>Methanol</ins> (CH<sub>3</sub>OH): &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/C1_C3_HT_114_1999"> HT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/CoreMechanism_C0-C4/Soot-NOx/C1_C3_HT_NOX_159_2459"> HT+NOx </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_452_24041"> HT+SOOT </a> &nbsp; &bull; &nbsp; <a href="Gas-Phase/Diesel-Biodiesel/Soot-NOx/TOT_HT_SOOT_NOX_497_24501"> HT+NOx+SOOT</a> </li>
