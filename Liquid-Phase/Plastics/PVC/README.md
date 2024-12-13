@@ -1,7 +1,7 @@
 # PVC kinetic Mechanisms
 
 In this folder are present the CHEMKIN format files of the mechanism::
-- PVC_85_200 the published mechanism [(Marongiu et al. (2023))](https://doi.org/10.1016/S0165-2370(03)00024-X) 
+- PVC_85_200 the published mechanism [(Marongiu et al. (2003))](https://doi.org/10.1016/S0165-2370(03)00024-X) 
 
 No improvement has been currently made. Further work will address:
 - Study of the thermodynamic properties of compounds
