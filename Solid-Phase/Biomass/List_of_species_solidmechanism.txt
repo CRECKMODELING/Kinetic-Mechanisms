@@ -29,7 +29,8 @@ CH2O	                CH2O	    Tar	        formaldehyde
 C2H5CHO	                C3H6O	    Tar	        propionaldehyde
 C2H5OH	                C2H6O	    Tar	        ethanol
 C5H8O4	                C5H8O4	    Tar	        xylofuranose
-C6H10O5	                C6H10O5	    Tar	        levoglucosan
+LVG                     C6H10O5	    Tar	        levoglucosan
+C6H10O5	                C6H10O5	    Tar	        sugars similar to levoglucosan
 C6H5OCH3	            C7H8O	    Tar	        anisole
 C6H5OH	                C6H6O	    Tar	        phenol
 C6H6O3	                C6H6O3	    Tar	        5-(hydroxymethyl)-furfural
@@ -49,6 +50,7 @@ U2ME12	                C13H22O2	Tar	        linalyl propionate
 VANILLIN	            C8H8O3	    Tar	        vanillin
 CHAR	                C	        Char	    Char
 CHARO	                CO	        Char	    Oxygenated char
+G{LVG}/LVGS	            C6H10O5     Metaplast	Release volatiles at higher temperatures
 G{COH2}/COH2S	        CH2O	    Metaplast	Release volatiles at higher temperatures
 G{CO2}/CO2S	            CO2	        Metaplast	Release volatiles at higher temperatures
 G{CO}/COS	            CO	        Metaplast	Release volatiles at higher temperatures

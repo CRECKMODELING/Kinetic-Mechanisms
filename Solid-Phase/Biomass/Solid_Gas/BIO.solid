@@ -1,26 +1,26 @@
-
 MATERIAL BIOMASS
 
 SOLID
-CELL    GMSW    XYHW    XYGR    LIGC        LIGH    LIGO    
+CELL    GMSW    XYHW    XYGR    LIGC    LIGH    LIGO    
 TGL     TANN    MOIST   ASH
-CELLA   HCE1    HCE2    LIGCC   LIGOH       LIG     ITANN
-CHAR    COH2S   CO2S    COS     CH3OHS      CH4S    C2H4S
-C6H5OHS CH2OS   H2S     C2H6S   COSTIFFS    CHARO
-END                                                                                     
+CELLA   HCE1    HCE2    LIGCC   LIGOH   LIG     ITANN
+CHAR    COH2S   CO2S    COS     CH3OHS  CH4S    C2H4S
+C6H5OHS CH2OS   H2S     C2H6S	LVGS	CHARO   COSTIFFS 
+  
+END
 
-REACTIONS
-CELL=>CELLA                                                                                                                                                                              1.500E+14  0.000  47000.0
-CELLA=>0.40CH2OHCHO+0.03CHOCHO+0.17CH3CHO+0.25C6H6O3+0.35C2H5CHO+0.20CH3OH+.15CH2O+0.49CO+0.05COS+.43CO2+.13H2+.93H2O+0.05CH2OS+.02HOCHO+0.05CH2OHCH2CHO+.05CH4+.1H2S+.66CHAR            2.500E+06  0.000  19100.0
-CELLA=>C6H10O5                                                                                                                                                                           3.300E+00  1.000  10000.0
-CELL=>4.45H2O+5.45CHAR+0.12COH2S+0.18CH2OS+0.25COS+0.125H2S+0.125H2                                                                                                                      5.000E+07  0.000  31000.0
+REACTIONS    
+CELL=>CELLA                                                                                                                                                                              7.000E+13  0.000  45000.0
+CELLA=>0.3251CH2OHCHO+0.02CHOCHO+0.0431CH3CHO+0.08C6H6O3+0.14CH3OH+0.2637CH2O+0.08CO+0.06COS+0.29CO2+0.0025H2+1.8547H2O+0.05CH2OS+0.02HOCHO+0.026CH2OHCH2CHO+0.03CH4+0.024H2S+1.1CHAR+0.1323CH3COCH3+0.287FURFURAL+0.2FURAN            1.500E+06  0.000  20000.0
+CELLA=>0.6LVG+0.2LVGS+0.2C6H10O5                                                                                                                                                         5.000E+04  0.000  14500.0
+CELL=>4.45H2O+5.45CHAR+0.12COH2S+0.18CH2OS+0.25COS+0.125H2S+0.125H2                                                                                                                      8.000E+07  0.000  31000.0
 
 GMSW=>0.70HCE1+0.30HCE2                                                                                                                                                                  1.000E+10  0.000  31000.0                                                                 
-XYHW=>0.35HCE1+0.65HCE2                                                                                                                                                                  1.250E+11  0.000  31400.0
+XYHW=>0.35HCE1+0.65HCE2                                                                                                                                                                  1.250E+11  0.000  31400.0 
 XYGR=>0.12HCE1+0.88HCE2                                                                                                                                                                  1.250E+11  0.000  30000.0
-HCE1=>.25C5H8O4+.25C6H10O5+.16FURFURAL+.13C6H6O3+0.09CO2+0.1CH4+.54H2O+0.06CH2OHCH2CHO+.1CHOCHO+0.02H2+0.1CHAR                                                                           1.600E+01  1.000  12900.0
+HCE1=>.25C5H8O4+.25C6H10O5+.16FURFURAL+.13C6H6O3+0.09CO2+0.1CH4+.54H2O+0.06CH2OHCH2CHO+.1CHOCHO+0.02H2+0.1CHAR                                                                           1.600E+01  1.000  12900.0 
 HCE1=>0.4H2O+.39CO2+0.05HOCHO+.49CO+.01COS+.51CO2S+.05H2S+.4CH2O+.43CH2OS+0.3CH4+0.325CH4S+0.1C2H4+.075C2H4S+.975CHAR+0.37COH2S+0.1H2+0.2C2H6S                                           3.000E-03  1.000   3600.0
-HCE2=>.3CO+.5125CO2+.1895CH4+.5505H2+.056H2O+.049C2H5OH+.035CH2OHCHO+.105CH3CO2H+.0175HOCHO+.145FURFURAL+.05CH4S+.105CH3OHS+.1C2H4S+.45CO2S+.18CH2OS+.7125CHAR+.21H2S+.78COH2S+0.2C2H6S  7.000E+09  0.000  30500.0
+HCE2=>0CO+0.2898CO2+0CH4+0H2+0.1665H2O+.0661C2H5OH+.0423CH2OHCHO+.315CH3CO2H+.0178HOCHO+.145FURFURAL+.1362CH4S+.2312CH3OHS+.0158C2H4S+.45CO2S+.2337CH2OS+0.7662CHAR+.1H2S+0.7792COH2S+0.2445C2H6S  7.000E+09  0.000  30500.0 
 
 LIGH=>LIGOH+0.5C2H5CHO+0.4C2H4+0.2CH2OHCHO+.1CO+.1C2H6                                                                                                                                   6.700E+12  0.000  37500.0
 LIGO=>LIGOH+CO2                                                                                                                                                                          3.300E+08  0.000  25500.0
@@ -29,7 +29,7 @@ LIGCC=>0.25VANILLIN+.15CRESOL+0.15C6H5OCH3+0.35CH2OHCHO+0.7H2O+0.45CH4+0.3C2H4+0
 LIGOH=>.9LIG+H2O+.1CH4+0.6CH3OH+0.3CH3OHS+0.05CO2+0.65CO+.6COS+0.05HOCHO+0.45CH2OS+0.40COH2S+0.25CH4S+0.1C2H4S+0.15C2H6S+4.25CHAR+.025C24H28O4+.1C2H3CHO                                 1.500E+08  0.000  32000.0
 LIG=>VANILLIN+0.1C6H5OCH3+0.5C2H4+0.6CO+0.3CH3CHO+0.1CHAR                                                                                                                                4.000E+00  1.000  12000.0
 LIG=>0.6H2O+0.3CO+0.1CO2+.2CH4+.4CH2O+0.2COS+.4CH4S+0.5C2H4S+.4CH3OHS+1.25CH2OS+0.65COH2S+6.1CHAR+0.1H2S                                                                                 8.300E-02  1.000   8000.0
-LIG=>.6H2O+2.6CO+0.6CH4+.4CH2O+0.75C2H4+.4CH3OH+4.5CHAR+0.5C2H6                                                                                                                          1.500E+09  0.000  31500.0      !1.000E+07  0.000  24300.0
+LIG=>.6H2O+2.6CO+0.6CH4+.4CH2O+0.75C2H4+.4CH3OH+4.5CHAR+0.5C2H6                                                                                                                          1.500E+09  0.000  31500.0   
 
 TGL=>C2H3CHO+2.5MLINO+0.5U2ME12                                                                                                                                                          7.000E+12  0.000  45700.0
 TANN=>.85C6H5OH+.15C6H5OHS+COS+H2O+ITANN                                                                                                                                                 2.000E+01  0.000  10000.0
@@ -44,11 +44,23 @@ CH4S=>CH4                                                                       
 C2H4S=>C2H4                                                                                                                                                                              1.000E+11  0.000  54000.0
 C6H5OHS=>C6H5OH                                                                                                                                                                          1.500E+12  0.000  55000.0
 COH2S=>0.2CHAR+0.2H2O+0.4CO+0.8H2+0.4COSTIFFS                                                                                                                                            1.000E+09  0.000  59000.0
-COSTIFFS=> 0.8CO+0.2CHARO                                                                                                                                                                1.800E+08  0.000  65000.0
+COSTIFFS=>0.8CO+0.2CHARO                                                                                                                                                                 1.800E+08  0.000  65000.0
 H2S=>H2                                                                                                                                                                                  1.800E+08  0.000  70000.0
+LVGS=>LVG                                                                                                                                                                        	     9.500E-02  1.000  10000.0
+DUPLICATE
+LVGS=>LVG                                                                                                                                                                        	     6.000E+11  0.000  45000.0
+DUPLICATE
 MOIST=>H2O                                                                                                                                                                               1.000E+00  1.000   8000.0
+
+!CHAR CONVERSION!
+CHAR + O2 => CO2                                                                                                                                                                         2.860E+10  0.000  26250.0
+CHAR + 0.5 O2 => CO                                                                                                                                                                      1.280E+11  0.000  31223.0  
+FORD / O2 0.78 /   
+
+CHAR + CO2 => 2 CO                                                                                                                                                                       2.000E+13  0.000  60000.0
+COH2S + CO2 =>CHAR + CO2 + H2O                                                                                                                                                           4.000E+12  0.000  53000.0
+
+COH2S + O2 => CO2 + H2O                                                                                                                                                                  2.860E+10  0.000  25250.0
+CH2OS + O2 => CO2 + H2O                                                                                                                                                                  2.860E+10  0.000  25250.0
+CH4S  + O2 => CHAR + 2 H2O                                                                                                                                                               2.860E+10  0.000  25250.0
 END
-
-
-
-
