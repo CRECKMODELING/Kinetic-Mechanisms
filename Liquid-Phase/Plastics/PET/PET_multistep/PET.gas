@@ -1,0 +1,21 @@
+ELEMENTS
+C H O N HE
+END
+SPECIES
+
+N2	HE
+
+!Polymer species (fake)
+ P-PET-P     
+
+!unreactive LMW
+ CO          CO2         H2          C6H6        BA          
+ CH3CHO      VB          MVT         DIMER       EGDB
+ 
+!char species    (fake)    
+ G-H2        G-COs       CHARO       CHAR        
+
+END
+
+REACTIONS
+END

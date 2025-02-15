@@ -41,7 +41,7 @@ The kinetic mechanism are organized according to the reactive-phase:
         <li> <ins>Polyethylene Low-Density </ins> (LDPE): &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_multistep/"> multi-step </a> </li>
         <li> <ins>Polypropylene </ins> (PP): &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_multistep/"> multi-step </a> </li>
         <li> <ins>Polystyrene </ins> (PS): &nbsp; <a href="Liquid-Phase/Plastics/PS/PS_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PS/PS_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PS/PS_multistep/"> multi-step </a> </li>
-        <li> <ins>Poly(ethylene terephthalate) </ins> (PET): &nbsp; <a href="Liquid-Phase/Plastics/PET"> semi-detailed </a>  </li>
+        <li> <ins>Poly(ethylene terephthalate) </ins> (PET): &nbsp; <a href="Liquid-Phase/Plastics/PET/PET_semidetailed"> semi-detailed </a>  &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PET/PET_multistep/"> multi-step </a> </li>
         <li> <ins>Poly(vinyl chloride) </ins> (PVC): &nbsp; <a href="Liquid-Phase/Plastics/PVC"> semi-detailed </a>  </li>
     </ul>
     </details>    
