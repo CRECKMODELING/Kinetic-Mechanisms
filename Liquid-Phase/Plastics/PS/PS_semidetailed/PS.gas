@@ -13,7 +13,7 @@ N2	HE
  P-C16H14_A  
 
 !unreactive LMW
- C8H10       C8H8               C6H4        
+ C6H5C2H5    C6H5C2H3           LC6H4       
 
 !stable RLMW
  C16H18          C24H26         
@@ -31,7 +31,7 @@ N2	HE
 
 !DELUMPED species
  C7H8        C9H10       C15H16      C15H15_T    C9H12       
- C6H6        C2H4        C3H6        C4H8        
+ C6H6        C2H4        C3H6        C4H8-1      
 
 END
 
