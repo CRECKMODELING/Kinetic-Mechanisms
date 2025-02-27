@@ -11,7 +11,7 @@ END
 
 REACTIONS    
 CELL=>CELLA                                                                                                                                                                              7.000E+13  0.000  45000.0
-CELLA=>0.3251CH2OHCHO+0.02CHOCHO+0.0431CH3CHO+0.08C6H6O3+0.14CH3OH+0.2637CH2O+0.08CO+0.06COS+0.29CO2+0.0025H2+1.8547H2O+0.05CH2OS+0.02HOCHO+0.026CH2OHCH2CHO+0.03CH4+0.024H2S+1.1CHAR+0.1323CH3COCH3+0.287FURFURAL+0.2FURAN            1.500E+06  0.000  20000.0
+CELLA=>0.3251CH2OHCHO+0.02CHOCHO+0.0431CH3CHO+0.08C6H6O3+0.14CH3OH+0.2637CH2O+0.08CO+0.06COS+0.29CO2+0.0023H2+1.8547H2O+0.05CH2OS+0.02HOCHO+0.026CH2OHCH2CHO+0.03CH4+0.024H2S+1.1CHAR+0.1323CH3COCH3+0.287FURFURAL+0.2FURAN            1.500E+06  0.000  20000.0
 CELLA=>0.6LVG+0.2LVGS+0.2C6H10O5                                                                                                                                                         5.000E+04  0.000  14500.0
 CELL=>4.45H2O+5.45CHAR+0.12COH2S+0.18CH2OS+0.25COS+0.125H2S+0.125H2                                                                                                                      8.000E+07  0.000  31000.0
 
@@ -20,7 +20,7 @@ XYHW=>0.35HCE1+0.65HCE2                                                         
 XYGR=>0.12HCE1+0.88HCE2                                                                                                                                                                  1.250E+11  0.000  30000.0
 HCE1=>.25C5H8O4+.25C6H10O5+.16FURFURAL+.13C6H6O3+0.09CO2+0.1CH4+.54H2O+0.06CH2OHCH2CHO+.1CHOCHO+0.02H2+0.1CHAR                                                                           1.600E+01  1.000  12900.0 
 HCE1=>0.4H2O+.39CO2+0.05HOCHO+.49CO+.01COS+.51CO2S+.05H2S+.4CH2O+.43CH2OS+0.3CH4+0.325CH4S+0.1C2H4+.075C2H4S+.975CHAR+0.37COH2S+0.1H2+0.2C2H6S                                           3.000E-03  1.000   3600.0
-HCE2=>0CO+0.2898CO2+0CH4+0H2+0.1665H2O+.0661C2H5OH+.0423CH2OHCHO+.315CH3CO2H+.0178HOCHO+.145FURFURAL+.1362CH4S+.2312CH3OHS+.0158C2H4S+.45CO2S+.2337CH2OS+0.7662CHAR+.1H2S+0.7792COH2S+0.2445C2H6S  7.000E+09  0.000  30500.0 
+HCE2=>0.0035CO+0.2898CO2+0CH4+0H2+0.1665H2O+.0661C2H5OH+.0423CH2OHCHO+.315CH3CO2H+.0178HOCHO+.145FURFURAL+.1362CH4S+.2312CH3OHS+.0158C2H4S+.45CO2S+.2337CH2OS+0.7662CHAR+.1H2S+0.7792COH2S+0.2445C2H6S  7.000E+09  0.000  30500.0 
 
 LIGH=>LIGOH+0.5C2H5CHO+0.4C2H4+0.2CH2OHCHO+.1CO+.1C2H6                                                                                                                                   6.700E+12  0.000  37500.0
 LIGO=>LIGOH+CO2                                                                                                                                                                          3.300E+08  0.000  25500.0

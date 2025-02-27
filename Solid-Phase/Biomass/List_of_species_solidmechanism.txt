@@ -44,7 +44,7 @@ CHOCHO	                C2H2O2	    Tar	        glyoxal
 CRESOL	                C7H8O	    Tar	        cresol
 FURFURAL	            C5H4O2	    Tar	        furan-2-carboxaldehyde(furfural)
 H2O	                    H2O	        Tar	        water
-HCOOH	                CH2O2	    Tar	        formic acid
+HCOOH/HOCHO             CH2O2	    Tar	        formic acid
 MLINO	                C19H34O2	Tar	        methyl linoleate
 U2ME12	                C13H22O2	Tar	        linalyl propionate
 VANILLIN	            C8H8O3	    Tar	        vanillin
