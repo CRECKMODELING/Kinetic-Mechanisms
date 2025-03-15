@@ -1,0 +1,322 @@
+! 
+!
+! A. Stagni, S. Arunthanayothin, L. Pratali Maffei,
+! O. Herbinet, F. Battin-Leclerc, T. Faravelli
+! "An experimental, theoretical and kinetic-modeling study of hydrogen sulfide pyrolysis and oxidation"
+! Chemical Engineering Journal (submitted) (2022).
+!
+! Submitted to Chemical Engineering Journal (December 2021)
+!
+! Kinetic mechanism
+! 
+! CHEMKIN format
+!
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!\START_SPECIES_LIST 
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ELEMENTS
+C
+H
+N
+O     
+AR    
+HE
+END
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+SPECIES
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!\SPECIES_MODULE: \H2_O2 
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+AR         N2              HE            
+H2         H               O2            O           H2O
+OH         H2O2            HO2
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!\END_SPECIES_MODULE: \H2_O2 
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!
+!\SPECIES_MODULE: \SOx_H2O2
+!
+S              S2             SO             S2O
+SO2            SO3            SH             HS2            HOS
+HSO            HSO2           HSOO			 HOSO           HOSO2
+H2S			   H2S2           HSOH           H2SO           HOSHO
+!
+!\END_SPECIES_MODULE: \SOx_H2O2
+!
+!
+END
+!\END_SPECIES_LIST 
+!
+!
+!\START_KINETICS_INPUT 
+REACTIONS 
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!\KINETICS_MODULE: \H2_O2 
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+H2+M<=>H+H+M                                                 +4.5770000E+019 -1.4000000E+000 +1.0440000E+005   !\AUTHOR: AK !\REF: TSANG AND HAMPSON, J. PHYS. CHEM. REF. DATA, 15:1087 (1986) !\COMMENT: 
+ H2 / 2.500 / H2O / 12.000 / HE / 0.830 / !3RD BODY COLLIDER EFFICIENCIES
+H2+O<=>H+OH                                                  +5.0800000E+004 +2.6700000E+000 +6.2920000E+003   !\AUTHOR: AK !\REF:SUTHERLAND ET AL., 21ST SYMPOSIUM, P. 929 (1986) !\COMMENT:
+H2+OH<=>H+H2O                                                +4.3800000E+013 +0.0000000E+000 +6.9900000E+003   !\AUTHOR: AK !\REF:LAM ET AL. SUBMITTED IJCK !\COMMENT
+O+O+M<=>O2+M                                                 +6.1650000E+015 -5.0000000E-001 +0.0000000E+000   !\AUTHOR: AK !\REF: TSANG AND HAMPSON, J. PHYS. CHEM. REF. DATA, 15:1087 (1986) !\COMMENT: 
+ H2 / 2.500 / H2O / 12.000 / AR / 0.830 / HE / 0.830 / !3RD BODY COLLIDER EFFICIENCIES
+O2+H<=>O+OH                                                  +1.1400000E+014 +0.0000000E+000 +1.5286000E+004   !\AUTHOR: AK !\REF: HONG ET AL. PROC. OF THE COMB. INST. 33 (2011) 309ñ316 !\COMMENT: 2 PARAMETER FIT     ! ER_1706 +10%   (1.04 --> 1.14))
+H+OH+M<=>H2O+M                                               +3.5000000E+022 -2.0000000E+000 +0.0000000E+000   !\AUTHOR: AK !\REF: LI IJCK 36: 566ñ575, 2004 !\COMMENT:OPTIMISED TO FIT H2 AND CH4 FLAMES DATA 
+ H2 / 0.730 / H2O / 3.650 /  AR / 0.380 / !3RD BODY COLLIDER EFFICIENCIES
+O+H2O<=>OH+OH                                                +6.7000000E+007 +1.7040000E+000 +1.4986800E+004   !\AUTHOR: AK !\REF: SUTHERLAND ET AL., 23RD SYMPOSIUM, P. 51 (1990) !\COMMENT:
+O+H+M<=>OH+M                                                 +4.7140000E+018 -1.0000000E+000 +0.0000000E+000   !\AUTHOR: AK !\REF: TSANG AND HAMPSON, J. PHYS. CHEM. REF. DATA, 15:1087 (1986) !\COMMENT: 
+ H2 / 2.500 / H2O / 12.000 / AR / 0.750 / HE / 0.750 / !3RD BODY COLLIDER EFFICIENCIES
+H2O2(+M)<=>OH+OH(+M)                                         +2.0000000E+012 +9.0000000E-001 +4.8749000E+004   !\AUTHOR: AK !\REF: TROE, COMBUST. FLAME, 158:594-601 (2011)!\COMMENT: RATE CONSTANT IS FOR N2, !\COMMENT: EFFICIENCIS OF H2O FROM THE SAME REF,
+LOW /                                                        +2.4900000E+024 -2.3000000E+000 +4.8749000E+004 / !LOW-PRESSURE-LIMIT
+TROE /                                       +4.3000000E-001 +1.0000000E-030 +1.0000000E+030 / !TROE PARAMETERS
+ H2O / 7.650 / N2 / 1.500 / O2 / 1.200 / HE / 0.650 / H2O2 / 7.700 / H2 / 3.700 / !3RD BODY COLLIDER EFFICIENCIES
+H2O2+H<=>H2O+OH                                              +2.4100000E+013 +0.0000000E+000 +3.9700000E+003   !\AUTHOR: AK !\REF:TSANG AND HAMPSON, J. PHYS. CHEM. REF. DATA, 15:1087 (1986) !\COMMENT:
+H2O2+H<=>H2+HO2                                              +2.1500000E+010 +1.0000000E+000 +6.0000000E+003   !\AUTHOR: AK !\REF: ELLINGSON J. PHYS. CHEM. (2007) 111, (51), 13554-13566 !\COMMENT:
+H2O2+O<=>OH+HO2                                              +9.5500000E+006 +2.0000000E+000 +3.9700000E+003   !\AUTHOR: AK !\REF:TSANG AND HAMPSON, J. PHYS. CHEM. REF. DATA, 15:1087 (1986) !\COMMENT:
+H2O2+OH<=>H2O+HO2                                            +1.7400000E+012 +0.0000000E+000 +3.1800000E+002   !\AUTHOR: AK !\REF: HONG ET AL. J. PHYS. CHEM. A 114 (2010) 5718-5727 !\COMMENT:
+DUP 
+H2O2+OH<=>H2O+HO2                                            +7.5900000E+013 +0.0000000E+000 +7.2690000E+003   !\AUTHOR: !\REF: !\COMMENT:
+DUP 
+HO2+H<=>OH+OH                                                +7.0790000E+013 +0.0000000E+000 +2.9500000E+002   !\AUTHOR: KPS !\REF: NOT A CLUE WHAT REFERENCE IS HERE AS MECHANISM IS A MESS !\COMMENT: WARNING
+HO2+H<=>H2+O2                                                +1.1402000E+010 +1.0827000E+000 +5.5378000E+002   !\AUTHOR: AK !\REF:MICHAEL SUTHERLAND 2000 !\COMMENT:
+HO2+O<=>OH+O2                                                +3.2500000E+013 +0.0000000E+000 +0.0000000E+000   !\AUTHOR: AK !\REF:BAULCH ET AL., J. PHYS. CHEM. REF DATA, 21:411 (1992)
+OH+HO2<=>H2O+O2                                              +7.0000000E+012 +0.0000000E+000 -1.0929600E+003   !\AUTHOR: ?? !\REF: hong pci 2013 1015C !\COMMENT: WARNING
+DUP 
+OH+HO2<=>H2O+O2                                              +4.5000000E+014 +0.0000000E+000 +1.0929600E+004   !\AUTHOR: !\REF: !\COMMENT:
+DUP 
+HO2+HO2<=>H2O2+O2                                            +1.0000000E+014 +0.0000000E+000 +1.1040883E+004   !\AUTHOR: AK !\REF: hong pci 2013, kapel 2002 !\COMMENT: WARNING
+DUP 
+HO2+HO2<=>H2O2+O2                                            +1.9000000E+011 +0.0000000E+000 -1.4089248E+003   !\AUTHOR: !\REF: !\COMMENT:
+DUP 
+H+O2(+M)<=>HO2(+M)                                           +4.6500000E+012 +4.4000000E-001 +0.0000000E+000   !\AUTHOR: AK !\REF:FERNANDES PCCP 2008 !COMMENT: Efficiencis of AR and HE derived from seperated reactions,
+LOW /                                                        +1.7370000E+019 -1.2300000E+000 +0.0000000E+000 / !LOW-PRESSURE-LIMIT
+TROE /                                       +6.7000000E-001 +1.0000000E-030 +1.0000000E+030 +1.0000000E+030 / !TROE PARAMETERS
+ H2 / 1.300 / HE / 0.640 / H2O / 10.000 / AR / 0.500 / !3RD BODY COLLIDER EFFICIENCIES
+O+OH+M=HO2+M                             					 +1.0000000E+016 +0.0000000E+000 +0.0000000E+000    !\AUTHOR: ?? !\REF: ?? !COMMENT: From POLIMI 1700
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!\END_KINETICS_MODULE: \H2_O2 
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!
+!\KINETICS_MODULE: \SOx_H2O2
+!    
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \SOx 
+!----------------------------------------------------------------------------------------------------------------------------------  
+SO3+H=SO2+OH						.8400E+10   1.220   3320.0 !\AUTHOR: AS !\REF: Hindiyarti, L. et al. J. Phys. Chem. A 111 3984 - 3991 (2007) !\COMMENT: 							
+SO3+O=SO2+O2						.2800E+05   2.570  29300.0 !\AUTHOR: AS !\REF: Hindiyarti, L. et al. J. Phys. Chem. A 111 3984 - 3991 (2007) !\COMMENT:
+SO3+OH=SO2+HO2						.4800E+05   2.460  27270.0 !\AUTHOR: AS !\REF: Hindiyarti, L. et al. J. Phys. Chem. A 111 3984 - 3991 (2007) !\COMMENT: 							 							
+SO2+O(+M)=SO3(+M)					.3670E+12    .000   1689.0 !\AUTHOR: AS !\REF: Naidoo, J. et al. Proc. Combust. Inst. 30 1219 - 1225 (2005) !\COMMENT: Ar as bath gas - 3rd body eff. from Glarborg (1996)
+ LOW/  .3450E+26  -3.000   4768.8/ 
+TROE/     .442        .316E+03    .7442E+04            / 
+ N2 / 1.3 / H2O / 10. /
+SO2+OH=HOSO2						.1990E+22  -3.660   995.5 !\AUTHOR: AS !\REF: Somnitz, H. Phys. Chem. Chem. Phys. 6 3844 - 3851 (2004) !\COMMENT: 					
+PLOG /  .3						.3990E+22  -3.920   880.4  /
+PLOG /  1.						.1990E+22  -3.660   995.5  /
+PLOG /  10.						.2820E+07   1.840 -1283.6  /
+SO2+H(+M)=HSO2(+M)                       		.4060E+12    .620   3616.3 !\AUTHOR: AS !\REF: Goumri, A. et al. J. Phys. Chem. A 103 11328 - 11335 (1999) !\COMMENT:
+ LOW/  							.2810E+27  -3.690   4788.7/
+SO2+H(+M)=HOSO(+M)					.2320E+11   0.960   8583.9 !\AUTHOR: AS !\REF: Goumri, A. et al. J. Phys. Chem. A 103 11328 - 11335 (1999) !\COMMENT: 
+LOW / 							.2100E+32  -4.360  10809.3 /
+SO2+H(+M)=SO+OH(+M)   					.6690E+33   2.770  20845.6 !\AUTHOR: AS !\REF: Blitz, M.A. et al. J. Phys. Chem. A 110 2996 - 3009 (2006) !\COMMENT:
+LOW / 							.2720E+17  -2.300  30961.4 /
+TROE / 1.00	272		27617	/
+SO+M=S+O+M						.3980E+15    .000  107000.0 !\AUTHOR: AS !\REF: Plach, H.J. & Troe, J. Int. J. Chem. Kinet. 16 (1984) !\COMMENT: 
+SO+O(+M)=SO2(+M)					.3200E+14    .000	     .0 !\AUTHOR: AS !\REF: Plach,  H.  J.  and  Troe,  J.,Int.  J.  Chem.  Kinet.16:1531(1984) !\COMMENT: 
+ LOW / 							.1200E+22  -1.540        .0 /
+ N2 / 1.5 / H2O / 10. / SO2 / 10. /
+S+O2=SO+O						.5430E+06	 2.100  -1450.7 !\AUTHOR: AS !\REF: Lu, C.W. et al. J. Phys. Chem. A 107 11020 - 11029 (2003) !\COMMENT:
+SO+H+M=HSO+M						.4930E+30   -5.300   1815.2 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. Proc Combust Inst 31 257–265 (2007) !\COMMENT:
+ N2 / 8.0 /
+SO+H+M=HOS+M						.3620E+21   -1.9     -28.7 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. Proc Combust Inst 31 257–265 (2007) !\COMMENT:
+N2 / 1.3 /
+SO+OH(+M)=HOSO(+M)					.1560E+13    .500   -400.0 !\AUTHOR: AS !\REF: Goumri, A. et al. J. Phys. Chem. A 103 11328 - 11335 (1999) !\COMMENT: 
+LOW / 							.9540E+28  -3.480    970.0 /
+SO+O2=SO2+O						.8910E+07   1.400   3712.0 !\AUTHOR: AS !\REF: Garland, N.L. Chem. Phys. Lett. 290 385 - 390 (1998) !\COMMENT: 
+SO+HO2=SO2+OH						.1000E+13    .000       .0 !\AUTHOR: AS !\REF: Song, Y. et al. Int. J. Chem. Kinet. 49 37-52 (2017) !\COMMENT:
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \SOx 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \HSO_HOS 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+HOS+M=HSO+M						.5770E+12    .000  32721.9 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. Proc Combust Inst 31 257–265 (2007) !\COMMENT:
+ N2 / 10. /
+HSO+H=HSOH                               		.2500E+21  -3.140    920.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+H=SH+OH                              		.4900E+20  -1.860   1560.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published 
+HSO+H=S+H2O                              		.1600E+10   1.370   -340.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+H=H2SO                               		.1800E+18  -2.470     50.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+H=SO+H2                              		.1000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+HSO+O=SO2+H                              		.4500E+15   -.400       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+O=SO+OH                              		.1400E+14    .150    300.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+O+M=HOSO+M                           		.6900E+20  -1.610   1590.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+O+M=HSO2+M                           		.1100E+20  -1.730    -50.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+OH=HOSHO                             		.5200E+29  -5.440   3170.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+OH=HOSO+H                            		.5300E+08   1.570   3750.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+OH=SO+H2O                            		.1700E+10   1.030    470.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSO+O2=SO2+OH                            		.3700E+02   2.764   6575.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+HSO+O2=SO+HO2                            		.6400E+06   2.627  19013.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+ DUPLICATE
+HSO+O2=SO+HO2                            		.2900E+02   3.200  14529.0 !\AUTHOR: AS !\REF: Song, Y. et al. Int. J. Chem. Kinet. 49 37-52 (2017) !\COMMENT:
+ DUPLICATE
+HOS+O2=HO2+SO						.6440E+06   2.600  19013.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+HOS+O2=SO2+OH                            		.3700E+02   2.764   6575.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \HSO_HOS
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \HxSOy 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+HSOH=SH+OH                            			.2800E+40  -8.750  75200.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSOH=S+H2O                            			.5800E+30  -5.600  54500.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HSOH=H2S+O                            			.9800E+17  -3.400  86500.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+H2SO=H2S+O                            			.4900E+29  -6.660  71700.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HOSO(+M)=HSO2(+M)					.1030E+10   1.030  49980.0 !\AUTHOR: AS !\REF: Goumri, A. et al. J. Phys. Chem. A 103 11328 - 11335 (1999) !\COMMENT: 
+ LOW / 							.1720E+36  -5.640  55420.0 /
+HOSO+M=HOS+O+M 			                        .2500E+31  -4.800 119000.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HOSO+H=SO+H2O 			                        .6300E-09   6.290  -1900.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HOSO+OH=SO2+H2O                            		.1000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+HOSO+O2=SO2+HO2 			                .3010E+15    .000   1820.0 !\AUTHOR: AS !\REF: Wang, B.S. & Hou, H. Chem. Phys. Lett. 410 235 - 241 (2005) !\COMMENT: A was 6.020E+14, but exceeds collision limits
+HOSO2=HOSO+O 			                        .5400E+19  -2.340 106300.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HOSO2=SO3+H 			                        .1400E+19  -2.910  54900.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HOSO2+H=SO2+H2O 			                .1000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+HOSO2+O=SO3+OH	 			                .5000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+HOSO2+OH=SO3+H2O 			                .1000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+HOSO2+O2=SO3+HO2                         		.7830E+12    .000    656.0 !\AUTHOR: AS !\REF: Atkinson, R. et al. Atmos. Chem. Phys. 4 1461 - 1738 (2004) !\COMMENT: T = 290-420 K
+HOSHO=HOSO+H 			                        .6400E+31  -5.890  73800.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HOSHO=SO+H2O 			                        .1200E+25  -3.590  59500.0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Main ref. not published
+HOSHO+H=HOSO+H2 			                .1000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+HOSHO+O=HOSO+OH 			                .5000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+HOSHO+OH=HOSO+H2O 			                .1000E+13    .000       .0 !\AUTHOR: AS !\REF: Glarborg et al. Int. J. Chem. Kinet.  28(10), 773-790 (1996) !\COMMENT: Estimation
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \HxSOy 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \H2S 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+H2S+M=H2+S+M                             		.5100E+14    .000  56140.0 !\AUTHOR: AS !\REF: Karan, K. et al. AIChE journal, 45(2), 383-389. (1999) !\COMMENT: 
+H2S+M=SH+H+M                             		.2000E+15    .000  74120.0 !\AUTHOR: AS !\REF: Bowman, C.T.; Dodge, L.G. Symp. Int. Combust. Proc. 16 (1977) !\COMMENT: 
+H2S+H=SH+H2						.8870E+09   1.517   2050.5 !\AUTHOR: AS !\REF: Stagni et al. Chem Eng J (submitted) 2021 !\COMMENT:  T = 300 - 2000 K
+H2S+O=SH+OH						.1858E+06   2.644   2031.9 !\AUTHOR: AS !\REF: Wang, C.Y. et al. J. Mol. Struct. (Theochem) 731, 187 - 192 (2005) !\COMMENT: ICVT/SCT, T = 205 - 2000 K - Eact was 2531.9
+H2S+O=HSO+H                          			.1360E+10   1.100   5099.0 !\AUTHOR: AS !\REF: Goumri, A. et al. J Chem Phys 102 161-169 1995  !\COMMENT: 
+H2S+OH=SH+H2O                             		.1630E+08   1.851  -491.0 !\AUTHOR: AS !\REF: Stagni et al. Chem Eng J (submitted) 2021 !\COMMENT: T = 300 - 2500 K
+H2S+SO=SH+HSO						.5380e+04   3.200  26824.0 !\AUTHOR: AS !\REF: Zhou, C. R. et al. Proc Combust Inst 34 625-632 (2013) !\COMMENT: 
+H2S+SO=SH+HOS						.1000E+14    .000  36500.0 !\AUTHOR: AS !\REF: Zhou, C. R. et al. Proc Combust Inst 34 625-632 (2013) !\COMMENT:  Estimated
+H2S+SO2=S2O+H2O						.1670E+07   1.857  37740.0 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. J. Phys. Chem. A 109 8180–8186 (2005) !\COMMENT:  
+H2S+HO2=HSO+H2O                      			.1030E+01   3.288   6224.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:  
+H2S+HSO=SH+HSOH						.1000E+14    .000  17300.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+H2S+HOS=SH+HSOH						.1000E+14    .000  12500.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+H2S+S(+M)=H2S2(+M)					.6380E+08   1.300   -478.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+ LOW / 							.2400E+22  -1.612   1673.0 /
+ TROE / 0.5 726. 726. /
+ N2 / 1.3 /
+H2S+S=SH+SH                             		.7489E+14   .000   7390.0 !\AUTHOR: AS !\REF: Shiina, H. et al. J. Phys. Chem. 100 2136-2140 (1996) !\COMMENT: B.R. = 90% T = 1050 - 1540 K
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \H2S 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \S 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+S+H2=SH+H 			                      	.1350E+15    .000  19300.0 !\AUTHOR: AS !\REF: Shiina, H. et al.  J. Phys. Chem. A 102 3556 - 3559 (1998) !\COMMENT:
+S+H+M=SH+M 			                      	.6200E+17  -0.600       .0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K Estimation
+S+HS2=S2+SH 			                      	.4170E+07   2.200   -600.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+S+OH=SO+H   			                      	.1463E+14    .200  -1361.4 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. Proc Combust Inst 31 257–265 (2007) !\COMMENT:
+S+HO2=SO+OH						.5660E+14    .000       .0 !\AUTHOR: AS !\REF: Ballester, M. Y. & Varandas, A. J. C. Int J Chem Kinet 40 533–540 (2008) !\COMMENT: 
+S+HO2=HOS+O						.1000E+14    .000       .0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+S+H2O2=SH+HO2						.4140E+07   2.200  12619.0 !\AUTHOR: AS !\REF: Zhou, C. R. et al. Proc Combust Inst 34 625-632 (2013) !\COMMENT:  Indicated as private comm. in Zhou 2013
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \S 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \SH
+!---------------------------------------------------------------------------------------------------------------------------------- 
+SH+S=S2+H 			                      	.3310E+13    .500    -29.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+SH+O=SO+H 			                      	.3610E+12    .700  -1027.0 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. Proc Combust Inst 31 257–265 (2007) !\COMMENT: A was .425e12
+SH+O=OH+S						.1800E+13    .000       .0 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. Proc Combust Inst 31 257–265 (2007) !\COMMENT:
+ DUPLICATE
+SH+O=OH+S						.4320E+07   2.100   3582.7 !\AUTHOR: AS !\REF: Sendt, K. & Haynes, B. S. Proc Combust Inst 31 257–265 (2007) !\COMMENT:
+ DUPLICATE
+SH+OH=S+H2O						.1670E+06   2.500  -1637.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: 
+SH+OH=HOS+H						.1000E+14    .000   7400.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+SH+HO2=H2S+O2                        			.4620E+07   1.921  -1499.7 !\AUTHOR: AS !\REF: Stagni et al. Chem Eng J (submitted) 2021 !\COMMENT:  T = 300 - 2500 K
+SH+HO2=HSO+OH						.5170E+13   0.134   -807.1 !\AUTHOR: AS !\REF: Stagni et al. Chem Eng J (submitted) 2021 !\COMMENT:  T = 300 - 2500 K
+SH+HO2=SO+H2O						.3200E+03   2.579  -2071.0 !\AUTHOR: AS !\REF: Zhou, C. R. et al. Proc Combust Inst 34 625-632 (2013) !\COMMENT:   Indicated as private comm. in Zhou 2013
+SH+H2O2=H2S+HO2						.5570E+05   2.823   8668.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+SH+H2O2=HSOH+OH						.9490E+04   2.800   9829.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+SH+HSO=S+HSOH						.1000E+12    .000  11000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+SH+HSO=S2O+H2						.1000E+15    .000  14250.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+SH+SO=HSO+S						.1000E+14    .000  25000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+SH+SO=HOS+S						.1000E+14    .000  30000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+SH+SO=S2O+H						.1000E+13    .000   5000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+SH+O2=HSO+O				                .2300E+07   1.816  20008.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+SH+O2=S+HO2				                .4700E+07   2.017  36913.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+SH+O2=SO+OH				                .7500E+05   2.100  16384.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+SH+O2=SO2+H				                .1500E+06   2.123  11020.0 !\AUTHOR: AS !\REF: Song, Y. et al. Int. J. Chem. Kinet. 49 37-52 (2017) !\COMMENT:
+SH+O2(+M)=HSOO(+M)                   			.8700E+15  -0.260    298.1 !\AUTHOR: AS !\REF: Goumri, A. et al. J. Phys. Chem. A 103 11328 - 11335 (1999) !\COMMENT: 
+ LOW / 							.3100E+20  -2.010     20.0 /
+HSOO(+M)=HSO+O(+M)                              	.2000E+20  -1.070  28374.0 !\AUTHOR: AS !\REF: Goumri, A. et al. J. Phys. Chem. A 103 11328 - 11335 (1999) !\COMMENT: 
+ LOW / 							.9300E+35  -5.870  30957.0 /
+SH+SH(+M)=H2S2(+M)					.3460E+13    .200  -1432.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+ LOW / 							.2329E+32  -4.943   1998.0 /
+ TROE / 1. 254 2373. /
+SH+SO=S2+OH						.1000E+13    .000   4320.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \SH 
+!----------------------------------------------------------------------------------------------------------------------------------
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \S2 
+!----------------------------------------------------------------------------------------------------------------------------------  
+S2+M=S+S+M                               		.4790E+14    .000  76900.0 !\AUTHOR: AS !\REF: Higashihara, T. et al. Bull. Chem. Soc. Jpn. 53 (1980) !\COMMENT: T = 298 K
+S2+H+M=HS2+M                             		.1150E+26  -2.840   1665.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+ H2S / 1.1 / AR / 0.88 / HE / 1.39 /
+S2+O=SO+S                                		.1430E+12    .700   -231.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+S2+O2=S2O+O						.1710E+05   2.500  34376.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+S2+O2=SO+SO						.2300E+04   2.500  30440.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT:
+S2+O+M=S2O+M						.1880E+22  -2.800       .0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+O=SO+SO						.9270E+12    .000       .0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+S=SO+S2						.1000E+14    .000       .0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+SH=HSO+S2						.1000E+13    .000   5000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+SH=HS2+SO						.1000E+14    .000   8000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+OH=HO2+S2						.1000E+14    .000  40000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+H=OH+S2						.1000E+14    .000       .0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+SO2=S2+SO3						.1000E+14    .000  20000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimated
+S2O+H2=SH+HOS						.1000E+14    .000  46000.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: Estimation
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \S2 
+!----------------------------------------------------------------------------------------------------------------------------------  
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\SUBMECH: \H2S2_HS2 
+!----------------------------------------------------------------------------------------------------------------------------------  
+HS2+H=SH+SH						.9720E+08   1.620  -1030.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+ DUPLICATE
+HS2+H=SH+SH						.3000E+15    .000       .0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: Increased by Sendt by a factor 3
+ DUPLICATE
+HS2+H=S2+H2                              		.1050E+09   1.800   -877.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: 
+ DUPLICATE
+HS2+H=S2+H2                              		.2910E+17  -0.900    -56.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: 
+ DUPLICATE
+HS2+H=H2S+S						.1500E+09   1.600   2259.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: 
+ DUPLICATE
+HS2+H=H2S+S						.4190E+19  -1.600    472.0 !\AUTHOR: AS !\REF: Zhou, C. PhD Thesis, University of Sidney (2009) !\COMMENT: 
+ DUPLICATE
+HS2+HS2=H2S2+S2						.9560E+01   3.370  -1672.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+HS2+O=S2+OH 			                        .7500E+08   1.750   2900.0 !\AUTHOR: AS !\REF: Alzueta M.U. et al. Combust Flame 127 2234-2251 (2001) !\COMMENT: Estimated as H2S reaction
+HS2+O2=S2+HO2						.8400E+02   2.950   7071.0 !\AUTHOR: AS !\REF: Song, Y. et al. Int. J. Chem. Kinet. 49 37-52 (2017) !\COMMENT:
+HS2+O2=HSO+SO						.6600E+04   1.900   7071.0 !\AUTHOR: AS !\REF: Song, Y. et al. Int. J. Chem. Kinet. 49 37-52 (2017) !\COMMENT:
+HS2+SH=H2S+S2						.6270E+04   3.050  -1105.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+H2S2+H=HS2+H2 			                        .4990E+08   1.933  -1408.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+H2S2+H=H2S+SH						.3660E+09   1.724    467.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+H2S2+SH=H2S+HS2						.6400E+04   2.980  -1480.0 !\AUTHOR: AS !\REF: Sendt, K. et al. Proc. Combust. Inst. 29  2439 - 2446 (2002) !\COMMENT: T = 873 - 1423 K
+H2S2+O=HS2+OH 			                        .7500E+08   1.750   2900.0 !\AUTHOR: AS !\REF: Alzueta M.U. et al. Combust Flame 127 2234-2251 (2001) !\COMMENT: Estimated as H2S reaction
+H2S2+OH=HS2+H2O 			                .2700E+13    .000       .0 !\AUTHOR: AS !\REF: Alzueta M.U. et al. Combust Flame 127 2234-2251 (2001) !\COMMENT: Estimated as H2S reaction
+H2S2+S=HS2+SH                            		.2850E+07   2.310   1204.0 !\AUTHOR: AS !\REF: Alzueta M.U. et al. Combust Flame 127 2234-2251 (2001) !\COMMENT: Estimated as H2S reaction
+HSO2+H=SO2+H2                            		.3010E+13    .000       .0 !\AUTHOR: AS !\REF: Halstead, C.J. & Jenkins, D.R. Trans. Faraday Soc. 65 (1969)!\COMMENT: T = 1940 - 1990 K
+HSO2+OH=SO2+H2O                            		.4820E+13    .000       .0 !\AUTHOR: AS !\REF: Halstead, C.J. & Jenkins, D.R. Trans. Faraday Soc. 65 (1969)!\COMMENT: T = 1940 - 1990 K
+HSO2+O2=HO2+SO2                            		.1000E+14    .000       .0 !\AUTHOR: AS !\REF: Alzueta M.U. et al. Combust Flame 127 2234-2251 (2001) !\COMMENT: Estimation
+!---------------------------------------------------------------------------------------------------------------------------------- 
+!\ENDSUBMECH: \H2S2_HS2 
+!----------------------------------------------------------------------------------------------------------------------------------  
+!
+!\END_KINETICS_MODULE: \SOx_H2O2
+!
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+END              
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
