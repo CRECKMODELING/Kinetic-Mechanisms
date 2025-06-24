@@ -1,20 +1,38 @@
+!#############################################################################!
+! Liquid-phase multi-step Mechanism for PET pyrolysis
+! version 24-06-2025
+!
+! for additional informations or citing the mechanism refer to:
+! Andrea Locaspi and Tiziano Faravelli, 
+! A multi-step condensed-phase kinetic model for poly(ethylene terephthalate) 
+! thermal degradation, Proc. Comb. Inst., 2026
+! Available also online at https://github.com/CRECKMODELING/Kinetic-Mechanisms
+!#############################################################################!
+
 MATERIAL LIQUIDMIX
 LIQUID
 
-!Polymer species
+! Polymer species
  P-PET-P(L)     
 
-!unreactive LMW
-                                                                            
-                               MVT(L)         DIMER(L)       EGDB(L)
-                               
-!char species                                       
- G-H2(L)        G-COs(L)       CHARO(L)       CHAR(L)        
+! Low Molecular Weight species                                                                           
+ MVT(L)         DIMER(L)       EGDB(L)
+
+! Char species
+ G-H2(L)        G-COs(L)       CHARO(L)       CHAR(L)      
+ 
 
 END
 
 REACTIONS
 
+!****************************************!
+!	Evaporation kinetics
+!****************************************!
+
+MVT(L)=>MVT                                                                                                                                           3.73e+05 0.00 17600
+DIMER(L)=>DIMER                                                                                                                                       1.47e+07 0.00 27900
+EGDB(L)=>EGDB                                                                                                                                         3.36e+05 0.00 20300
 
 
 !***************************************************************************************************************************************************************************************************!
@@ -35,10 +53,10 @@ REACTIONS
   P-PET-P(L)=>0.333333333333333MVT(L)+0.333333333333333DIMER(L)                                                                                       2.00e+12 0.00 48000
   
 ! Beta-scission LT
-  P-PET-P(L)=>0.666666666666667CO2+0.111111111111111C6H6+0.166666666666667BA+0.166666666666667VB+0.166666666666667DIMER(L)+0.166666666666667EGDB(L)   1.40e+15 0.00 58000
+  P-PET-P(L)=>0.666666666666667CO2+0.111111111111111C6H6+0.166666666666667BA+0.166666666666667VB+0.166666666666667DIMER(L)+0.166666666666667EGDB(L)                            1.40e+15 0.00 58000
 
 ! Beta-scission HT
-  P-PET-P(L)=>1.33333333333333CO+0.0555555555555556C6H6+0.333333333333333BA+0.333333333333333H2+0.166666666666667DIMER(L)+0.166666666666667EGDB(L)    6.00e+15 0.00 62000
+  P-PET-P(L)=>1.33333333333333CO+0.0555555555555556C6H6+0.333333333333333BA+0.333333333333333H2+0.166666666666667DIMER(L)+0.166666666666667EGDB(L)                             6.00e+15 0.00 62000
   
 ! Glycol Isomerisation + Ph carbonyl addition 
   P-PET-P(L)=>CH3CHO+CO2+6CHAR(L)+G-H2(L)+0.6CO+0.4G-COs(L)+H2                                                                                        5.00e+12 0.00 50000
@@ -48,7 +66,7 @@ REACTIONS
 
 ! Aromatic additions
   P-PET-P(L)=>2CO2+6CHAR(L)+3G-H2(L)+0H2+0.333333333333333C6H6                                                                                        6.00e+07 1.00 45000
-
+  
 
 !***************************************************************************************************************************************************************************************************!
 !	                                                                              LMW DEGRADATION MECHANISM
@@ -76,4 +94,9 @@ REACTIONS
   DIMER(L)=>0.5P-PET-P(L)+0.333333333333333C6H6+2CO2+0.5VB+0.5BA+3CHAR(L)+1.5G-H2(L)                                                                  3.60e+08 1.00 45000
   EGDB(L)=>0.5P-PET-P(L)+C6H6+CO2+4CHAR(L)+2G-H2(L)                                                                                                   3.60e+08 1.00 45000
    
+
+  
+    
+    
+
 END

@@ -1,3 +1,16 @@
+!#############################################################################!
+! Transport file for PET condensed-phase pyrolysis
+! DO NOT USE FOR PET TRANSPORT CALCULATIONS
+!  
+! version 24-06-2025
+!
+! for additional informations or citing the mechanism refer to:
+! A. Locaspi, O. Akin, D. Withoeck, M. Havaei, A. Frassoldati, L. Pratali Maffei,
+! M. Pelucchi, M. Mehl, R.J. Varghese, K.M. Van Geem, T. Faravelli, 
+! A lumped kinetic model and experimental investigation of Poly(Ethylene 
+! Terephthalate) condensed-phase pyrolysis, Chemical Engineering Journal, 2024
+!#############################################################################!
+
 !VERSION:  15_50_1112
 !AUTHORS:  C3
 !NOTE:     SPECIES RE-ARRANGED AS THE SAME ORDER IN MECH, ANALOGIES HAVE BEEN INDICATED BY CORRESPONDING SPECIES NAME IN COMMENTS. DATA MOSTLY FROM ARAMCO MECH 1.3

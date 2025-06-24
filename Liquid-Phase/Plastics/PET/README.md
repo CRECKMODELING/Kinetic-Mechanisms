@@ -5,16 +5,16 @@ The mechanism is labelled polymer_Nspecies_Nreactions. For instance PET_85_700
 is the mechanism with 85 species and 700 reactions.
 The mechanism proposed for PET are:
 - [PET_85_700](PET_semidetailed) the published semi-detailed mechanism 
-- [PET_18_19](PET_multistep) a "global" model with significantly lower computational cost.
+- [PET_18_22](PET_multistep) a "global" model with significantly lower computational cost.
 
-The **thermodynamic properties have not been investigated due to lack of data** and
+The **thermodynamic properties have not been investigated** due to lack of data and
 theoretical approaches for aromatic esters.
 
 To cite the semi-detailed mechanism refer to the following publication:
 - **Locaspi, Andrea et al.** "A lumped kinetic model and experimental investigation of Poly(Ethylene Terephthalate) condensed-phase pyrolysis", Chemical Engineering Journal 500 (2024): 156955. [DOI](https://doi.org/10.1016/j.cej.2024.156955)
 
 To cite the multistep mechanism refer to: 
-- **Locaspi, Andrea et al.** "A multi-step condensed-phase kinetic model for poly(ethylene terephthalate) thermal degradation", Proceedings of the Combustion institute, accepted
+- **Locaspi, Andrea et al.** "A multi-step condensed-phase kinetic model for poly(ethylene terephthalate) thermal degradation", Proceedings of the Combustion institute, under review
   
 ## Mechanism description
 

@@ -1,19 +1,15 @@
-!VERSION:  17_03
-!AUTHORS:  C1-C3   Burcat   
-!NOTE:     SPECIES RE-ARRANGED AS THE SAME ORDER IN MECH
+!#############################################################################!
+! Liquid-phase multi-step Mechanism for PET pyrolysis
+! version 24-06-2025
+! Complementary file to define elemental compositions 
+! DO NOT USE TO COMPUTE PET THERMOCHEMISTRY
 !
-!VERSION:  17_05
-!Following species are updated from Burcat's Database:Kik
-! C6H5CHCH3	FLUORENE	C5H6	INDENYL	C14H19	C12H7	C12H9        
-! C6H5CH2C6H5	C10H7	CH3C6H4	C6H5C2H	C6H5O	C6H5C2H3	C10H7CH3
-! C10H7CHO	RXYLENE	C10H7CH2	XYLENE	C6H2	Toluene	C6H5OH
-! C14H10	C6H5C2H4C6H5	C4H2	C16H10	C5H5CH3	C7H7	BENZYNE
-! C6H5C2H2	C12H8	C6H5C2H5	C10H7O	BENZENE	C4H4	INDENE
-! C5H5	C10H6CH3	C6H5 	C10H8	FULVENE	BIPHENYL	C6H4C2H
-!Following species are updated from ATcT's Database:Ghobad
-! H	H2	O	O2	HE
-! OH	H2O	N2	HO2	HCO
-! H2O2	AR	CO	CO2
+! for additional informations or citing the mechanism refer to:
+! Andrea Locaspi and Tiziano Faravelli, 
+! A multi-step condensed-phase kinetic model for poly(ethylene terephthalate) 
+! thermal degradation, Proc. Comb. Inst., 2026
+! Available also online at https://github.com/CRECKMODELING/Kinetic-Mechanisms
+!#############################################################################!
 
 THERMO
 300.   1000.   4000.
@@ -8274,6 +8270,14 @@ CHAR(L)                 C   1               G    300.00   5000.00 1000.00      1
 -.835033800E+03-.135511000E+01 .329812400E+01 .824944120E-03-.814301470E-06    3
 -.947543430E-10 .413487200E-12-.101252100E+04-.329409400E+01                   4
 CHAR                    C   1               G    300.00   5000.00 1000.00      1
+ .299142300E+01 .700064410E-03-.563382800E-07-.923157820E-11 .158275200E-14    2
+-.835033800E+03-.135511000E+01 .329812400E+01 .824944120E-03-.814301470E-06    3
+-.947543430E-10 .413487200E-12-.101252100E+04-.329409400E+01                   4
+G-COH2(L)               C   1H   2O   1     G    300.00   5000.00 1000.00      1
+ .299142300E+01 .700064410E-03-.563382800E-07-.923157820E-11 .158275200E-14    2
+-.835033800E+03-.135511000E+01 .329812400E+01 .824944120E-03-.814301470E-06    3
+-.947543430E-10 .413487200E-12-.101252100E+04-.329409400E+01                   4
+G-COH2                  C   1H   2O   1     G    300.00   5000.00 1000.00      1
  .299142300E+01 .700064410E-03-.563382800E-07-.923157820E-11 .158275200E-14    2
 -.835033800E+03-.135511000E+01 .329812400E+01 .824944120E-03-.814301470E-06    3
 -.947543430E-10 .413487200E-12-.101252100E+04-.329409400E+01                   4

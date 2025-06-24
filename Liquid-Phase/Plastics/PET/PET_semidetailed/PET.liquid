@@ -1,3 +1,15 @@
+!#############################################################################!
+! Liquid-phase Mechanism for PET pyrolysis
+!  
+! version 24-06-2025
+!
+! for additional informations or citing the mechanism refer to:
+! A. Locaspi, O. Akin, D. Withoeck, M. Havaei, A. Frassoldati, L. Pratali Maffei,
+! M. Pelucchi, M. Mehl, R.J. Varghese, K.M. Van Geem, T. Faravelli, 
+! A lumped kinetic model and experimental investigation of Poly(Ethylene 
+! Terephthalate) condensed-phase pyrolysis, Chemical Engineering Journal, 2024
+!#############################################################################!
+
 MATERIAL LIQUIDMIX
 LIQUID
 
@@ -22,26 +34,41 @@ LIQUID
 
 !radicals RLMW
  C2H3(L)        C6H5(L)        BAr(L)         rBA(L)         CH2CHO(L)      
- VBr(L)         MVTr(L)        TAr(L)         CH3(L)         H(L)           
- rEGDB(L)       rEGDA(L)       rEGDV(L)       EGDBr(L)       EGDAr(L)       
- CYEGDEr(L)     
+ VBr(L)         MVTr(L)        TAr(L)         CH3(L)         rEGDB(L)       
+ rEGDA(L)       rEGDV(L)       EGDBr(L)       EGDAr(L)       CYEGDEr(L)     
+ 
 
 END
 
 REACTIONS
 
 !***************************************************************************************************************************************************************************************************!
+!	                                                                              Evaporation kinetics
+!***************************************************************************************************************************************************************************************************!
+
+BA(L)=>BA                                                                                                                                             2.72e+03 0.00 8470
+VB(L)=>VB                                                                                                                                             4.30e+05 0.00 16300
+MVT(L)=>MVT                                                                                                                                           9.23e+08 0.00 29600
+TA(L)=>TA                                                                                                                                             9.19e+06 0.00 23000
+DVT(L)=>DVT                                                                                                                                           4.95e+04 0.00 14100
+EGDB(L)=>EGDB                                                                                                                                         3.98e+04 0.00 17000
+EGDA(L)=>EGDA                                                                                                                                         8.03e+09 0.00 37300
+EGDV(L)=>EGDV                                                                                                                                         2.51e+08 0.00 30500
+CYEGDE(L)=>CYEGDE                                                                                                                                     1.42e+14 0.00 46400
+
+
+
+!***************************************************************************************************************************************************************************************************!
 !	                                                                              Char decomposition (from biomass)
 !***************************************************************************************************************************************************************************************************!
 
 ! remove these reactions to couple the present mechanism with the biomass one
-    G-CO(L)=>CO                                                                                    5.000E+12  0.000  52500.0
-    G-H2(L)=>H2                                                                                    1.800E+08  0.000  70000.0
-    G-C2H4(L)=>C2H4                                                                                1.000E+11  0.000  54000.0
-    G-CH2O(L)=>0.8CHAR(L)+0.8H2O+.2CO+.2H2                                                         6.000E+10  0.000  50000.0
-    G-COH2(L)=>0.2CHAR(L)+0.2H2O+0.4CO+0.8H2+0.4G-COs(L)                                           1.000E+09  0.000  59000.0
-    G-COs(L)=>0.8CO+0.2CHARO(L)                                                                    1.800E+08  0.000  65000.0
-
+    G-CO(L)=>CO                                                                                                                                       5.000E+12  0.000  52500.0
+    G-H2(L)=>H2                                                                                                                                       1.800E+08  0.000  70000.0
+    G-C2H4(L)=>C2H4                                                                                                                                   1.000E+11  0.000  54000.0
+    G-CH2O(L)=>0.8CHAR(L)+0.8H2O+.2CO+.2H2                                                                                                            6.000E+10  0.000  50000.0
+    G-COH2(L)=>0.2CHAR(L)+0.2H2O+0.4CO+0.8H2+0.4G-COs(L)                                                                                              1.000E+09  0.000  59000.0
+    G-COs(L)=>0.8CO+0.2CHARO(L)                                                                                                                       1.800E+08  0.000  65000.0
 
 !***************************************************************************************************************************************************************************************************!
 !	                                                                              MOLECULAR DEGRADATION MECHANISM
@@ -68,28 +95,33 @@ REACTIONS
   FORD/P-COPhCO-P(L) 1/
   FORD/P-OCCO-P(L) 1/
   
-  4P-COPhCOOH(L)+2P-OCCO-P(L)=>EGDA(L)+TA(L)+MVT(L)                                                                                                   6.80e+16 0.00 48000
+  4P-COPhCOOH(L)+2P-OCCO-P(L)=>EGDA(L)+TA(L)+MVT(L)                                                                                                   2.72e+17 0.00 48000
   FORD/P-COPhCOOH(L) 2/
   FORD/P-OCCO-P(L) 1/
-  4P-COPhCOOD(L)+2P-OCCO-P(L)=>EGDV(L)+DVT(L)+MVT(L)                                                                                                  9.38e+16 0.00 48000
+  4P-COPhCOOD(L)+2P-OCCO-P(L)=>EGDV(L)+DVT(L)+MVT(L)                                                                                                  3.75e+17 0.00 48000
   FORD/P-COPhCOOD(L) 2/
   FORD/P-OCCO-P(L) 1/
-  4P-COPhH(L)+2P-OCCO-P(L)=>EGDB(L)+BA(L)+VB(L)                                                                                                       3.38e+16 0.00 48000
+  4P-COPhH(L)+2P-OCCO-P(L)=>EGDB(L)+BA(L)+VB(L)                                                                                                       1.35e+17 0.00 48000
   FORD/P-COPhH(L) 2/
   FORD/P-OCCO-P(L) 1/
   
-  2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OCCO-P(L)=>0.5EGDA(L)+0.5EGDV(L)+0.5TA(L)+MVT(L)+0.5DVT(L)                                                         7.98e+16 0.00 48000
+  2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OCCO-P(L)=>0.5EGDA(L)+0.5EGDV(L)+0.5TA(L)+MVT(L)+0.5DVT(L)                                                         3.19e+17 0.00 48000
   FORD/P-COPhCOOH(L) 1/
   FORD/P-COPhCOOD(L) 1/
   FORD/P-OCCO-P(L) 1/
-  2P-COPhCOOH(L)+2P-COPhH(L)+2P-OCCO-P(L)=>0.5EGDA(L)+0.5EGDB(L)+0.5TA(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                 4.79e+16 0.00 48000
+  2P-COPhCOOH(L)+2P-COPhH(L)+2P-OCCO-P(L)=>0.5EGDA(L)+0.5EGDB(L)+0.5TA(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                 1.92e+17 0.00 48000
   FORD/P-COPhCOOH(L) 1/
   FORD/P-COPhH(L) 1/
   FORD/P-OCCO-P(L) 1/
-  2P-COPhCOOD(L)+2P-COPhH(L)+2P-OCCO-P(L)=>0.5EGDV(L)+0.5EGDB(L)+0.5DVT(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                5.62e+16 0.00 48000
+  2P-COPhCOOD(L)+2P-COPhH(L)+2P-OCCO-P(L)=>0.5EGDV(L)+0.5EGDB(L)+0.5DVT(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                2.25e+17 0.00 48000
   FORD/P-COPhCOOD(L) 1/
   FORD/P-COPhH(L) 1/
   FORD/P-OCCO-P(L) 1/
+  
+  
+  
+  
+  
   
   ! Ethylidene functionalities
   2P-COPhCO-P(L)+P-OTMO-P(L)=>P-COPhCOOH(L)+P-COPhCOOD(L)                                                                                             1.60e+17 0.00 50000
@@ -108,66 +140,66 @@ REACTIONS
   FORD/P-COPhCO-P(L) 1/
   FORD/P-OTMO-P(L) 1/
   
-  4P-COPhCOOH(L)+2P-OTMO-P(L)=>EGDA(L)+TA(L)+MVT(L)                                                                                                   2.04e+17 0.00 50000
+  4P-COPhCOOH(L)+2P-OTMO-P(L)=>EGDA(L)+TA(L)+MVT(L)                                                                                                   8.16e+17 0.00 50000
   FORD/P-COPhCOOH(L) 2/
   FORD/P-OTMO-P(L) 1/
-  4P-COPhCOOD(L)+2P-OTMO-P(L)=>EGDV(L)+DVT(L)+MVT(L)                                                                                                  2.81e+17 0.00 50000
+  4P-COPhCOOD(L)+2P-OTMO-P(L)=>EGDV(L)+DVT(L)+MVT(L)                                                                                                  1.12e+18 0.00 50000
   FORD/P-COPhCOOD(L) 2/
   FORD/P-OTMO-P(L) 1/
-  4P-COPhH(L)+2P-OTMO-P(L)=>EGDB(L)+BA(L)+VB(L)                                                                                                       1.01e+17 0.00 50000
+  4P-COPhH(L)+2P-OTMO-P(L)=>EGDB(L)+BA(L)+VB(L)                                                                                                       4.05e+17 0.00 50000
   FORD/P-COPhH(L) 2/
   FORD/P-OTMO-P(L) 1/
   
-  2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OTMO-P(L)=>0.5EGDA(L)+0.5EGDV(L)+0.5TA(L)+MVT(L)+0.5DVT(L)                                                         2.39e+17 0.00 50000
+  2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OTMO-P(L)=>0.5EGDA(L)+0.5EGDV(L)+0.5TA(L)+MVT(L)+0.5DVT(L)                                                         4.79e+17 0.00 50000
   FORD/P-COPhCOOH(L) 1/
   FORD/P-COPhCOOD(L) 1/
   FORD/P-OTMO-P(L) 1/
-  2P-COPhCOOH(L)+2P-COPhH(L)+2P-OTMO-P(L)=>0.5EGDA(L)+0.5EGDB(L)+0.5TA(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                 1.44e+17 0.00 50000
+  2P-COPhCOOH(L)+2P-COPhH(L)+2P-OTMO-P(L)=>0.5EGDA(L)+0.5EGDB(L)+0.5TA(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                 2.87e+17 0.00 50000
   FORD/P-COPhCOOH(L) 1/
   FORD/P-COPhH(L) 1/
   FORD/P-OTMO-P(L) 1/
-  2P-COPhCOOD(L)+2P-COPhH(L)+2P-OTMO-P(L)=>0.5EGDV(L)+0.5EGDB(L)+0.5DVT(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                1.69e+17 0.00 50000
+  2P-COPhCOOD(L)+2P-COPhH(L)+2P-OTMO-P(L)=>0.5EGDV(L)+0.5EGDB(L)+0.5DVT(L)+0.5VB(L)+0.5BA(L)+0.5MVT(L)                                                3.38e+17 0.00 50000
   FORD/P-COPhCOOD(L) 1/
   FORD/P-COPhH(L) 1/
   FORD/P-OTMO-P(L) 1/
   
   ! Ethylidene anhydride formation  
-  P-COPhCO-P(L)+P-OTMO-P(L)=>CH3CHO+CO2+6CHAR(L)+0.5G-CO(L)+0.5G-COH2(L)+1.5G-H2(L)                                                                   1.89e+13 0.00 42000
+  P-COPhCO-P(L)+P-OTMO-P(L)=>CH3CHO+CO2+6CHAR(L)+0.5G-CO(L)+0.5G-COH2(L)+1.5G-H2(L)                                                                   1.62e+13 0.00 42000
   FORD/P-COPhCO-P(L) 1/          
   
 
   ! Glycol end-chain 
-  P-COPhCO-P(L) +P-OCCOH(L)=>CH3CHO+P-COPhCOOH(L)                                                                                                     5.66e+14 0.00 46000
+  P-COPhCO-P(L) +P-OCCOH(L)=>CH3CHO+P-COPhCOOH(L)                                                                                                     4.04e+14 0.00 45000
   FORD/P-COPhCO-P(L) 1/
-  P-COPhH(L)+P-OCCOH(L)=>CH3CHO+BA(L)                                                                                                                 4.50e+14 0.00 46000
+  P-COPhH(L)+P-OCCOH(L)=>CH3CHO+BA(L)                                                                                                                 3.21e+14 0.00 45000
   FORD/P-COPhH(L) 1/
   DUPLICATE                             
-  P-COPhCOOD(L)+P-OCCOH(L)=>CH3CHO+MVT(L)                                                                                                             7.50e+14 0.00 46000
+  P-COPhCOOD(L)+P-OCCOH(L)=>CH3CHO+MVT(L)                                                                                                             5.36e+14 0.00 45000
   FORD/P-COPhCOOD(L) 1/
   DUPLICATE
-  P-COPhCOOH(L)+P-OCCOH(L)=>CH3CHO+TA(L)                                                                                                              6.39e+14 0.00 46000
+  P-COPhCOOH(L)+P-OCCOH(L)=>CH3CHO+TA(L)                                                                                                              4.56e+14 0.00 45000
   FORD/P-COPhCOOH(L) 1/
   DUPLICATE
   
   ! Ethyl-Ester end-chains
-  P-COPhCO-P(L)+P-OCM(L)=>C2H4+P-COPhCOOH(L)                                                                                                          1.70e+15 0.00 48000
+  P-COPhCO-P(L)+P-OCM(L)=>C2H4+P-COPhCOOH(L)                                                                                                          1.22e+15 0.00 52000
   FORD/P-COPhCO-P(L) 1/
-  P-COPhH(L)+P-OCM(L)=>C2H4+BA(L)                                                                                                                     1.35e+15 0.00 48000
+  P-COPhH(L)+P-OCM(L)=>C2H4+BA(L)                                                                                                                     9.68e+14 0.00 50000
   FORD/P-COPhH(L) 1/
   DUPLICATE                             
-  P-COPhCOOD(L)+P-OCM(L)=>C2H4+MVT(L)                                                                                                                 2.25e+15 0.00 48000
+  P-COPhCOOD(L)+P-OCM(L)=>C2H4+MVT(L)                                                                                                                 1.61e+15 0.00 50000
   FORD/P-COPhCOOD(L) 1/
   DUPLICATE
-  P-COPhCOOH(L)+P-OCM(L)=>C2H4+TA(L)                                                                                                                  1.92e+15 0.00 48000
+  P-COPhCOOH(L)+P-OCM(L)=>C2H4+TA(L)                                                                                                                  1.37e+15 0.00 50000
   FORD/P-COPhCOOH(L) 1/
   DUPLICATE
     
         
           
   ! DIMERS DEGRADATIONS
-  EGDB(L)=>VB(L)+BA(L)                                                                                                                                6.00e+12 0.00 48000
-  EGDA(L)=>TA(L)+MVT(L)                                                                                                                               6.00e+12 0.00 48000
-  EGDV(L)=>DVT(L)+MVT(L)                                                                                                                              6.00e+12 0.00 48000
+  EGDB(L)=>VB(L)+BA(L)                                                                                                                                3.00e+12 0.00 48000
+  EGDA(L)=>TA(L)+MVT(L)                                                                                                                               3.00e+12 0.00 48000
+  EGDV(L)=>DVT(L)+MVT(L)                                                                                                                              3.00e+12 0.00 48000
   
   CYEGDE(L)=>0.5EGDA(L)+0.5EGDV(L)                                                                                                                    6.00e+12 0.00 48000
                         
@@ -178,10 +210,6 @@ REACTIONS
 !   Molecular Decarboxylation 
 !---------------------------------------!
           
-    P-COPhCOOH(L)=>P-COPhH(L)+CO2                                                                                                                     1.00e+13 0.00 57000
-    MVT(L)=>VB(L)+CO2                                                                                                                                 1.00e+13 0.00 57000
-    TA(L)=>BA(L)+CO2                                                                                                                                  1.00e+13 0.00 57000
-    EGDA(L)=>CO2+0.5EGDB(L)+0.5EGDA(L)                                                                                                                1.00e+13 0.00 57000
     
     ! Carboxylic acid assisted decarboxylation
     P-COPhCOOH(L)+P-COPhCOOH(L)=>P-COPhCOOH(L)+P-COPhH(L)+CO2                                                                                         8.00e+09 0.00 36000
@@ -201,6 +229,11 @@ REACTIONS
 !---------------------------------------!
 !   Carboxylic acid dimerization 
 !---------------------------------------!
+    P-COPhCOOH(L)+P-COPhCOOH(L)=>H2O+P-COPhCO-P(L)+CO2+CO+6CHAR(L)+H2+G-H2(L)                                                                         4.80e+10 0.00 35000
+    P-COPhCOOH(L)+TA(L)=>H2O+P-COPhCOOH(L)+CO2+CO+6CHAR(L)+H2+G-H2(L)                                                                                 9.60e+10 0.00 35000
+    P-COPhCOOH(L)+BA(L)=>H2O+P-COPhH(L)+CO2+CO+6CHAR(L)+H2+G-H2(L)                                                                                    4.80e+10 0.00 35000
+    P-COPhCOOH(L)+MVT(L)=>H2O+P-COPhCOOD(L)+CO2+CO+6CHAR(L)+H2+G-H2(L)                                                                                4.80e+10 0.00 35000
+    P-COPhCOOH(L)+EGDA(L)=>H2O+P-COPhCOOH(L)+P-COPhCO-P(L)+P-OCCO-P(L)+CO2+CO+6CHAR(L)+H2+G-H2(L)                                                     9.60e+10 0.00 35000
           
 !---------------------------------------!
 !   Vinyl Ester isomerization 
@@ -212,7 +245,7 @@ REACTIONS
     EGDV(L)=>0.5EGDV(L)+0.5EGDB(L)+CO+CH2CO                                                                                                           2.00e+13 0.00 50000
           
 !---------------------------------------!
-!   Diels-AlDEr charification 
+!   Diels-Alder charification 
 !---------------------------------------!
 
     P-COPhCOOD(L)+CHAR(L)=>P-COPhCOOH(L)+3CHAR(L)+H2                                                                                                  5.00e+07 0.00 35000
@@ -250,16 +283,16 @@ REACTIONS
 !   Ester-Interchange reactions 
 !---------------------------------------!
 
-    2P-COPhCO-P(L)+2P-OCCO-P(L)+P-OCCOH(L)=>P-OCCOH(L)+CYEGDE(L)                                                                                      4.04e+06 0.00 20000
+    2P-COPhCO-P(L)+2P-OCCO-P(L)+P-OCCOH(L)=>P-OCCOH(L)+CYEGDE(L)                                                                                      4.04e+07 0.00 20000
     FORD/P-COPhCO-P(L) 1/
     FORD/P-OCCO-P(L) 1/          
-    P-OCCOH(L)+P-COPhCOOD(L)=>P-COPhCO-P(L)+P-OCCO-P(L)+CH3CHO                                                                                        1.00e+05 0.00 20000
+    P-OCCOH(L)+P-COPhCOOD(L)=>P-COPhCO-P(L)+P-OCCO-P(L)+CH3CHO                                                                                        1.00e+06 0.00 20000
 
-    P-OCCOH(L)+CYEGDE(L)=>2P-COPhCO-P(L)+2P-OCCO-P(L)+P-OCCOH(L)                                                                                      1.00e+05 0.00 20000
-    P-OCCOH(L)+EGDV(L)=>CH3CHO+P-COPhCOOD(L)+P-COPhCO-P(L)+2P-OCCO-P(L)                                                                               1.00e+05 0.00 20000
-    P-OCCOH(L)+MVT(L)=>CH3CHO+P-COPhCOOH(L)+P-OCCO-P(L)                                                                                               1.00e+05 0.00 20000
-    P-OCCOH(L)+DVT(L)=>CH3CHO+P-COPhCOOD(L)+P-OCCO-P(L)                                                                                               1.00e+05 0.00 20000
-    P-OCCOH(L)+VB(L)=>CH3CHO+P-COPhH(L)+P-OCCO-P(L)                                                                                                   1.00e+05 0.00 20000
+    P-OCCOH(L)+CYEGDE(L)=>2P-COPhCO-P(L)+2P-OCCO-P(L)+P-OCCOH(L)                                                                                      1.00e+06 0.00 20000
+    P-OCCOH(L)+EGDV(L)=>CH3CHO+P-COPhCOOD(L)+P-COPhCO-P(L)+2P-OCCO-P(L)                                                                               1.00e+06 0.00 20000
+    P-OCCOH(L)+MVT(L)=>CH3CHO+P-COPhCOOH(L)+P-OCCO-P(L)                                                                                               1.00e+06 0.00 20000
+    P-OCCOH(L)+DVT(L)=>CH3CHO+P-COPhCOOD(L)+P-OCCO-P(L)                                                                                               1.00e+06 0.00 20000
+    P-OCCOH(L)+VB(L)=>CH3CHO+P-COPhH(L)+P-OCCO-P(L)                                                                                                   1.00e+06 0.00 20000
           
 
 !***************************************************************************************************************************************************************************************************!
@@ -270,31 +303,31 @@ REACTIONS
 !   Random Scission 
 !---------------------------------------!
               
-  2P-COPhCO-P(L)+P-OCCO-P(L)=>2P-COPhCOOMr(L)                                                                                                         7.54e+16 0.00 74000
+  2P-COPhCO-P(L)+P-OCCO-P(L)=>2P-COPhCOOMr(L)                                                                                                         1.08e+17 0.00 74000
   FORD/P-COPhCO-P(L) 1/
-  2P-COPhH(L)+P-OCCO-P(L)=>2BAr(L)+C2H4                                                                                                               6.00e+16 0.00 74000
+  2P-COPhH(L)+P-OCCO-P(L)=>2BAr(L)+C2H4                                                                                                               8.57e+16 0.00 74000
   FORD/P-COPhH(L) 1/
-  2P-COPhCOOD(L)+P-OCCO-P(L)=>2MVTr(L)+C2H4                                                                                                           1.00e+17 0.00 74000
+  2P-COPhCOOD(L)+P-OCCO-P(L)=>2MVTr(L)+C2H4                                                                                                           1.43e+17 0.00 74000
   FORD/P-COPhCOOD(L) 1/
-  2P-COPhCOOH(L)+P-OCCO-P(L)=>2TAr(L)+C2H4                                                                                                            8.51e+16 0.00 74000
+  2P-COPhCOOH(L)+P-OCCO-P(L)=>2TAr(L)+C2H4                                                                                                            1.22e+17 0.00 74000
   FORD/P-COPhCOOH(L) 1/
   
-  P-COPhCO-P(L)+P-OTMO-P(L)=>P-OCrM(L)+P-COPhCOOr(L)                                                                                                  7.54e+16 0.00 74000
+  P-COPhCO-P(L)+P-OTMO-P(L)=>P-OCrM(L)+P-COPhCOOr(L)                                                                                                  1.08e+17 0.00 74000
   FORD/P-COPhCO-P(L) 1/
-  2P-COPhH(L)+P-OTMO-P(L)=>BAr(L)+CO+CH3CHO+C6H5(L)                                                                                                   6.00e+16 0.00 74000
+  2P-COPhH(L)+P-OTMO-P(L)=>BAr(L)+CO+CH3CHO+C6H5(L)                                                                                                   8.57e+16 0.00 74000
   FORD/P-COPhH(L) 1/
-  2P-COPhCOOD(L)+P-OTMO-P(L)=>MVTr(L)+CO+CH3CHO+VBr(L)                                                                                                1.00e+17 0.00 74000
+  2P-COPhCOOD(L)+P-OTMO-P(L)=>MVTr(L)+CO+CH3CHO+VBr(L)                                                                                                1.43e+17 0.00 74000
   FORD/P-COPhCOOD(L) 1/
-  2P-COPhCOOH(L)+P-OTMO-P(L)=>TAr(L)+CO+CH3CHO+BAr(L)                                                                                                 8.51e+16 0.00 74000
+  2P-COPhCOOH(L)+P-OTMO-P(L)=>TAr(L)+CO+CH3CHO+BAr(L)                                                                                                 1.22e+17 0.00 74000
   FORD/P-COPhCOOH(L) 1/
   
-  P-COPhCO-P(L)+P-OCM(L)=>P-COPhCOOr(L)+C2H4+H(L)                                                                                                     7.54e+16 0.00 74000
+  P-COPhCO-P(L)+P-OCM(L)=>P-COPhCOOr(L)+C2H3(L)+H2                                                                                                    1.08e+17 0.00 74000
   FORD/P-COPhCO-P(L) 1/
-  P-COPhH(L)+P-OCM(L)=>BAr(L)+C2H4+H(L)                                                                                                               6.00e+16 0.00 74000
+  P-COPhH(L)+P-OCM(L)=>BAr(L)+C2H3(L)+H2                                                                                                              8.57e+16 0.00 74000
   FORD/P-COPhH(L) 1/
-  P-COPhCOOD(L)+P-OCM(L)=>MVTr(L)+C2H4+H(L)                                                                                                           1.00e+17 0.00 74000
+  P-COPhCOOD(L)+P-OCM(L)=>MVTr(L)+C2H3(L)+H2                                                                                                          1.43e+17 0.00 74000
   FORD/P-COPhCOOD(L) 1/
-  P-COPhCOOH(L)+P-OCM(L)=>TAr(L)+C2H4+H(L)                                                                                                            8.51e+16 0.00 74000
+  P-COPhCOOH(L)+P-OCM(L)=>TAr(L)+C2H3(L)+H2                                                                                                           1.22e+17 0.00 74000
   FORD/P-COPhCOOH(L) 1/
   P-COPhCOOM(L)=>P-COPhCOOr(L)+CH3(L)                                                                                                                 8.00e+14 0.00 74000
   P-COPhH(L)=>C6H5(L)+CO                                                                                                                              8.00e+14 0.00 74000
@@ -322,16 +355,16 @@ REACTIONS
     2P-COPhCO-P(L)+P-OCrCO-P(L)=>P-COPhCOOr(L)+P-COPhCOOD(L)                                                                                          8.89e+16 0.00 32000
     FORD/P-COPhCO-P(L) 2/
     
-    4P-COPhCOOH(L)+2P-OCrCO-P(L)=>EGDAr(L)+TAr(L)+MVT(L)                                                                                              1.13e+17 0.00 32000
+    4P-COPhCOOH(L)+2P-OCrCO-P(L)=>EGDAr(L)+TAr(L)+MVT(L)                                                                                              4.53e+17 0.00 32000
     FORD/P-COPhCOOH(L) 2/
     FORD/P-OCrCO-P(L) 1/
-    4P-COPhCOOD(L)+2P-OCrCO-P(L)=>rEGDV(L)+DVT(L)+MVTr(L)                                                                                             1.56e+17 0.00 32000
+    4P-COPhCOOD(L)+2P-OCrCO-P(L)=>rEGDV(L)+DVT(L)+MVTr(L)                                                                                             6.25e+17 0.00 32000
     FORD/P-COPhCOOD(L) 2/
     FORD/P-OCrCO-P(L) 1/
-    4P-COPhH(L)+2P-OCrCO-P(L)=>rEGDB(L)+BAr(L)+VB(L)                                                                                                  5.62e+16 0.00 32000
+    4P-COPhH(L)+2P-OCrCO-P(L)=>rEGDB(L)+BAr(L)+VB(L)                                                                                                  2.25e+17 0.00 32000
     FORD/P-COPhH(L) 2/
     FORD/P-OCrCO-P(L) 1/
-    2P-COPhCOOM(L)+P-OCrCO-P(L)=>TAr(L)+MVT(L)+C2H4                                                                                                   1.36e+17 0.00 32000
+    2P-COPhCOOM(L)+P-OCrCO-P(L)=>TAr(L)+MVT(L)+C2H4                                                                                                   5.42e+17 0.00 32000
     FORD/P-COPhCOOM(L) 2/
     
     3P-COPhCO-P(L)+2P-COPhCOOD(L)+1P-OCCO-P(L)+2P-OCrCO-P(L)=>P-COPhCOOr(L)+P-COPhCOOD(L)+0.5DVT(L)+0.5MVTr(L)+0.5EGDV(L)+0.25EGDAr(L)+0.25rEGDV(L)         2.36e+17 0.00 32000
@@ -350,56 +383,56 @@ REACTIONS
     FORD/P-COPhCO-P(L) 1/
     FORD/P-OCCO-P(L) 0/
     
-    2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDV(L)+0.5DVT(L)+0.5TAr(L)+0.5MVT(L)+0.5MVTr(L)                                     2.66e+17 0.00 32000
+    2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDV(L)+0.5DVT(L)+0.5TAr(L)+0.5MVT(L)+0.5MVTr(L)                                     5.32e+17 0.00 32000
     FORD/P-COPhCOOD(L) 1/
     FORD/P-COPhCOOH(L) 1/
     FORD/P-OCrCO-P(L) 1/
-    2P-COPhCOOH(L)+2P-COPhH(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDB(L)+0.5MVT(L)+0.5TAr(L)+0.5VB(L)+0.5BAr(L)                                          1.60e+17 0.00 32000
+    2P-COPhCOOH(L)+2P-COPhH(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDB(L)+0.5MVT(L)+0.5TAr(L)+0.5VB(L)+0.5BAr(L)                                          3.19e+17 0.00 32000
     FORD/P-COPhH(L) 1/
     FORD/P-COPhCOOH(L) 1/
     FORD/P-OCrCO-P(L) 1/          
-    2P-COPhH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDV(L)+0.5rEGDB(L)+0.5MVTr(L)+0.5DVT(L)+0.5VB(L)+0.5BAr(L)                                         1.88e+17 0.00 32000
+    2P-COPhH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDV(L)+0.5rEGDB(L)+0.5MVTr(L)+0.5DVT(L)+0.5VB(L)+0.5BAr(L)                                         3.75e+17 0.00 32000
     FORD/P-COPhCOOD(L) 1/
     FORD/P-COPhH(L) 1/
     FORD/P-OCrCO-P(L) 1/
     
     
     ! Glycol CO-OC scission to phCOr and CHOCH2OOCPh
-    2P-COPhCO-P(L)+P-OCrCO-P(L)=>P-COPhr(L)+2CO+P-COPhCOOM(L)                                                                                         4.44e+17 0.00 36000
+    2P-COPhCO-P(L)+P-OCrCO-P(L)=>P-COPhr(L)+2CO+P-COPhCOOM(L)                                                                                         3.56e+17 0.00 36000
     FORD/P-COPhCO-P(L) 2/
     
-    4P-COPhCOOH(L)+2P-OCrCO-P(L)=>rEGDA(L)+rBA(L)+2CO+0.5C2H4+TA(L)                                                                                   5.66e+17 0.00 36000
+    4P-COPhCOOH(L)+2P-OCrCO-P(L)=>rEGDA(L)+rBA(L)+2CO+0.5C2H4+TA(L)                                                                                   1.81e+18 0.00 36000
     FORD/P-COPhCOOH(L) 2/
     FORD/P-OCrCO-P(L) 1/
-    4P-COPhCOOD(L)+2P-OCrCO-P(L)=>rEGDV(L)+VBr(L)+2CO+0.5C2H4+MVT(L)                                                                                  7.81e+17 0.00 36000
+    4P-COPhCOOD(L)+2P-OCrCO-P(L)=>rEGDV(L)+VBr(L)+2CO+0.5C2H4+MVT(L)                                                                                  2.50e+18 0.00 36000
     FORD/P-COPhCOOD(L) 2/
     FORD/P-OCrCO-P(L) 1/
-    4P-COPhH(L)+2P-OCrCO-P(L)=>EGDBr(L)+C6H5(L)+2CO+0.5C2H4+BA(L)                                                                                     2.81e+17 0.00 36000
+    4P-COPhH(L)+2P-OCrCO-P(L)=>EGDBr(L)+C6H5(L)+2CO+0.5C2H4+BA(L)                                                                                     9.00e+17 0.00 36000
     FORD/P-COPhH(L) 2/
     FORD/P-OCrCO-P(L) 1/                    
     
-    3P-COPhCO-P(L)+2P-COPhCOOD(L)+1P-OCCO-P(L)+2P-OCrCO-P(L)=>P-COPhr(L)+P-COPhCOOM(L)+4CO+0.5C2H4+0.5VBr(L)+0.5MVT(L)+0.25EGDBr(L)+0.25rEGDV(L)+0.25EGDA(L)+0.25EGDV(L)         1.18e+18 0.00 36000
+    3P-COPhCO-P(L)+2P-COPhCOOD(L)+1P-OCCO-P(L)+2P-OCrCO-P(L)=>P-COPhr(L)+P-COPhCOOM(L)+4CO+0.5C2H4+0.5VBr(L)+0.5MVT(L)+0.25EGDBr(L)+0.25rEGDV(L)+0.25EGDA(L)+0.25EGDV(L)         9.43e+17 0.00 36000
     FORD/P-COPhCOOD(L) 1/
     FORD/P-COPhCO-P(L) 1/
     FORD/P-OCrCO-P(L) 1/
-    3P-COPhCO-P(L)+2P-COPhCOOH(L)+1P-OCCO-P(L)+2P-OCrCO-P(L)=>P-COPhr(L)+P-COPhCOOM(L)+4CO+0.5C2H4+0.5rBA(L)+0.5TA(L)+0.25EGDBr(L)+0.25rEGDA(L)+0.5EGDA(L)          1.00e+18 0.00 36000
+    3P-COPhCO-P(L)+2P-COPhCOOH(L)+1P-OCCO-P(L)+2P-OCrCO-P(L)=>P-COPhr(L)+P-COPhCOOM(L)+4CO+0.5C2H4+0.5rBA(L)+0.5TA(L)+0.25EGDBr(L)+0.25rEGDA(L)+0.5EGDA(L)          8.03e+17 0.00 36000
     FORD/P-COPhCOOH(L) 1/
     FORD/P-COPhCO-P(L) 1/
     FORD/P-OCrCO-P(L) 1/
-    3P-COPhCO-P(L)+2P-COPhH(L)+1P-OCCO-P(L)+2P-OCrCO-P(L)=>P-COPhr(L)+P-COPhCOOM(L)+4CO+0.5C2H4+0.5C6H5(L)+0.5BA(L)+0.5EGDBr(L)+0.25EGDA(L)+0.25EGDB(L)              7.07e+17 0.00 36000
+    3P-COPhCO-P(L)+2P-COPhH(L)+1P-OCCO-P(L)+2P-OCrCO-P(L)=>P-COPhr(L)+P-COPhCOOM(L)+4CO+0.5C2H4+0.5C6H5(L)+0.5BA(L)+0.5EGDBr(L)+0.25EGDA(L)+0.25EGDB(L)              5.66e+17 0.00 36000
     FORD/P-COPhH(L) 1/
     FORD/P-COPhCO-P(L) 1/
     FORD/P-OCrCO-P(L) 1/
     
-    2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDV(L)+0.5MVT(L)+0.5BAr(L)+2CO+0.5C2H4+0.5VBr(L)+0.5TA(L)                           1.33e+18 0.00 36000
+    2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDV(L)+0.5MVT(L)+0.5BAr(L)+2CO+0.5C2H4+0.5VBr(L)+0.5TA(L)                           2.13e+18 0.00 36000
     FORD/P-COPhCOOD(L) 1/
     FORD/P-COPhCOOH(L) 1/
     FORD/P-OCrCO-P(L) 1/
-    2P-COPhCOOH(L)+2P-COPhH(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDB(L)+0.5BA(L)+0.5rBA(L)+2CO+0.5C2H4+0.5TA(L)+0.5C6H5(L)                              7.98e+17 0.00 36000
+    2P-COPhCOOH(L)+2P-COPhH(L)+2P-OCrCO-P(L)=>0.5rEGDA(L)+0.5rEGDB(L)+0.5BA(L)+0.5rBA(L)+2CO+0.5C2H4+0.5TA(L)+0.5C6H5(L)                              1.28e+18 0.00 36000
     FORD/P-COPhH(L) 1/
     FORD/P-COPhCOOH(L) 1/
     FORD/P-OCrCO-P(L) 1/
-    2P-COPhH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDV(L)+0.5rEGDB(L)+0.5VBr(L)+0.5BA(L)+2CO+0.5C2H4+0.5MVT(L)+0.5C6H5(L)                             9.38e+17 0.00 36000
+    2P-COPhH(L)+2P-COPhCOOD(L)+2P-OCrCO-P(L)=>0.5rEGDV(L)+0.5rEGDB(L)+0.5VBr(L)+0.5BA(L)+2CO+0.5C2H4+0.5MVT(L)+0.5C6H5(L)                             1.50e+18 0.00 36000
     FORD/P-COPhCOOD(L) 1/
     FORD/P-COPhH(L) 1/
     FORD/P-OCrCO-P(L) 1/
@@ -408,16 +441,16 @@ REACTIONS
     2P-COPhCO-P(L)+P-OTMrO-P(L)=>P-COPhCOOr(L)+P-COPhCOOD(L)                                                                                          8.89e+16 0.00 31000
     FORD/P-COPhCO-P(L) 2/
     
-    4P-COPhCOOH(L)+2P-OTMrO-P(L)=>rEGDA(L)+TAr(L)+MVT(L)                                                                                              1.13e+17 0.00 31000
+    4P-COPhCOOH(L)+2P-OTMrO-P(L)=>rEGDA(L)+TAr(L)+MVT(L)                                                                                              4.53e+17 0.00 31000
     FORD/P-COPhCOOH(L) 2/
     FORD/P-OTMrO-P(L) 1/
-    4P-COPhCOOD(L)+2P-OTMrO-P(L)=>rEGDV(L)+DVT(L)+MVTr(L)                                                                                             1.56e+17 0.00 31000
+    4P-COPhCOOD(L)+2P-OTMrO-P(L)=>rEGDV(L)+DVT(L)+MVTr(L)                                                                                             6.25e+17 0.00 31000
     FORD/P-COPhCOOD(L) 2/
     FORD/P-OTMrO-P(L) 1/
-    4P-COPhH(L)+2P-OTMrO-P(L)=>rEGDB(L)+BAr(L)+VB(L)                                                                                                  5.62e+16 0.00 31000
+    4P-COPhH(L)+2P-OTMrO-P(L)=>rEGDB(L)+BAr(L)+VB(L)                                                                                                  2.25e+17 0.00 31000
     FORD/P-COPhH(L) 2/
     FORD/P-OTMrO-P(L) 1/
-    2P-COPhCOOM(L)+P-OTMrO-P(L)=>TAr(L)+MVT(L)+C2H4                                                                                                   1.36e+17 0.00 31000
+    2P-COPhCOOM(L)+P-OTMrO-P(L)=>TAr(L)+MVT(L)+C2H4                                                                                                   5.42e+17 0.00 31000
     FORD/P-COPhCOOM(L) 2/
     
     3P-COPhCO-P(L)+2P-COPhCOOD(L)+1P-OTMO-P(L)+2P-OTMrO-P(L)=>P-COPhCOOr(L)+P-COPhCOOD(L)+0.5DVT(L)+0.5MVTr(L)+0.5EGDV(L)+0.25EGDAr(L)+0.25rEGDV(L)         2.36e+17 0.00 31000
@@ -436,88 +469,87 @@ REACTIONS
     FORD/P-COPhCO-P(L) 1/
     FORD/P-OTMO-P(L) 0/
     
-    2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OTMrO-P(L)=>0.5rEGDA(L)+0.5rEGDV(L)+0.5DVT(L)+0.5TAr(L)+0.5MVT(L)+0.5MVTr(L)                                     2.66e+17 0.00 31000
+    2P-COPhCOOH(L)+2P-COPhCOOD(L)+2P-OTMrO-P(L)=>0.5rEGDA(L)+0.5rEGDV(L)+0.5DVT(L)+0.5TAr(L)+0.5MVT(L)+0.5MVTr(L)                                     5.32e+17 0.00 31000
     FORD/P-COPhCOOD(L) 1/
     FORD/P-COPhCOOH(L) 1/
     FORD/P-OTMrO-P(L) 1/
-    2P-COPhCOOH(L)+2P-COPhH(L)+2P-OTMrO-P(L)=>0.5rEGDA(L)+0.5rEGDB(L)+0.5MVT(L)+0.5TAr(L)+0.5VB(L)+0.5BAr(L)                                          1.60e+17 0.00 31000
+    2P-COPhCOOH(L)+2P-COPhH(L)+2P-OTMrO-P(L)=>0.5rEGDA(L)+0.5rEGDB(L)+0.5MVT(L)+0.5TAr(L)+0.5VB(L)+0.5BAr(L)                                          3.19e+17 0.00 31000
     FORD/P-COPhH(L) 1/
     FORD/P-COPhCOOH(L) 1/
     FORD/P-OTMrO-P(L) 1/          
-    2P-COPhH(L)+2P-COPhCOOD(L)+2P-OTMrO-P(L)=>0.5rEGDV(L)+0.5rEGDB(L)+0.5MVTr(L)+0.5DVT(L)+0.5VB(L)+0.5BAr(L)                                         1.88e+17 0.00 31000
+    2P-COPhH(L)+2P-COPhCOOD(L)+2P-OTMrO-P(L)=>0.5rEGDV(L)+0.5rEGDB(L)+0.5MVTr(L)+0.5DVT(L)+0.5VB(L)+0.5BAr(L)                                         3.75e+17 0.00 31000
     FORD/P-COPhCOOD(L) 1/
     FORD/P-COPhH(L) 1/
     FORD/P-OTMrO-P(L) 1/
     
     ! Ethylidene CO-OC scission to PhCOr and benzoacetic anhydride
     
-    2P-COPhCO-P(L)+P-OTrMO-P(L)=>P-COPhr(L)+CO+P-COPhCOOH(L)+CH2CO                                                                                    4.44e+17 0.00 38000
+    2P-COPhCO-P(L)+P-OTrMO-P(L)=>P-COPhr(L)+CO+P-COPhCOOH(L)+CH2CO                                                                                    3.56e+17 0.00 38000
     FORD/P-COPhCO-P(L) 2/
     
-    4P-COPhCOOH(L)+2P-OTrMO-P(L)=>rEGDA(L)+rBA(L)+2CO+0.5C2H4+TA(L)                                                                                   5.66e+17 0.00 38000
+    4P-COPhCOOH(L)+2P-OTrMO-P(L)=>rEGDA(L)+rBA(L)+2CO+0.5C2H4+TA(L)                                                                                   1.81e+18 0.00 38000
     FORD/P-COPhCOOH(L) 2/
     FORD/P-OTrMO-P(L) 1/
-    4P-COPhCOOD(L)+2P-OTrMO-P(L)=>rEGDV(L)+VBr(L)+2CO+0.5C2H4+MVT(L)                                                                                  7.81e+17 0.00 38000
+    4P-COPhCOOD(L)+2P-OTrMO-P(L)=>rEGDV(L)+VBr(L)+2CO+0.5C2H4+MVT(L)                                                                                  2.50e+18 0.00 38000
     FORD/P-COPhCOOD(L) 2/
     FORD/P-OTrMO-P(L) 1/
-    4P-COPhH(L)+2P-OTrMO-P(L)=>EGDBr(L)+C6H5(L)+2CO+0.5C2H4+BA(L)                                                                                     2.81e+17 0.00 38000
+    4P-COPhH(L)+2P-OTrMO-P(L)=>EGDBr(L)+C6H5(L)+2CO+0.5C2H4+BA(L)                                                                                     9.00e+17 0.00 38000
     FORD/P-COPhH(L) 2/
     FORD/P-OTrMO-P(L) 1/                    
                     
           
     ! Glycol end-chain COO-CH2 scission
-    P-COPhCO-P(L)+P-OCCrOH(L)=>P-COPhCOOr(L)+CH3CHO                                                                                                   9.43e+14 0.00 33000
+    P-COPhCO-P(L)+P-OCCrOH(L)=>P-COPhCOOr(L)+CH3CHO                                                                                                   6.73e+14 0.00 33000
     FORD/P-COPhCO-P(L) 1/
-    P-COPhCOOH(L)+P-OCCrOH(L)=>TAr(L)+CH3CHO                                                                                                          1.06e+15 0.00 33000
+    P-COPhCOOH(L)+P-OCCrOH(L)=>TAr(L)+CH3CHO                                                                                                          1.52e+15 0.00 33000
     FORD/P-COPhCOOH(L) 1/
-    P-COPhCOOD(L)+P-OCCrOH(L)=>MVTr(L)+CH3CHO                                                                                                         1.25e+15 0.00 33000
+    P-COPhCOOD(L)+P-OCCrOH(L)=>MVTr(L)+CH3CHO                                                                                                         1.79e+15 0.00 33000
     FORD/P-COPhCOOD(L) 1/
-    P-COPhH(L)+P-OCCrOH(L)=>BAr(L)+CH3CHO                                                                                                             7.50e+14 0.00 33000
+    P-COPhH(L)+P-OCCrOH(L)=>BAr(L)+CH3CHO                                                                                                             1.07e+15 0.00 33000
     FORD/P-COPhH(L) 1/
         
         
         
     ! Methyl-Ester end-chain CO-OCH2 scission
-    P-COPhCOOMr(L)=>CH2O+CO+P-COPhr(L)                                                                                                                5.00e+13 0.00 35000
+    P-COPhCOOMr(L)=>CH2O+CO+P-COPhr(L)                                                                                                                2.00e+13 0.00 35000
       
       
     ! Ethyl-Ester end-chain COO-CH2 scission 
-    P-COPhCO-P(L)+P-OCMr(L)=>P-COPhCOOr(L)+C2H4                                                                                                       9.43e+14 0.00 31000
+    P-COPhCO-P(L)+P-OCMr(L)=>P-COPhCOOr(L)+C2H4                                                                                                       6.73e+14 0.00 31000
     FORD/P-COPhCO-P(L) 1/
-    P-COPhCOOH(L)+P-OCMr(L)=>TAr(L)+C2H4                                                                                                              1.06e+15 0.00 31000
+    P-COPhCOOH(L)+P-OCMr(L)=>TAr(L)+C2H4                                                                                                              1.52e+15 0.00 31000
     FORD/P-COPhCOOH(L) 1/
-    P-COPhCOOD(L)+P-OCMr(L)=>MVTr(L)+C2H4                                                                                                             1.25e+15 0.00 31000
+    P-COPhCOOD(L)+P-OCMr(L)=>MVTr(L)+C2H4                                                                                                             1.79e+15 0.00 31000
     FORD/P-COPhCOOD(L) 1/
-    P-COPhH(L)+P-OCMr(L)=>BAr(L)+C2H4                                                                                                                 7.50e+14 0.00 31000
+    P-COPhH(L)+P-OCMr(L)=>BAr(L)+C2H4                                                                                                                 1.07e+15 0.00 31000
     FORD/P-COPhH(L) 1/
     
     ! Ethyl-Ester end-chain CO-OCH2 scission
-    P-COPhCO-P(L)+P-OCrM(L)=>P-COPhr(L)+CO+CH3CHO                                                                                                     4.71e+15 0.00 35000
+    P-COPhCO-P(L)+P-OCrM(L)=>P-COPhr(L)+CO+CH3CHO                                                                                                     2.69e+15 0.00 35000
     FORD/P-COPhCO-P(L) 1/
-    P-COPhCOOH(L)+P-OCrM(L)=>BAr(L)+CO+CH3CHO                                                                                                         5.32e+15 0.00 35000
+    P-COPhCOOH(L)+P-OCrM(L)=>BAr(L)+CO+CH3CHO                                                                                                         6.08e+15 0.00 35000
     FORD/P-COPhCOOH(L) 1/
-    P-COPhCOOD(L)+P-OCrM(L)=>VBr(L)+CO+CH3CHO                                                                                                         6.25e+15 0.00 35000
+    P-COPhCOOD(L)+P-OCrM(L)=>VBr(L)+CO+CH3CHO                                                                                                         7.14e+15 0.00 35000
     FORD/P-COPhCOOD(L) 1/
-    P-COPhH(L)+P-OCrM(L)=>C6H5(L)+CO+CH3CHO                                                                                                           3.75e+15 0.00 35000
+    P-COPhH(L)+P-OCrM(L)=>C6H5(L)+CO+CH3CHO                                                                                                           4.29e+15 0.00 35000
     FORD/P-COPhH(L) 1/
           
           
 ! LMW compounds
     ! COO-CH2 scission
-    rEGDB(L)=>VB(L)+rBA(L)                                                                                                                            1.00e+13 0.00 32000
-    rEGDA(L)=>TAr(L)+MVT(L)                                                                                                                           1.00e+13 0.00 32000
-    rEGDV(L)=>DVT(L)+MVTr(L)                                                                                                                          1.00e+13 0.00 32000
-    CYEGDEr(L)=>0.5EGDAr(L)+0.5rEGDV(L)                                                                                                               1.00e+13 0.00 32000
+    rEGDB(L)=>VB(L)+rBA(L)                                                                                                                            5.00e+12 0.00 32000
+    rEGDA(L)=>TAr(L)+MVT(L)                                                                                                                           5.00e+12 0.00 32000
+    rEGDV(L)=>DVT(L)+MVTr(L)                                                                                                                          5.00e+12 0.00 32000
+    CYEGDEr(L)=>0.5EGDAr(L)+0.5rEGDV(L)                                                                                                               5.00e+12 0.00 32000
     
     ! CO-OCH2 scission
-    rEGDA(L)=>rBA(L)+2CO+0.5C2H4+TA(L)                                                                                                                5.00e+13 0.00 36000
-    rEGDV(L)=>VBr(L)+2CO+0.5C2H4+MVT(L)                                                                                                               5.00e+13 0.00 36000
-    rEGDB(L)=>C6H5(L)+2CO+0.5C2H4+BA(L)                                                                                                               5.00e+13 0.00 36000
-    CYEGDEr(L)=>0.5EGDBr(L)+2CO+0.5C2H4+0.5rEGDA(L)                                                                                                   5.00e+13 0.00 36000
+    rEGDA(L)=>rBA(L)+2CO+0.5C2H4+TA(L)                                                                                                                2.00e+13 0.00 36000
+    rEGDV(L)=>VBr(L)+2CO+0.5C2H4+MVT(L)                                                                                                               2.00e+13 0.00 36000
+    rEGDB(L)=>C6H5(L)+2CO+0.5C2H4+BA(L)                                                                                                               2.00e+13 0.00 36000
+    CYEGDEr(L)=>0.5EGDBr(L)+2CO+0.5C2H4+0.5rEGDA(L)                                                                                                   2.00e+13 0.00 36000
     
     ! Acetaldehyde degradation 
     CH2CHO(L)=>CH3(L)+CO                                                                                                                              5.00E+11 0.00 35000   
-    CH2CHO(L)=>CH2CO+H(L)                                                                                                                          8.00E+12 0.00 40000  
       
     
 
@@ -593,7 +625,7 @@ REACTIONS
     rEGDB(L)+EGDV(L)=>CH2CHO(L)+2P-COPhH(L)+P-COPhCOOD(L)+1.75P-OCCO-P(L)+P-COPhCO-P(L)+0.5CO                                                         5.00e+09 0.00 11000
     
     
-  ! alkyl-like radicals ipso-additions
+  ! alkyl-like radicals aromatic additions
   
     P-OCrCO-P(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+0.5P-COPhCO-P(L)+P-OCCO-P(L)+3CHAR(L)+0.5G-H2(L)                                                         2.00e+10 0.00 18000
     P-OCrCO-P(L)+P-COPhCOOM(L)=>CO2+CH3(L)+0.5P-COPhCO-P(L)+P-OCCO-P(L)+3CHAR(L)+0.5G-H2(L)                                                           2.00e+10 0.00 18000
@@ -622,13 +654,13 @@ REACTIONS
     P-OCrM(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                               2.00e+10 0.00 18000
     P-OCrM(L)+P-COPhCOOM(L)=>CO2+CH3(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                                 2.00e+10 0.00 18000
     
-    P-OCrM(L)+P-OCCO-P(L)+P-COPhCO-P(L)=>CO2+P-OCMr(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                  8.57e+11 0.00 18000
+    P-OCrM(L)+P-OCCO-P(L)+P-COPhCO-P(L)=>CO2+P-OCMr(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                  2.86e+12 0.00 18000
     FORD/P-OCCO-P(L) 1/
     
     P-OCMr(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                               2.00e+10 0.00 18000
     P-OCMr(L)+P-COPhCOOM(L)=>CO2+CH3(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                                 2.00e+10 0.00 18000
     
-    P-OCMr(L)+P-OCCO-P(L)+P-COPhCO-P(L)=>CO2+P-OCMr(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                  8.57e+11 0.00 18000
+    P-OCMr(L)+P-OCCO-P(L)+P-COPhCO-P(L)=>CO2+P-OCMr(L)+0.5P-COPhCO-P(L)+0.5P-OCCO-P(L)+3CHAR(L)+G-H2(L)+0.5G-C2H4(L)                                  2.86e+12 0.00 18000
     FORD/P-OCCO-P(L) 1/
     
     rEGDB(L)+P-COPhCO-P(L)=>CO2+P-OCMr(L)+0.5P-COPhCO-P(L)+3CHAR(L)+0.5G-H2(L)+2P-COPhH(L)                                                            2.00e+10 0.00 18000
@@ -668,39 +700,39 @@ REACTIONS
     C6H5(L)+VB(L) =>CH2CHO(L)+P-COPhH(L)+6CHAR(L)+2.5G-H2(L)                                                                                          5.00e+09 0.00 2000
     C6H5(L)+EGDV(L)=>CH2CHO(L)+P-COPhH(L)+P-COPhCOOD(L)+P-OCCO-P(L)+4CHAR(L)+G-C2H4(L)+G-CO(L)                                                        5.00e+09 0.00 2000
     
-  ! Phenyl radicals ipso-addition
+  ! Phenyl radicals aromatic addition
   
-    P-COPhr(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                                                          1.00e+10 0.00 6000
-    P-COPhr(L)+P-COPhCOOM(L)=>CO2+CH3(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                                                            1.00e+10 0.00 6000
-    P-COPhr(L)+P-OCM(L)=>CO2+C2H3(L)+6CHAR(L)+H2+2G-H2(L)                                                                                             1.00e+10 0.00 6000
+    P-COPhr(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                                                          2.00e+10 0.00 6000
+    P-COPhr(L)+P-COPhCOOM(L)=>CO2+CH3(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                                                            2.00e+10 0.00 6000
+    P-COPhr(L)+P-OCM(L)=>CO2+C2H3(L)+6CHAR(L)+H2+2G-H2(L)                                                                                             2.00e+10 0.00 6000
     
-    P-COPhr(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+6CHAR(L)+H2+G-H2(L)                                                                                         1.00e+10 0.00 6000
+    P-COPhr(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+6CHAR(L)+H2+G-H2(L)                                                                                         2.00e+10 0.00 6000
             
-    P-COPhr(L)+MVT(L)=>CO+CH2CHO(L)+P-COPhCOOH(L)+6CHAR(L)+H2+G-H2(L)                                                                                 1.00e+10 0.00 6000
-    P-COPhr(L)+DVT(L)=>CO+CH2CHO(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                                                 1.00e+10 0.00 6000
-    P-COPhr(L)+VB(L) =>CO+CH2CHO(L)+P-COPhH(L)+6CHAR(L)+H2+G-H2(L)                                                                                    1.00e+10 0.00 6000
+    P-COPhr(L)+MVT(L)=>CO+CH2CHO(L)+P-COPhCOOH(L)+6CHAR(L)+H2+G-H2(L)                                                                                 2.00e+10 0.00 6000
+    P-COPhr(L)+DVT(L)=>CO+CH2CHO(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                                                 2.00e+10 0.00 6000
+    P-COPhr(L)+VB(L) =>CO+CH2CHO(L)+P-COPhH(L)+6CHAR(L)+H2+G-H2(L)                                                                                    2.00e+10 0.00 6000
     
-    P-COPhr(L)+EGDV(L)=>CO+CH2CHO(L)+P-OCCO-P(L)+P-COPhCO-P(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                      1.00e+10 0.00 4000
+    P-COPhr(L)+EGDV(L)=>CO+CH2CHO(L)+P-OCCO-P(L)+P-COPhCO-P(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                      2.00e+10 0.00 4000
     ! internal additions
-    P-COPhr(L)+EGDV(L)=>P-COPhCOOD(L)+CO2+G-C2H4(L)+MVTr(L)+6CHAR(L)+H2+G-H2(L)                                                                       1.00e+10 0.00 6000
-    P-COPhr(L)+EGDA(L)=>P-COPhCOOH(L)+CO2+G-C2H4(L)+TAr(L)+6CHAR(L)+H2+G-H2(L)                                                                        1.00e+10 0.00 6000
-    P-COPhr(L)+EGDB(L)=>P-COPhH(L)+CO2+G-C2H4(L)+BAr(L)+6CHAR(L)+H2+G-H2(L)                                                                           1.00e+10 0.00 6000
+    P-COPhr(L)+EGDV(L)=>P-COPhCOOD(L)+CO2+G-C2H4(L)+MVTr(L)+6CHAR(L)+H2+G-H2(L)                                                                       2.00e+10 0.00 6000
+    P-COPhr(L)+EGDA(L)=>P-COPhCOOH(L)+CO2+G-C2H4(L)+TAr(L)+6CHAR(L)+H2+G-H2(L)                                                                        2.00e+10 0.00 6000
+    P-COPhr(L)+EGDB(L)=>P-COPhH(L)+CO2+G-C2H4(L)+BAr(L)+6CHAR(L)+H2+G-H2(L)                                                                           2.00e+10 0.00 6000
               
-    VBr(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                                              1.00e+10 0.00 6000
-    C6H5(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhH(L)+6CHAR(L)+H2+G-H2(L)                                                                                1.00e+10 0.00 6000
-    rBA(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhCOOH(L)+6CHAR(L)+H2+G-H2(L)                                                                              1.00e+10 0.00 6000
-    EGDBr(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhH(L)+P-OCCO-P(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                                     1.00e+10 0.00 6000
+    VBr(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                                              2.00e+10 0.00 6000
+    C6H5(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhH(L)+6CHAR(L)+H2+G-H2(L)                                                                                2.00e+10 0.00 6000
+    rBA(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhCOOH(L)+6CHAR(L)+H2+G-H2(L)                                                                              2.00e+10 0.00 6000
+    EGDBr(L)+P-COPhCOOD(L)=>CO+CH2CHO(L)+P-COPhH(L)+P-OCCO-P(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                                     2.00e+10 0.00 6000
     
-    VBr(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                                 4.29e+11 0.00 6000
+    VBr(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhCOOD(L)+6CHAR(L)+H2+G-H2(L)                                                                 2.86e+12 0.00 6000
     FORD/P-OCCO-P(L) 1/
     FORD/P-COPhCO-P(L) 1/
-    C6H5(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhH(L)+6CHAR(L)+H2+G-H2(L)                                                                   4.29e+11 0.00 6000
+    C6H5(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhH(L)+6CHAR(L)+H2+G-H2(L)                                                                   2.86e+12 0.00 6000
     FORD/P-OCCO-P(L) 1/
     FORD/P-COPhCO-P(L) 1/
-    rBA(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhCOOH(L)+6CHAR(L)+H2+G-H2(L)                                                                 4.29e+11 0.00 6000
+    rBA(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhCOOH(L)+6CHAR(L)+H2+G-H2(L)                                                                 2.86e+12 0.00 6000
     FORD/P-OCCO-P(L) 1/
     FORD/P-COPhCO-P(L) 1/
-    EGDBr(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhH(L)+P-OCCO-P(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                        4.29e+11 0.00 6000
+    EGDBr(L)+P-COPhCO-P(L)+P-OCCO-P(L)=>CO2+P-OCMr(L)+P-COPhH(L)+P-OCCO-P(L)+P-COPhCO-P(L)+6CHAR(L)+H2+G-H2(L)                                        2.86e+12 0.00 6000
     FORD/P-OCCO-P(L) 1/
     FORD/P-COPhCO-P(L) 1/
           
@@ -712,7 +744,6 @@ REACTIONS
 !---------------------------------------!
          
                     
-!H-abstractions
 	P-COPhr(L)+P-COPhCOOH(L)=>P-COPhH(L)+P-COPhCOOr(L)                                                                                                   3.00e+12 0.00 12000
 	P-COPhr(L)+P-COPhCOOM(L)=>P-COPhH(L)+P-COPhCOOMr(L)                                                                                                  4.50e+11 0.00 7000
 	P-COPhr(L)+P-OCM(L)=>P-COPhH(L)+P-OCMr(L)                                                                                                            4.50e+11 0.00 7000
@@ -1128,24 +1159,15 @@ REACTIONS
 	CH3(L)+MVT(L)=>CH4+MVTr(L)                                                                                                                           3.00e+12 0.00 22500
 	CH3(L)+TA(L)=>CH4+TAr(L)                                                                                                                             6.00e+12 0.00 22500
 
-	H(L)+P-COPhH(L)=>H2+P-COPhr(L)                                                                                                                       1.50e+12 0.00 13000
-	H(L)+P-COPhCOOH(L)=>H2+P-COPhCOOr(L)                                                                                                                 3.00e+12 0.00 18500
-	H(L)+P-COPhCOOM(L)=>H2+P-COPhCOOMr(L)                                                                                                                4.50e+11 0.00 13500
-	H(L)+P-OCM(L)=>H2+P-OCMr(L)                                                                                                                          4.50e+11 0.00 13500
-	H(L)+P-OCM(L)=>H2+P-OCrM(L)                                                                                                                          6.00e+11 0.00 11500
-	H(L)+P-OCCO-P(L)=>H2+P-OCrCO-P(L)                                                                                                                    6.00e+11 0.00 11500
-	H(L)+P-OTMO-P(L)=>H2+P-OTMrO-P(L)                                                                                                                    4.50e+11 0.00 14500
-	H(L)+P-OTMO-P(L)=>H2+P-OTrMO-P(L)                                                                                                                    3.00e+11 0.00 10500
-	H(L)+P-OCCOH(L)=>H2+P-OCCrOH(L)                                                                                                                      3.00e+11 0.00 8500
-	H(L)+CYEGDE(L)=>H2+CYEGDEr(L)                                                                                                                        1.20e+12 0.00 11500
-	H(L)+EGDV(L)=>H2+rEGDV(L)                                                                                                                            6.00e+11 0.00 11500
-	H(L)+EGDA(L)=>H2+rEGDA(L)                                                                                                                            6.00e+11 0.00 11500
-	H(L)+EGDA(L)=>H2+EGDAr(L)                                                                                                                            6.00e+12 0.00 18500
-	H(L)+EGDB(L)=>H2+rEGDB(L)                                                                                                                            6.00e+11 0.00 11500
-	H(L)+EGDB(L)=>H2+EGDBr(L)                                                                                                                            3.00e+12 0.00 13000
-	H(L)+MVT(L)=>H2+MVTr(L)                                                                                                                              3.00e+12 0.00 18500
-	H(L)+TA(L)=>H2+TAr(L)                                                                                                                                6.00e+12 0.00 18500
+        
+        
+        
+  
+  
+        
+        
 
+        
 
 !---------------------------------------!
 !   Radical recombinations 

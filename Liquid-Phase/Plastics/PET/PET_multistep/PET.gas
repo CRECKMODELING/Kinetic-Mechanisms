@@ -1,19 +1,27 @@
+!#############################################################################!
+! Liquid-phase multi-step Mechanism for PET pyrolysis
+! version 24-06-2025
+! Complementary file to define gas-phase species (no reaction currently)
+!
+! for additional informations or citing the mechanism refer to:
+! Andrea Locaspi and Tiziano Faravelli, 
+! A multi-step condensed-phase kinetic model for poly(ethylene terephthalate) 
+! thermal degradation, Proc. Comb. Inst., 2026
+! Available also online at https://github.com/CRECKMODELING/Kinetic-Mechanisms
+!#############################################################################!
+
 ELEMENTS
 C H O N HE
 END
 SPECIES
 
-N2	HE
+ N2	HE
 
-!Polymer species (fake)
- P-PET-P     
 
-!unreactive LMW
  CO          CO2         H2          C6H6        BA          
- CH3CHO      VB          MVT         DIMER       EGDB
+ CH3CHO      VB          MVT         DIMER       EGDB        
+      
  
-!char species    (fake)    
- G-H2        G-COs       CHARO       CHAR        
 
 END
 
