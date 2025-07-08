@@ -1,7 +1,15 @@
-!VERSION:  15_50_1112
-!AUTHORS:  C3
-!NOTE:     SPECIES RE-ARRANGED AS THE SAME ORDER IN MECH, ANALOGIES HAVE BEEN INDICATED BY CORRESPONDING SPECIES NAME IN COMMENTS. DATA MOSTLY FROM ARAMCO MECH 1.3
-!provvisorie
+!#################################################################################!
+! Gas-phase Mechanism for LDPE pyrolysis
+! version 06-03-2025
+!
+! For additional informations or citing the mechanism refer to:
+! Andrea Locaspi, Alessandro Pegurri, Marco Mehl, Matteo Pelucchi, Sittichai 
+! Natesakhawat, Hang Zhou, Yupeng Xu, Ping Wang, Mehrdad Shahnam, Tiziano 
+! Faravelli, "A Semi-Detailed Pyrolytic Gas-Phase Kinetic Model for the Volatiles 
+! of Polyethylene Thermal Degradation", Proc. Comb. Inst. (2025)
+!#################################################################################!
+
+
 C3OHCYETH                       2   476.000     5.778     2.600     0.000     1.000
 C4OHCYETH                       2   476.000     5.778     2.600     0.000     1.000
 C5OHCYETH                       2   476.000     5.778     2.600     0.000     1.000

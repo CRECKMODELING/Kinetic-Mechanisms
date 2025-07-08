@@ -1,38 +1,66 @@
+!#############################################################################!
+! Liquid-phase Mechanism for HDPE pyrolysis
+! version 30-07-2024
+!
+! for additional informations or citing the mechanism refer to:
+! Andrea Locaspi, Alessio Frassoldati, and Tiziano Faravelli, 
+! Reduced-order condensed-phase kinetic models for polyethylene, polypropylene 
+! and polystyrene thermochemical recycling, CEJ 2024
+! https://doi.org/10.1016/j.cej.2024.156949
+!#############################################################################!
+
 MATERIAL LIQUIDMIX
 LIQUID
 
-!MID-CHAINS
- P-HDPE-P_S(L)  P-HDPE-P(L)    
+ P-HDPE-P_S(L)    ! crystalline polymer 
+ P-HDPE-P(L)      ! amorphous/molten polymer
 
-!reactive LMW
- NC30H60(L)     
+ NC30H60(L)       ! waxes  
 
 END
 
 REACTIONS
 
+!************************
+! Phase-Change reactions
+!************************        
+
 ! Evaporation reactions
-NC30H60(L)=>NC30H60               	                                                                                                                   1.00e+06 0.00 23000
+NC30H60(L)=>NC30H60               	                                                                                                                  1.00e+06 0.00 23000
 
 ! Melting reaction
 P-HDPE-P_S(L)=>P-HDPE-P(L)                                                                                                                            1.00e+18 0.00 37000
        
-!backbiting-butadiene
-P-HDPE-P(L)=>C4H6+C3H8+NC6H12+0.675P-HDPE-P(L)                                                                                                        2.50e+15 0.00 64500
 
-!unzipping
-P-HDPE-P(L)=>0.95P-HDPE-P(L)+C2H4                                                                                                                     5.00e+18 0.00 75000
+!************************
+! Polymer Degradation Mechanism
+!************************
 
-! beta-scission              
-P-HDPE-P(L)=>0.925P-HDPE-P(L)+C3H6                                                                                                                    1.90e+14 0.00 59500
+! Backbone degradation mechanism             
 P-HDPE-P(L)=>0.02189381C3H8+0.02189381C4H6+0.12771392NC6H12+0.22577997NC16H32+1.18226601NC30H60(L)                                                    1.09e+16 0.00 62500
 
+! Propylene formation
+P-HDPE-P(L)=>0.925P-HDPE-P(L)+C3H6                                                                                                                    1.90e+14 0.00 59500
+
+! Backbiting-butadiene
+P-HDPE-P(L)=>C4H6+C3H8+NC6H12+0.675P-HDPE-P(L)                                                                                                        2.50e+15 0.00 64500
+
+! Unzipping
+P-HDPE-P(L)=>0.95P-HDPE-P(L)+C2H4                                                                                                                     5.00e+18 0.00 75000
+
+!************************
+! Waxes Liquid-phase Degradation
+!************************
+! Backbone degradation mechanism  
 NC30H60(L)=>0.08C3H8+0.08C4H6+0.46666667NC6H12+0.825NC16H32+0.448NC30H60(L)                                                                           5.08e+15 0.00 62500
+
+! Propylene formation
 NC30H60(L)=>C3H6+0.214285714NC16H32+0.785714286NC30H60(L)                                                                                             1.90e+14 0.00 59500
-NC30H60(L)=>C2H4+0.142857143NC16H32+0.857142857NC30H60(L)                                                                                             5.00e+18 0.00 75000
+
+! Backbiting-butadiene
 NC30H60(L)=>C4H6+C3H8+NC6H12+0.928571428571429NC16H32+0.0714285714285714NC30H60(L)                                                                    2.50e+15 0.00 64500
 
-
-
+! Unzipping
+NC30H60(L)=>C2H4+0.142857143NC16H32+0.857142857NC30H60(L)                                                                                             5.00e+18 0.00 75000
 
 END

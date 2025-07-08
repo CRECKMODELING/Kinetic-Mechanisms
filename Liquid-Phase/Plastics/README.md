@@ -14,7 +14,7 @@ and skeletal mechanisms are available. Specifically:
     and [multi-step](PE/HDPE_multistep) versions are availble. The same holds for LDPE with
     the [semi-detailed](PE/LDPE_semidetailed), [reduced](PE/LDPE_reduced) and 
     [multi-step](PE/LDPE_multistep) mechanisms are reported. Thermodynamics and transport
-    have been assessed as well.
+    have been assessed as well. **The multi-step mechanisms have also the complementary gas-phase!**
 - **Poly(ethylene terephthalate)** ([PET](PET)): has a [semi-detailed](PET/PET_semidetailed) and
     a [multi-step](PET/PET_multistep) mechanism, but thermodynamics and transport 
     have not been studied currently.

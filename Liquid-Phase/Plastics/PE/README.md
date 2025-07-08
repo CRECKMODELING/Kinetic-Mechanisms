@@ -13,8 +13,13 @@ The same versions are available for LDPE as well: [semi-detailed](LDPE_semidetai
 and [multistep](LDPE_multistep) are available. The number of species involved is the same. 
 The reduction is performed with the approach proposed by [Pegurri et al. (2023)](https://doi.org/10.1016/j.combustflame.2023.113202).
 
-To cite the updated mechanisms refer to the following publication:
+*The [multi-step HDPE](HDPE_multistep) and [multi-step LDPE](LDPE_multistep) mechanisms come with the gas-phase module!*
+
+To cite the updated condensed-phase mechanisms refer to the following publication:
 - **Locaspi, Andrea et al.** "Reduced-order condensed-phase kinetic models for polyethylene, polypropylene and polystyrene thermochemical recycling", Chemical Engineering Journal 500 (2024): 156949 [DOI](https://doi.org/10.1016/j.cej.2024.156949)
+
+To cite the gas-phase mechanism refer to the following publication:
+- **Locaspi, Andrea et al.** "A Semi-Detailed Pyrolytic Gas-Phase Kinetic Model for the Volatiles of Polyethylene Thermal Degradation", Proceedings of the Combustion Institute (2025), under review
 
 All mechanisms are described in detail in the PhD thesis:
 - **Locaspi Andrea**, "A lumped condensed-phase kinetic model for plastic waste thermochemical recycling", Politecnico di Milano, 2024

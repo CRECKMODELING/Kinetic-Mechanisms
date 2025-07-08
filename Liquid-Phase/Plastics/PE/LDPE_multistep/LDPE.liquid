@@ -1,21 +1,41 @@
+!#############################################################################!
+! Liquid-phase Mechanism for LDPE pyrolysis
+! version 30-07-2024
+!
+! for additional informations or citing the mechanism refer to:
+! Andrea Locaspi, Alessio Frassoldati, and Tiziano Faravelli, 
+! Reduced-order condensed-phase kinetic models for polyethylene, polypropylene 
+! and polystyrene thermochemical recycling, CEJ 2024
+! https://doi.org/10.1016/j.cej.2024.156949
+!#############################################################################!
+
 MATERIAL LIQUIDMIX
 LIQUID
 
 !MID-CHAINS
- P-LDPE-P_S(L)  P-LDPE-P(L)    
+ P-LDPE-P_S(L)  ! crystalline phase  
+ P-LDPE-P(L)    ! amorphous/molten phase
 
 !reactive LMW
- NC30H60(L)     
+ NC30H60(L)     ! waxes
 
 END
 
 REACTIONS
 
+!************************
+! Phase-Change reactions
+!************************        
+
 ! Evaporation reactions
-NC30H60(L)=>NC30H60               	                                                                                                                   1.00e+06 0.00 23000
+NC30H60(L)=>NC30H60               	                                                                                                                  1.00e+06 0.00 23000
 
 ! Melting reaction
 P-LDPE-P_S(L)=>P-LDPE-P(L)                                                                                                                            1.00e+18 0.00 37000
+
+!************************
+! Polymer Degradation Mechanism
+!************************
        
 !backbiting-butadiene
 P-LDPE-P(L)=>C4H6+C3H8+NC6H12+0.675P-LDPE-P(L)                                                                                                        2.50e+15 0.00 64500
@@ -23,9 +43,15 @@ P-LDPE-P(L)=>C4H6+C3H8+NC6H12+0.675P-LDPE-P(L)                                  
 !unzipping
 P-LDPE-P(L)=>0.95P-LDPE-P(L)+C2H4                                                                                                                     5.00e+18 0.00 75000
 
-! beta-scission              
+! Propylene formation              
 P-LDPE-P(L)=>0.925P-LDPE-P(L)+C3H6                                                                                                                    1.90e+14 0.00 59500
+
+! beta-scission
 P-LDPE-P(L)=>0.02189381C3H8+0.02189381C4H6+0.12771392NC6H12+0.22577997NC16H32+1.18226601NC30H60(L)                                                    5.45e+15 0.00 61000
+
+!************************
+! Waxes Liquid-phase Degradation
+!************************
 
 NC30H60(L)=>0.08C3H8+0.08C4H6+0.46666667NC6H12+0.825NC16H32+0.448NC30H60(L)                                                                           2.58e+15 0.00 61000
 NC30H60(L)=>C3H6+0.214285714NC16H32+0.785714286NC30H60(L)                                                                                             1.90e+14 0.00 59500

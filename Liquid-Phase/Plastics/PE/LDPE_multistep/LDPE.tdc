@@ -1,19 +1,13 @@
-!VERSION:  17_03
-!AUTHORS:  C1-C3   Burcat   
-!NOTE:     SPECIES RE-ARRANGED AS THE SAME ORDER IN MECH
+!#############################################################################!
+! Thermodynamic information for LDPE pyrolysis
+! version 30-07-2024
 !
-!VERSION:  17_05
-!Following species are updated from Burcat's Database:Kik
-! C6H5CHCH3	FLUORENE	C5H6	INDENYL	C14H19	C12H7	C12H9        
-! C6H5CH2C6H5	C10H7	CH3C6H4	C6H5C2H	C6H5O	C6H5C2H3	C10H7CH3
-! C10H7CHO	RXYLENE	C10H7CH2	XYLENE	C6H2	Toluene	C6H5OH
-! C14H10	C6H5C2H4C6H5	C4H2	C16H10	C5H5CH3	C7H7	BENZYNE
-! C6H5C2H2	C12H8	C6H5C2H5	C10H7O	BENZENE	C4H4	INDENE
-! C5H5	C10H6CH3	C6H5 	C10H8	FULVENE	BIPHENYL	C6H4C2H
-!Following species are updated from ATcT's Database:Ghobad
-! H	H2	O	O2	HE
-! OH	H2O	N2	HO2	HCO
-! H2O2	AR	CO	CO2
+! for additional informations or citing the mechanism refer to:
+! Andrea Locaspi, Alessio Frassoldati, and Tiziano Faravelli, 
+! Reduced-order condensed-phase kinetic models for polyethylene, polypropylene 
+! and polystyrene thermochemical recycling, CEJ 2024
+! https://doi.org/10.1016/j.cej.2024.156949
+!#############################################################################!
 
 THERMO
 300.   1000.   4000.
