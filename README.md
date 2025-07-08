@@ -38,6 +38,7 @@ The kinetic mechanism are organized according to the reactive-phase:
     <summary><i><b>Quick choice </b> of  plastics kinetic mechanism</i></summary>
     
     <ul>
+        <li> <ins>Polybutadiene </ins> (PB): &nbsp; <a href="Liquid-Phase/Plastics/PB"> semi-detailed </a>  </li>
         <li> <ins>Polyethylene High-Density </ins> (HDPE): &nbsp; <a href="Liquid-Phase/Plastics/PE/HDPE_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/HDPE_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/HDPE_multistep/"> multi-step </a> </li>
         <li> <ins>Polyethylene Low-Density </ins> (LDPE): &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PE/LDPE_multistep/"> multi-step </a> </li>
         <li> <ins>Polypropylene </ins> (PP): &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_semidetailed/"> semi-detailed </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_reduced/"> reduced </a> &nbsp; &bull; &nbsp; <a href="Liquid-Phase/Plastics/PP/PP_multistep/"> multi-step </a> </li>

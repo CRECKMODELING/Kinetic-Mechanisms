@@ -1,0 +1,43 @@
+!#############################################################################!
+! Gas-phase Mechanism for Polybutadiene pyrolysis
+!  
+! version 07-07-2025
+!
+! for additional informations or citing the mechanism refer to:
+! L.T. Creadore, A. Locaspi, T.M. Marchese, M. Pelucchi, T. Faravelli,
+! M.J. Castaldi, 
+! A semi-detailed kinetic model for polybutadiene pyrolysis, Fuel, 2025
+!#############################################################################!
+
+ELEMENTS
+C H O N HE
+END
+SPECIES
+
+N2	HE
+
+!MID-CHAINS
+ P-PB-P      P-PBv-P     P-PBisov-P  P-PBx-P     P-PBvx-P    
+ P-PB_i-P    P-PBv_i-P   P-PBx_i-P   P-PBvx_i-P  
+
+!END-CHAINS
+ P-C8H11     P-C8H11v    P-C8H13     P-C8H13v    P-C8H12_t   
+ P-C8H12v_t  P-C8H10_i   P-C8H12_i   P-C8H12v_i  
+
+!unreactive LMW
+ C4H6        C5H6        C8H10       TRIMER      C16H24      
+ C2H2        C7H10       
+
+!stable RLMW
+ C8H14           C28H42         
+ DIMER           C3H6           
+ VCH             H2             
+
+!radicals RLMW
+ C8H11          C8H13          C3H5           C7H11          VCH_i          
+ C28H41_i       C16H23_i       
+
+END
+
+REACTIONS
+END

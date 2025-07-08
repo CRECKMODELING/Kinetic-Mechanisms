@@ -24,10 +24,9 @@ and **"P-OCCO-P"**, which represent the terephthalic and glycol moieties of the 
 (present in equimolar ratios). For the multistep mechanism, both units are 
 represented by the **"P-PET-P"** species. Both mechanisms consider a single condensed pseudo-phase
 and model char as liquid-phase species. Mechanisms considering two condensed phases
-can be provided upon request. Compared to the mechanisms for the other polymers, 
-phase-change is considered separatedly and not pseudo-reaction is introduced.
-In OpenSMOKE++, polymer and char species species must be defined in 
-gas-phase as well, but do not have physical meaning.
+can be provided upon request. Analogously to the mechanisms for the other polymers, 
+phase-change is considered through pseudo-reaction. In OpenSMOKE++, polymer and 
+char species species must be defined in gas-phase as well, but do not have physical meaning.
 
 In each folder are present the standard CHEMKIN files (gas kinetics, liquid kinetics, 
 thermodynamics, transport) and a sub-folder of LiquidProperties.

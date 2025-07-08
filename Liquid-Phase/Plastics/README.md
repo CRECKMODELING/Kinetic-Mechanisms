@@ -5,22 +5,27 @@ pyrolytic and gasification reactivity are underway at CRECK modelling POLIMI.
 
 The folders are organized by polymer type. In general semi-detailed, reduced, 
 and skeletal mechanisms are available. Specifically:
+- **Polybutadiene** ([PB](PB)): a single semi-detailed [mechanism](PB) accounts 
+    for the pure polymer degradation, but thermodynamics and transport 
+    have not been studied currently.
 - **Polyethylene** ([PE](PE)): different models are available for HDPE and LDPE
     according to the degree of detail involved in products and radicals description.
     For HDPE both [semi-detailed](PE/HDPE_semidetailed), [reduced](PE/HDPE_reduced) 
-    and [multistep](PE/HDPE_multistep) versions are availble. The same holds for LDPE with
+    and [multi-step](PE/HDPE_multistep) versions are availble. The same holds for LDPE with
     the [semi-detailed](PE/LDPE_semidetailed), [reduced](PE/LDPE_reduced) and 
-    [multistep](PE/LDPE_multistep) mechanisms are reported. Thermodynamics and transport
+    [multi-step](PE/LDPE_multistep) mechanisms are reported. Thermodynamics and transport
     have been assessed as well.
+- **Poly(ethylene terephthalate)** ([PET](PET)): has a [semi-detailed](PET/PET_semidetailed) and
+    a [multi-step](PET/PET_multistep) mechanism, but thermodynamics and transport 
+    have not been studied currently.
 - **Polypropylene** ([PP](PP)): has a [semi-detailed](PP/PP_semidetailed), [reduced](PP/PP_reduced)
-    and [multistep](PP/PP_multistep) mechanism available as well. Thermodynamics and transport
+    and [multi-step](PP/PP_multistep) mechanism available as well. Thermodynamics and transport
     have been validated. The mechanism for APP has not been reported due to the lower importance
     of APP in general wastes.
 - **Polystyrene** ([PS](PS)): the proposed mechanisms account for all structural differences. 
     The [semi-detailed](PS/PS_semidetailed) mechanism and both a [reduced](PS/PS_reduced) 
-    and [multistep](PS/PS_multistep) version are currently available with validated
+    and [multi-step](PS/PS_multistep) version are currently available with validated
     thermodynamic properties. 
-- **Poly(ethylene terephthalate)** ([PET](PET)): a single semi-detailed [mechanism](PET) accounts for the pure polymer degradation.
 - **Poly(vinyl chloride)** ([PVC](PVC)): the proposed semi-detailed [mechanism](PVC) accounts for the pure polymer degradation.
 - Currently underway are models for **PA, PMMA, and PU** and condensed-phase interactions
 

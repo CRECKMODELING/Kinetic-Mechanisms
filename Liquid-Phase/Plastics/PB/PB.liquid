@@ -1,0 +1,636 @@
+!#############################################################################!
+! Liquid-phase Mechanism for Polybutadiene pyrolysis
+!  
+! version 07-07-2025
+!
+! for additional informations or citing the mechanism refer to:
+! L.T. Creadore, A. Locaspi, T.M. Marchese, M. Pelucchi, T. Faravelli,
+! M.J. Castaldi, 
+! A semi-detailed kinetic model for polybutadiene pyrolysis, Fuel, 2025
+!#############################################################################!
+
+MATERIAL LIQUIDMIX
+LIQUID
+
+!MID-CHAINS
+ P-PB-P(L)      P-PBv-P(L)     P-PBisov-P(L)  P-PBx-P(L)     P-PBvx-P(L)    
+ P-PB_i-P(L)    P-PBv_i-P(L)   P-PBx_i-P(L)   P-PBvx_i-P(L)  
+
+!END-CHAINS
+ P-C8H11(L)     P-C8H11v(L)    P-C8H13(L)     P-C8H13v(L)    P-C8H12_t(L)   
+ P-C8H12v_t(L)  P-C8H10_i(L)   P-C8H12_i(L)   P-C8H12v_i(L)  
+
+!unreactive LMW
+                                                             C16H24(L)      
+                               
+
+!stable RLMW
+                 C28H42(L)      
+                                
+                                
+
+!radicals RLMW
+ C8H11(L)       C8H13(L)       C3H5(L)        C7H11(L)       VCH_i(L)       
+ C28H41_i(L)    C16H23_i(L)    
+
+END
+
+REACTIONS
+
+
+!\ Evaporation pseudo-reactions
+        C16H24(L)=>C16H24                                                                                                                             4.00e+10 0.00 40000
+        C28H42(L)=>C28H42                                                                                                                             2.00e+11 0.00 44000
+!\
+
+!\Molecular reactions
+
+    !\Ene reactions (cross-linking)
+        P-PB-P(L)+P-PB-P(L)=>P-PBx-P(L)+P-PB-P(L)                                                                                                     4.00e+10 0.00 34000
+        P-PBv-P(L)+P-PB-P(L)=>0.5P-PBx-P(L)+0.5P-PBvx-P(L)+0.5P-PB-P(L)+0.5P-PBv-P(L)                                                                 4.00e+10 0.00 34000
+        P-PBv-P(L)+P-PBv-P(L)=>P-PBvx-P(L)+P-PBv-P(L)                                                                                                 4.00e+10 0.00 34000
+    !\
+    
+    !\Intermolecular 6-member ring Diels-Alder
+        P-C8H11(L)+P-C8H13(L) => 0.5VCH+0.5C7H10+0.1666666666666C3H6+0.5P-PB-P(L)                                                                     5.00e+09 0.00 30000
+    !\
+    
+    !\Intramolecular 4-member ring Diels-Alder-like
+        P-PBisov-P(L) => VCH+0.5P-PB-P(L)                                                                                                             4.00e+13 0.00 46000
+    !\
+    
+    !\Retro-ene reactions
+        P-PBx-P(L)=>P-PB-P(L)                                                                                                                         9.00e+11 0.00 53000
+        P-PBvx-P(L)=>P-PBv-P(L)                                                                                                                       9.00e+11 0.00 53000
+                    
+        P-PBv-P(L)+P-PB-P(L) => C5H6+0.5C2H2+P-C8H13v(L)+P-C8H13(L)+0.3125P-PBv-P(L)+0.3125P-PB-P(L)                                                  1.94e+14 0.00 48000
+            FORD/P-PBv-P(L) 1/
+    !\    
+            
+!\
+
+!\Initiation
+    !\Random Scission   
+        P-PB-P(L) => 2P-C8H12_t(L)                                                                                                                    8.00e+12 0.00 54000
+        
+        P-PBx-P(L) => 2P-C8H12_t(L)                                                                                                                   8.00e+13 0.00 67000
+        DUPLICATE
+        P-PBx-P(L) => 2P-C8H12_t(L)                                                                                                                   2.00e+12 0.00 54000
+        DUPLICATE
+        
+        P-PBv-P(L) => 2P-C8H12v_t(L)                                                                                                                  1.60e+14 0.00 67000
+        
+        P-PBvx-P(L) => 2P-C8H12v_t(L)                                                                                                                 4.00e+12 0.00 54000
+        DUPLICATE
+        P-PBvx-P(L) => 2P-C8H12v_t(L)                                                                                                                 6.00e+13 0.00 67000
+        DUPLICATE
+    !\
+    
+        P-C8H11(L)+0.5P-PB-P(L) => C8H11(L)+P-C8H12_t(L)                                                                                              4.32e+14 0.00 54000
+        FORD/P-PB-P(L) 1/
+        P-C8H11(L)+0.5P-PBv-P(L) => C8H11(L)+P-C8H12v_t(L)                                                                                            4.32e+14 0.00 54000
+        FORD/P-PBv-P(L) 1/
+        P-C8H11(L)+P-C8H11(L) => 2C8H11(L)                                                                                                            2.14e+14 0.00 54000
+        FORD/P-C8H11(L) 2/
+        P-C8H11(L)+P-C8H11v(L) => 2C8H11(L)                                                                                                           2.14e+14 0.00 54000
+        FORD/P-C8H11v(L) 1/
+        P-C8H11(L)+P-C8H13(L) => C8H13(L)+C8H11(L)                                                                                                    2.18e+14 0.00 54000
+        FORD/P-C8H13(L) 1/
+        P-C8H11(L)+P-C8H13v(L) => C8H13(L)+C8H11(L)                                                                                                   2.18e+14 0.00 54000
+        FORD/P-C8H13v(L) 1/
+    !\
+        P-C8H11v(L)+0.5P-PB-P(L) => C8H11(L)+P-C8H12_t(L)                                                                                             4.32e+14 0.00 54000
+        FORD/P-PB-P(L) 1/
+        P-C8H11v(L)+0.5P-PBv-P(L) => C8H11(L)+P-C8H12v_t(L)                                                                                           4.32e+14 0.00 54000
+        FORD/P-PBv-P(L) 1/
+        P-C8H11v(L)+P-C8H11v(L) => 2C8H11(L)                                                                                                          2.14e+14 0.00 54000
+        FORD/P-C8H11v(L) 2/
+        P-C8H11v(L)+P-C8H13(L) => C8H13(L)+C8H11(L)                                                                                                   2.18e+14 0.00 54000
+        FORD/P-C8H13(L) 1/
+        P-C8H11v(L)+P-C8H13v(L) => C8H13(L)+C8H11(L)                                                                                                  2.18e+14 0.00 54000
+        FORD/P-C8H13v(L) 1/
+    !\
+        P-C8H13(L)+0.5P-PB-P(L) => C8H13(L)+P-C8H12_t(L)                                                                                              8.64e+14 0.00 54000
+        FORD/P-PB-P(L) 1/
+        P-C8H13(L)+0.5P-PBv-P(L) => C8H13(L)+P-C8H12_t(L)                                                                                             8.64e+14 0.00 54000
+        FORD/P-PBv-P(L) 1/
+        P-C8H13(L)+P-C8H13(L) => 2C8H13(L)                                                                                                            4.36e+14 0.00 54000
+        FORD/P-C8H13(L) 2/
+        P-C8H13(L)+P-C8H13v(L) => 2C8H13(L)                                                                                                           4.36e+14 0.00 54000
+        FORD/P-C8H13v(L) 1/
+    !\
+        P-C8H13v(L)+0.5P-PB-P(L) => C8H13(L)+P-C8H12_t(L)                                                                                             1.73e+16 0.00 67000
+        FORD/P-PB-P(L) 1/
+        P-C8H13v(L)+0.5P-PBv-P(L) => C8H13(L)+P-C8H12_t(L)                                                                                            1.73e+16 0.00 67000
+        FORD/P-PBv-P(L) 1/
+        P-C8H13v(L)+P-C8H13v(L) => 2C8H13(L)                                                                                                          8.72e+15 0.00 67000
+        FORD/P-C8H13v(L) 2/        
+    !\
+    
+!\
+
+    
+!\Propagation
+
+    !\H-abstraction reactions
+    !\
+
+
+    P-PB_i-P(L)+P-PBv-P(L)=>P-PB-P(L)+P-PBv_i-P(L)                                                                                                    1.60e+11 0.00 15200
+    P-PB_i-P(L)+P-PBx-P(L)=>P-PB-P(L)+P-PB_i-P(L)                                                                                                     6.00e+11 0.00 19200
+    P-PB_i-P(L)+P-PBvx-P(L)=>P-PB-P(L)+P-PBv_i-P(L)                                                                                                   3.00e+11 0.00 17700
+    P-PB_i-P(L)+P-PBx-P(L)=>P-PB-P(L)+P-PBx_i-P(L)                                                                                                    3.00e+11 0.00 17000
+    P-PB_i-P(L)+P-PBvx-P(L)=>P-PB-P(L)+P-PBvx_i-P(L)                                                                                                  8.00e+10 0.00 15200
+    P-PB_i-P(L)+P-PBisov-P(L)=>P-PB-P(L)+P-PBv_i-P(L)                                                                                                 6.00e+11 0.00 17000
+    P-PB_i-P(L)+P-C8H13(L)=>P-PB-P(L)+P-C8H12_t(L)                                                                                                    7.50e+10 0.00 18000
+    P-PB_i-P(L)+P-C8H13v(L)=>P-PB-P(L)+P-C8H12v_t(L)                                                                                                  7.50e+10 0.00 18000
+    P-PB_i-P(L)+P-C8H11(L)=>P-PB-P(L)+P-C8H10_i(L)                                                                                                    3.00e+11 0.00 17000
+    P-PB_i-P(L)+P-C8H11v(L)=>P-PB-P(L)+P-C8H10_i(L)                                                                                                   2.40e+11 0.00 15200
+    P-PB_i-P(L)+P-C8H13(L)=>P-PB-P(L)+P-C8H12_i(L)                                                                                                    6.00e+11 0.00 17000
+    P-PB_i-P(L)+P-C8H13v(L)=>P-PB-P(L)+P-C8H12v_i(L)                                                                                                  1.60e+11 0.00 15200
+    P-PB_i-P(L)+C28H42(L)=>P-PB-P(L)+C28H41_i(L)                                                                                                      1.05e+12 0.00 17000
+    P-PB_i-P(L)+C16H24(L)=>P-PB-P(L)+C16H23_i(L)                                                                                                      6.00e+11 0.00 17000
+    
+    P-PBx_i-P(L)+P-PB-P(L)=>P-PBx-P(L)+P-PB_i-P(L)                                                                                                    6.00e+11 0.00 17000
+    P-PBx_i-P(L)+P-PBv-P(L)=>P-PBx-P(L)+P-PBv_i-P(L)                                                                                                  1.60e+11 0.00 15200
+    P-PBx_i-P(L)+P-PBx-P(L)=>P-PBx-P(L)+P-PB_i-P(L)                                                                                                   6.00e+11 0.00 19200
+    P-PBx_i-P(L)+P-PBvx-P(L)=>P-PBx-P(L)+P-PBv_i-P(L)                                                                                                 3.00e+11 0.00 17700
+    P-PBx_i-P(L)+P-PBvx-P(L)=>P-PBx-P(L)+P-PBvx_i-P(L)                                                                                                8.00e+10 0.00 15200
+    P-PBx_i-P(L)+P-PBisov-P(L)=>P-PBx-P(L)+P-PBv_i-P(L)                                                                                               6.00e+11 0.00 17000
+    P-PBx_i-P(L)+P-C8H13(L)=>P-PBx-P(L)+P-C8H12_t(L)                                                                                                  7.50e+10 0.00 18000
+    P-PBx_i-P(L)+P-C8H13v(L)=>P-PBx-P(L)+P-C8H12v_t(L)                                                                                                7.50e+10 0.00 18000
+    P-PBx_i-P(L)+P-C8H11(L)=>P-PBx-P(L)+P-C8H10_i(L)                                                                                                  3.00e+11 0.00 17000
+    P-PBx_i-P(L)+P-C8H11v(L)=>P-PBx-P(L)+P-C8H10_i(L)                                                                                                 2.40e+11 0.00 15200
+    P-PBx_i-P(L)+P-C8H13(L)=>P-PBx-P(L)+P-C8H12_i(L)                                                                                                  6.00e+11 0.00 17000
+    P-PBx_i-P(L)+P-C8H13v(L)=>P-PBx-P(L)+P-C8H12v_i(L)                                                                                                1.60e+11 0.00 15200
+    P-PBx_i-P(L)+C28H42(L)=>P-PBx-P(L)+C28H41_i(L)                                                                                                    1.05e+12 0.00 17000
+    P-PBx_i-P(L)+C16H24(L)=>P-PBx-P(L)+C16H23_i(L)                                                                                                    6.00e+11 0.00 17000
+
+    P-PBv_i-P(L)+P-PB-P(L)=>P-PBv-P(L)+P-PB_i-P(L)                                                                                                    6.00e+10 0.00 16300
+    P-PBv_i-P(L)+P-PBx-P(L)=>P-PBv-P(L)+P-PB_i-P(L)                                                                                                   6.00e+11 0.00 19700
+    P-PBv_i-P(L)+P-PBvx-P(L)=>P-PBv-P(L)+P-PBv_i-P(L)                                                                                                 3.00e+11 0.00 18200
+    P-PBv_i-P(L)+P-PBx-P(L)=>P-PBv-P(L)+P-PBx_i-P(L)                                                                                                  3.00e+10 0.00 16300
+    P-PBv_i-P(L)+P-PBvx-P(L)=>P-PBv-P(L)+P-PBvx_i-P(L)                                                                                                8.00e+09 0.00 14400
+    P-PBv_i-P(L)+P-PBisov-P(L)=>P-PBv-P(L)+P-PBv_i-P(L)                                                                                               1.60e+10 0.00 14400
+    P-PBv_i-P(L)+P-C8H13(L)=>P-PBv-P(L)+P-C8H12_t(L)                                                                                                  4.00e+09 0.00 15400
+    P-PBv_i-P(L)+P-C8H13v(L)=>P-PBv-P(L)+P-C8H12v_t(L)                                                                                                4.00e+09 0.00 15400
+    P-PBv_i-P(L)+P-C8H11(L)=>P-PBv-P(L)+P-C8H10_i(L)                                                                                                  3.00e+10 0.00 16300
+    P-PBv_i-P(L)+P-C8H11v(L)=>P-PBv-P(L)+P-C8H10_i(L)                                                                                                 2.40e+10 0.00 14400
+    P-PBv_i-P(L)+P-C8H13(L)=>P-PBv-P(L)+P-C8H12_i(L)                                                                                                  6.00e+10 0.00 16300
+    P-PBv_i-P(L)+P-C8H13v(L)=>P-PBv-P(L)+P-C8H12v_i(L)                                                                                                1.60e+10 0.00 14400
+    P-PBv_i-P(L)+C28H42(L)=>P-PBv-P(L)+C28H41_i(L)                                                                                                    1.05e+11 0.00 16300
+    P-PBv_i-P(L)+C16H24(L)=>P-PBv-P(L)+C16H23_i(L)                                                                                                    6.00e+10 0.00 16300
+    
+    P-PBvx_i-P(L)+P-PB-P(L)=>P-PBvx-P(L)+P-PB_i-P(L)                                                                                                  6.00e+10 0.00 16300
+    P-PBvx_i-P(L)+P-PBv-P(L)=>P-PBvx-P(L)+P-PBv_i-P(L)                                                                                                1.60e+10 0.00 14400
+    P-PBvx_i-P(L)+P-PBx-P(L)=>P-PBvx-P(L)+P-PB_i-P(L)                                                                                                 6.00e+11 0.00 19700
+    P-PBvx_i-P(L)+P-PBvx-P(L)=>P-PBvx-P(L)+P-PBv_i-P(L)                                                                                               3.00e+11 0.00 18200
+    P-PBvx_i-P(L)+P-PBx-P(L)=>P-PBvx-P(L)+P-PBx_i-P(L)                                                                                                3.00e+10 0.00 16300
+    P-PBvx_i-P(L)+P-PBisov-P(L)=>P-PBvx-P(L)+P-PBv_i-P(L)                                                                                             1.60e+10 0.00 14400
+    P-PBvx_i-P(L)+P-C8H13(L)=>P-PBvx-P(L)+P-C8H12_t(L)                                                                                                4.00e+09 0.00 15400
+    P-PBvx_i-P(L)+P-C8H13v(L)=>P-PBvx-P(L)+P-C8H12v_t(L)                                                                                              4.00e+09 0.00 15400
+    P-PBvx_i-P(L)+P-C8H11(L)=>P-PBvx-P(L)+P-C8H10_i(L)                                                                                                3.00e+10 0.00 16300
+    P-PBvx_i-P(L)+P-C8H11v(L)=>P-PBvx-P(L)+P-C8H10_i(L)                                                                                               2.40e+10 0.00 14400
+    P-PBvx_i-P(L)+P-C8H13(L)=>P-PBvx-P(L)+P-C8H12_i(L)                                                                                                6.00e+10 0.00 16300
+    P-PBvx_i-P(L)+P-C8H13v(L)=>P-PBvx-P(L)+P-C8H12v_i(L)                                                                                              1.60e+10 0.00 14400
+    P-PBvx_i-P(L)+C28H42(L)=>P-PBvx-P(L)+C28H41_i(L)                                                                                                  1.05e+11 0.00 16300
+    P-PBvx_i-P(L)+C16H24(L)=>P-PBvx-P(L)+C16H23_i(L)                                                                                                  6.00e+10 0.00 16300
+
+    P-C8H12_t(L)+P-PB-P(L)=>P-C8H13(L)+P-PB_i-P(L)                                                                                                    6.00e+11 0.00 16000
+    P-C8H12_t(L)+P-PBv-P(L)=>P-C8H13(L)+P-PBv_i-P(L)                                                                                                  1.60e+11 0.00 14200
+    P-C8H12_t(L)+P-PBx-P(L)=>P-C8H13(L)+P-PB_i-P(L)                                                                                                   6.00e+11 0.00 18200
+    P-C8H12_t(L)+P-PBvx-P(L)=>P-C8H13(L)+P-PBv_i-P(L)                                                                                                 3.00e+11 0.00 16700
+    P-C8H12_t(L)+P-PBx-P(L)=>P-C8H13(L)+P-PBx_i-P(L)                                                                                                  3.00e+11 0.00 16000
+    P-C8H12_t(L)+P-PBvx-P(L)=>P-C8H13(L)+P-PBvx_i-P(L)                                                                                                8.00e+10 0.00 14200
+    P-C8H12_t(L)+P-PBisov-P(L)=>P-C8H13(L)+P-PBv_i-P(L)                                                                                               1.60e+11 0.00 14200
+    P-C8H12_t(L)+P-C8H13v(L)=>P-C8H13(L)+P-C8H12v_t(L)                                                                                                4.00e+10 0.00 15200
+    P-C8H12_t(L)+P-C8H11(L)=>P-C8H13(L)+P-C8H10_i(L)                                                                                                  3.00e+11 0.00 16000
+    P-C8H12_t(L)+P-C8H11v(L)=>P-C8H13(L)+P-C8H10_i(L)                                                                                                 2.40e+11 0.00 14200
+    P-C8H12_t(L)+P-C8H13(L)=>P-C8H13(L)+P-C8H12_i(L)                                                                                                  6.00e+11 0.00 16000
+    P-C8H12_t(L)+P-C8H13v(L)=>P-C8H13(L)+P-C8H12v_i(L)                                                                                                1.60e+11 0.00 14200
+    P-C8H12_t(L)+C28H42(L)=>P-C8H13(L)+C28H41_i(L)                                                                                                    1.05e+12 0.00 16000
+    P-C8H12_t(L)+C16H24(L)=>P-C8H13(L)+C16H23_i(L)                                                                                                    6.00e+11 0.00 16000
+
+    P-C8H12v_t(L)+P-PB-P(L)=>P-C8H13v(L)+P-PB_i-P(L)                                                                                                  6.00e+11 0.00 16000
+    P-C8H12v_t(L)+P-PBv-P(L)=>P-C8H13v(L)+P-PBv_i-P(L)                                                                                                1.60e+11 0.00 14200
+    P-C8H12v_t(L)+P-PBisov-P(L)=>P-C8H13v(L)+P-PBv_i-P(L)                                                                                             1.60e+11 0.00 14200
+    P-C8H12v_t(L)+P-PBx-P(L)=>P-C8H13v(L)+P-PB_i-P(L)                                                                                                 6.00e+11 0.00 18700
+    P-C8H12v_t(L)+P-PBvx-P(L)=>P-C8H13v(L)+P-PBv_i-P(L)                                                                                               3.00e+11 0.00 17200
+    P-C8H12v_t(L)+P-PBx-P(L)=>P-C8H13v(L)+P-PBx_i-P(L)                                                                                                3.00e+11 0.00 16000
+    P-C8H12v_t(L)+P-PBvx-P(L)=>P-C8H13v(L)+P-PBvx_i-P(L)                                                                                              8.00e+10 0.00 14200
+    P-C8H12v_t(L)+P-C8H13(L)=>P-C8H13v(L)+P-C8H12_t(L)                                                                                                7.50e+10 0.00 17000
+    P-C8H12v_t(L)+P-C8H11(L)=>P-C8H13v(L)+P-C8H10_i(L)                                                                                                3.00e+11 0.00 16000
+    P-C8H12v_t(L)+P-C8H11v(L)=>P-C8H13v(L)+P-C8H10_i(L)                                                                                               2.40e+11 0.00 14200
+    P-C8H12v_t(L)+P-C8H13(L)=>P-C8H13v(L)+P-C8H12_i(L)                                                                                                6.00e+11 0.00 16000
+    P-C8H12v_t(L)+P-C8H13v(L)=>P-C8H13v(L)+P-C8H12v_i(L)                                                                                              1.60e+11 0.00 14200
+    P-C8H12v_t(L)+C28H42(L)=>P-C8H13v(L)+C28H41_i(L)                                                                                                  1.05e+12 0.00 16000
+    P-C8H12v_t(L)+C16H24(L)=>P-C8H13v(L)+C16H23_i(L)                                                                                                  6.00e+11 0.00 16000
+                                                                                      
+    P-C8H10_i(L)+P-PB-P(L)=>P-C8H11(L)+P-PB_i-P(L)                                                                                                    6.00e+11 0.00 17000
+    P-C8H10_i(L)+P-PBv-P(L)=>P-C8H11(L)+P-PBv_i-P(L)                                                                                                  1.60e+11 0.00 15200
+    P-C8H10_i(L)+P-PBx-P(L)=>P-C8H11(L)+P-PB_i-P(L)                                                                                                   6.00e+11 0.00 19200
+    P-C8H10_i(L)+P-PBvx-P(L)=>P-C8H11(L)+P-PBv_i-P(L)                                                                                                 3.00e+11 0.00 17700
+    P-C8H10_i(L)+P-PBx-P(L)=>P-C8H11(L)+P-PBx_i-P(L)                                                                                                  3.00e+11 0.00 17000
+    P-C8H10_i(L)+P-PBvx-P(L)=>P-C8H11(L)+P-PBvx_i-P(L)                                                                                                8.00e+10 0.00 15200
+    P-C8H10_i(L)+P-PBisov-P(L)=>P-C8H11(L)+P-PBv_i-P(L)                                                                                               1.60e+11 0.00 15200
+    P-C8H10_i(L)+P-C8H13(L)=>P-C8H11(L)+P-C8H12_t(L)                                                                                                  7.50e+10 0.00 18000
+    P-C8H10_i(L)+P-C8H13v(L)=>P-C8H11(L)+P-C8H12v_t(L)                                                                                                4.00e+10 0.00 16200
+    P-C8H10_i(L)+P-C8H13(L)=>P-C8H11(L)+P-C8H12_i(L)                                                                                                  6.00e+11 0.00 17000
+    P-C8H10_i(L)+P-C8H13v(L)=>P-C8H11(L)+P-C8H12v_i(L)                                                                                                1.60e+11 0.00 15200
+    P-C8H10_i(L)+C28H42(L)=>P-C8H11(L)+C28H41_i(L)                                                                                                    1.05e+12 0.00 17000
+    P-C8H10_i(L)+C16H24(L)=>P-C8H11(L)+C16H23_i(L)                                                                                                    6.00e+11 0.00 17000
+
+    P-C8H12_i(L)+P-PB-P(L)=>P-C8H13(L)+P-PB_i-P(L)                                                                                                    6.00e+11 0.00 17000
+    P-C8H12_i(L)+P-PBv-P(L)=>P-C8H13(L)+P-PBv_i-P(L)                                                                                                  1.60e+11 0.00 15200
+    P-C8H12_i(L)+P-PBx-P(L)=>P-C8H13(L)+P-PB_i-P(L)                                                                                                   6.00e+11 0.00 19200
+    P-C8H12_i(L)+P-PBvx-P(L)=>P-C8H13(L)+P-PBv_i-P(L)                                                                                                 3.00e+11 0.00 17700
+    P-C8H12_i(L)+P-PBx-P(L)=>P-C8H13(L)+P-PBx_i-P(L)                                                                                                  3.00e+11 0.00 17000
+    P-C8H12_i(L)+P-PBvx-P(L)=>P-C8H13(L)+P-PBvx_i-P(L)                                                                                                8.00e+10 0.00 15200
+    P-C8H12_i(L)+P-PBisov-P(L)=>P-C8H13(L)+P-PBv_i-P(L)                                                                                               1.60e+11 0.00 15200
+    P-C8H12_i(L)+P-C8H13(L)=>P-C8H13(L)+P-C8H12_t(L)                                                                                                  7.50e+10 0.00 18000
+    P-C8H12_i(L)+P-C8H13v(L)=>P-C8H13(L)+P-C8H12v_t(L)                                                                                                4.00e+10 0.00 16200
+    P-C8H12_i(L)+P-C8H11(L)=>P-C8H13(L)+P-C8H10_i(L)                                                                                                  3.00e+11 0.00 17000
+    P-C8H12_i(L)+P-C8H11v(L)=>P-C8H13(L)+P-C8H10_i(L)                                                                                                 2.40e+11 0.00 15200
+    P-C8H12_i(L)+P-C8H13v(L)=>P-C8H13(L)+P-C8H12v_i(L)                                                                                                1.60e+11 0.00 15200
+    P-C8H12_i(L)+C28H42(L)=>P-C8H13(L)+C28H41_i(L)                                                                                                    1.05e+12 0.00 17000
+    P-C8H12_i(L)+C16H24(L)=>P-C8H13(L)+C16H23_i(L)                                                                                                    6.00e+11 0.00 17000
+
+    P-C8H12v_i(L)+P-PB-P(L)=>P-C8H13v(L)+P-PB_i-P(L)                                                                                                  6.00e+10 0.00 16300
+    P-C8H12v_i(L)+P-PBv-P(L)=>P-C8H13v(L)+P-PBv_i-P(L)                                                                                                1.60e+10 0.00 14400
+    P-C8H12v_i(L)+P-PBx-P(L)=>P-C8H13v(L)+P-PB_i-P(L)                                                                                                 6.00e+11 0.00 19700
+    P-C8H12v_i(L)+P-PBvx-P(L)=>P-C8H13v(L)+P-PBv_i-P(L)                                                                                               3.00e+11 0.00 18200
+    P-C8H12v_i(L)+P-PBx-P(L)=>P-C8H13v(L)+P-PBx_i-P(L)                                                                                                3.00e+10 0.00 16300
+    P-C8H12v_i(L)+P-PBvx-P(L)=>P-C8H13v(L)+P-PBvx_i-P(L)                                                                                              8.00e+09 0.00 14400
+    P-C8H12v_i(L)+P-PBisov-P(L)=>P-C8H13v(L)+P-PBv_i-P(L)                                                                                             1.60e+10 0.00 14400
+    P-C8H12v_i(L)+P-C8H13(L)=>P-C8H13v(L)+P-C8H12_t(L)                                                                                                7.50e+09 0.00 17300
+    P-C8H12v_i(L)+P-C8H13v(L)=>P-C8H13v(L)+P-C8H12v_t(L)                                                                                              4.00e+09 0.00 15400
+    P-C8H12v_i(L)+P-C8H11(L)=>P-C8H13v(L)+P-C8H10_i(L)                                                                                                3.00e+10 0.00 16300
+    P-C8H12v_i(L)+P-C8H11v(L)=>P-C8H13v(L)+P-C8H10_i(L)                                                                                               2.40e+10 0.00 14400
+    P-C8H12v_i(L)+P-C8H13(L)=>P-C8H13v(L)+P-C8H12_i(L)                                                                                                6.00e+10 0.00 16300
+    P-C8H12v_i(L)+C28H42(L)=>P-C8H13v(L)+C28H41_i(L)                                                                                                  1.05e+11 0.00 16300
+    P-C8H12v_i(L)+C16H24(L)=>P-C8H13v(L)+C16H23_i(L)                                                                                                  6.00e+10 0.00 16300
+    
+    C8H11(L)+P-PB-P(L)=>DIMER+P-PB_i-P(L)                                                                                                             6.00e+11 0.00 17000
+    C8H11(L)+P-PBv-P(L)=>DIMER+P-PBv_i-P(L)                                                                                                           1.60e+11 0.00 15200
+    C8H11(L)+P-PBx-P(L)=>DIMER+P-PB_i-P(L)                                                                                                            6.00e+11 0.00 19200
+    C8H11(L)+P-PBvx-P(L)=>DIMER+P-PBv_i-P(L)                                                                                                          3.00e+11 0.00 17700
+    C8H11(L)+P-PBx-P(L)=>DIMER+P-PBx_i-P(L)                                                                                                           3.00e+11 0.00 17000
+    C8H11(L)+P-PBvx-P(L)=>DIMER+P-PBvx_i-P(L)                                                                                                         8.00e+10 0.00 15200
+    C8H11(L)+P-PBisov-P(L)=>DIMER+P-PBv_i-P(L)                                                                                                        1.60e+11 0.00 15200
+    C8H11(L)+P-C8H13(L)=>DIMER+P-C8H12_t(L)                                                                                                           7.50e+10 0.00 18000
+    C8H11(L)+P-C8H13v(L)=>DIMER+P-C8H12v_t(L)                                                                                                         4.00e+10 0.00 16200
+    C8H11(L)+P-C8H11(L)=>DIMER+P-C8H10_i(L)                                                                                                           3.00e+11 0.00 17000
+    C8H11(L)+P-C8H11v(L)=>DIMER+P-C8H10_i(L)                                                                                                          2.40e+11 0.00 15200
+    C8H11(L)+P-C8H13(L)=>DIMER+P-C8H12_i(L)                                                                                                           6.00e+11 0.00 17000
+    C8H11(L)+P-C8H13v(L)=>DIMER+P-C8H12v_i(L)                                                                                                         1.60e+11 0.00 15200
+    C8H11(L)+C28H42(L)=>DIMER+C28H41_i(L)                                                                                                             1.05e+12 0.00 17000
+    C8H11(L)+C16H24(L)=>DIMER+C16H23_i(L)                                                                                                             6.00e+11 0.00 17000
+
+    VCH_i(L)+P-PB-P(L)=>VCH+P-PB_i-P(L)                                                                                                               6.00e+11 0.00 17000
+    VCH_i(L)+P-PBv-P(L)=>VCH+P-PBv_i-P(L)                                                                                                             1.60e+11 0.00 15200
+    VCH_i(L)+P-PBx-P(L)=>VCH+P-PB_i-P(L)                                                                                                              6.00e+11 0.00 19200
+    VCH_i(L)+P-PBvx-P(L)=>VCH+P-PBv_i-P(L)                                                                                                            3.00e+11 0.00 17700
+    VCH_i(L)+P-PBx-P(L)=>VCH+P-PBx_i-P(L)                                                                                                             3.00e+11 0.00 17000
+    VCH_i(L)+P-PBvx-P(L)=>VCH+P-PBvx_i-P(L)                                                                                                           8.00e+10 0.00 15200
+    VCH_i(L)+P-PBisov-P(L)=>VCH+P-PBv_i-P(L)                                                                                                          1.60e+11 0.00 15200
+    VCH_i(L)+P-C8H13(L)=>VCH+P-C8H12_t(L)                                                                                                             7.50e+10 0.00 18000
+    VCH_i(L)+P-C8H13v(L)=>VCH+P-C8H12v_t(L)                                                                                                           4.00e+10 0.00 16200
+    VCH_i(L)+P-C8H11(L)=>VCH+P-C8H10_i(L)                                                                                                             3.00e+11 0.00 17000
+    VCH_i(L)+P-C8H11v(L)=>VCH+P-C8H10_i(L)                                                                                                            2.40e+11 0.00 15200
+    VCH_i(L)+P-C8H13(L)=>VCH+P-C8H12_i(L)                                                                                                             6.00e+11 0.00 17000
+    VCH_i(L)+P-C8H13v(L)=>VCH+P-C8H12v_i(L)                                                                                                           1.60e+11 0.00 15200
+    VCH_i(L)+C28H42(L)=>VCH+C28H41_i(L)                                                                                                               1.05e+12 0.00 17000
+    VCH_i(L)+C16H24(L)=>VCH+C16H23_i(L)                                                                                                               6.00e+11 0.00 17000
+
+    C8H13(L)+P-PB-P(L)=>C8H14+P-PB_i-P(L)                                                                                                             6.00e+11 0.00 17000
+    C8H13(L)+P-PBv-P(L)=>C8H14+P-PBv_i-P(L)                                                                                                           1.60e+11 0.00 15200
+    C8H13(L)+P-PBx-P(L)=>C8H14+P-PB_i-P(L)                                                                                                            6.00e+11 0.00 19200
+    C8H13(L)+P-PBvx-P(L)=>C8H14+P-PBv_i-P(L)                                                                                                          3.00e+11 0.00 17700
+    C8H13(L)+P-PBx-P(L)=>C8H14+P-PBx_i-P(L)                                                                                                           3.00e+11 0.00 17000
+    C8H13(L)+P-PBvx-P(L)=>C8H14+P-PBvx_i-P(L)                                                                                                         8.00e+10 0.00 15200
+    C8H13(L)+P-PBisov-P(L)=>C8H14+P-PBv_i-P(L)                                                                                                        1.60e+11 0.00 15200
+    C8H13(L)+P-C8H13(L)=>C8H14+P-C8H12_t(L)                                                                                                           7.50e+10 0.00 18000
+    C8H13(L)+P-C8H13v(L)=>C8H14+P-C8H12v_t(L)                                                                                                         4.00e+10 0.00 16200
+    C8H13(L)+P-C8H11(L)=>C8H14+P-C8H10_i(L)                                                                                                           3.00e+11 0.00 17000
+    C8H13(L)+P-C8H11v(L)=>C8H14+P-C8H10_i(L)                                                                                                          2.40e+11 0.00 15200
+    C8H13(L)+P-C8H13(L)=>C8H14+P-C8H12_i(L)                                                                                                           6.00e+11 0.00 17000
+    C8H13(L)+P-C8H13v(L)=>C8H14+P-C8H12v_i(L)                                                                                                         1.60e+11 0.00 15200
+    C8H13(L)+C28H42(L)=>C8H14+C28H41_i(L)                                                                                                             1.05e+12 0.00 17000
+    C8H13(L)+C16H24(L)=>C8H14+C16H23_i(L)                                                                                                             6.00e+11 0.00 17000
+
+    C3H5(L)+P-PB-P(L)=>C3H6+P-PB_i-P(L)                                                                                                               6.00e+11 0.00 17000
+    C3H5(L)+P-PBv-P(L)=>C3H6+P-PBv_i-P(L)                                                                                                             1.60e+11 0.00 15200
+    C3H5(L)+P-PBx-P(L)=>C3H6+P-PB_i-P(L)                                                                                                              6.00e+11 0.00 19200
+    C3H5(L)+P-PBvx-P(L)=>C3H6+P-PBv_i-P(L)                                                                                                            3.00e+11 0.00 17700
+    C3H5(L)+P-PBx-P(L)=>C3H6+P-PBx_i-P(L)                                                                                                             3.00e+11 0.00 17000
+    C3H5(L)+P-PBvx-P(L)=>C3H6+P-PBvx_i-P(L)                                                                                                           8.00e+10 0.00 15200
+    C3H5(L)+P-PBisov-P(L)=>C3H6+P-PBv_i-P(L)                                                                                                          1.60e+11 0.00 15200
+    C3H5(L)+P-C8H13(L)=>C3H6+P-C8H12_t(L)                                                                                                             7.50e+10 0.00 18000
+    C3H5(L)+P-C8H13v(L)=>C3H6+P-C8H12v_t(L)                                                                                                           4.00e+10 0.00 16200
+    C3H5(L)+P-C8H11(L)=>C3H6+P-C8H10_i(L)                                                                                                             3.00e+11 0.00 17000
+    C3H5(L)+P-C8H11v(L)=>C3H6+P-C8H10_i(L)                                                                                                            2.40e+11 0.00 15200
+    C3H5(L)+P-C8H13(L)=>C3H6+P-C8H12_i(L)                                                                                                             6.00e+11 0.00 17000
+    C3H5(L)+P-C8H13v(L)=>C3H6+P-C8H12v_i(L)                                                                                                           1.60e+11 0.00 15200
+    C3H5(L)+C28H42(L)=>C3H6+C28H41_i(L)                                                                                                               1.05e+12 0.00 17000
+    C3H5(L)+C16H24(L)=>C3H6+C16H23_i(L)                                                                                                               6.00e+11 0.00 17000
+    
+    C28H41_i(L)+P-PB-P(L)=>C28H42(L)+P-PB_i-P(L)                                                                                                      6.00e+11 0.00 17000
+    C28H41_i(L)+P-PBv-P(L)=>C28H42(L)+P-PBv_i-P(L)                                                                                                    1.60e+11 0.00 15200
+    C28H41_i(L)+P-PBx-P(L)=>C28H42(L)+P-PB_i-P(L)                                                                                                     6.00e+11 0.00 19200
+    C28H41_i(L)+P-PBvx-P(L)=>C28H42(L)+P-PBv_i-P(L)                                                                                                   3.00e+11 0.00 17700
+    C28H41_i(L)+P-PBx-P(L)=>C28H42(L)+P-PBx_i-P(L)                                                                                                    3.00e+11 0.00 17000
+    C28H41_i(L)+P-PBvx-P(L)=>C28H42(L)+P-PBvx_i-P(L)                                                                                                  8.00e+10 0.00 15200
+    C28H41_i(L)+P-PBisov-P(L)=>C28H42(L)+P-PBv_i-P(L)                                                                                                 1.60e+11 0.00 15200
+    C28H41_i(L)+P-C8H13(L)=>C28H42(L)+P-C8H12_t(L)                                                                                                    7.50e+10 0.00 18000
+    C28H41_i(L)+P-C8H13v(L)=>C28H42(L)+P-C8H12v_t(L)                                                                                                  4.00e+10 0.00 16200
+    C28H41_i(L)+P-C8H11(L)=>C28H42(L)+P-C8H10_i(L)                                                                                                    3.00e+11 0.00 17000
+    C28H41_i(L)+P-C8H11v(L)=>C28H42(L)+P-C8H10_i(L)                                                                                                   2.40e+11 0.00 15200
+    C28H41_i(L)+P-C8H13(L)=>C28H42(L)+P-C8H12_i(L)                                                                                                    6.00e+11 0.00 17000
+    C28H41_i(L)+P-C8H13v(L)=>C28H42(L)+P-C8H12v_i(L)                                                                                                  1.60e+11 0.00 15200
+    C28H41_i(L)+C16H24(L)=>C28H42(L)+C16H23_i(L)                                                                                                      6.00e+11 0.00 17000
+    
+    C16H23_i(L)+P-PB-P(L)=>C16H24(L)+P-PB_i-P(L)                                                                                                      6.00e+11 0.00 17000
+    C16H23_i(L)+P-PBv-P(L)=>C16H24(L)+P-PBv_i-P(L)                                                                                                    1.60e+11 0.00 15200
+    C16H23_i(L)+P-PBx-P(L)=>C16H24(L)+P-PB_i-P(L)                                                                                                     6.00e+11 0.00 19200
+    C16H23_i(L)+P-PBvx-P(L)=>C16H24(L)+P-PBv_i-P(L)                                                                                                   3.00e+11 0.00 17700
+    C16H23_i(L)+P-PBx-P(L)=>C16H24(L)+P-PBx_i-P(L)                                                                                                    3.00e+11 0.00 17000
+    C16H23_i(L)+P-PBvx-P(L)=>C16H24(L)+P-PBvx_i-P(L)                                                                                                  8.00e+10 0.00 15200
+    C16H23_i(L)+P-PBisov-P(L)=>C16H24(L)+P-PBv_i-P(L)                                                                                                 1.60e+11 0.00 15200
+    C16H23_i(L)+P-C8H13(L)=>C16H24(L)+P-C8H12_t(L)                                                                                                    7.50e+10 0.00 18000
+    C16H23_i(L)+P-C8H13v(L)=>C16H24(L)+P-C8H12v_t(L)                                                                                                  4.00e+10 0.00 16200
+    C16H23_i(L)+P-C8H11(L)=>C16H24(L)+P-C8H10_i(L)                                                                                                    3.00e+11 0.00 17000
+    C16H23_i(L)+P-C8H11v(L)=>C16H24(L)+P-C8H10_i(L)                                                                                                   2.40e+11 0.00 15200
+    C16H23_i(L)+P-C8H13(L)=>C16H24(L)+P-C8H12_i(L)                                                                                                    6.00e+11 0.00 17000
+    C16H23_i(L)+P-C8H13v(L)=>C16H24(L)+P-C8H12v_i(L)                                                                                                  1.60e+11 0.00 15200
+    C16H23_i(L)+C28H42(L)=>C16H24(L)+C28H41_i(L)                                                                                                      1.05e+12 0.00 17000
+            
+    C7H11(L)+P-PB-P(L)=>C7H10+H2+P-PB_i-P(L)                                                                                                          6.00e+11 0.00 17000
+    C7H11(L)+P-PBv-P(L)=>C7H10+H2+P-PBv_i-P(L)                                                                                                        1.60e+11 0.00 15200
+    C7H11(L)+P-PBisov-P(L)=>C7H10+H2+P-PBv_i-P(L)                                                                                                     1.60e+11 0.00 15200
+    C7H11(L)+P-C8H13(L)=>C7H10+H2+P-C8H12_t(L)                                                                                                        7.50e+10 0.00 18000
+    C7H11(L)+P-C8H13v(L)=>C7H10+H2+P-C8H12v_t(L)                                                                                                      4.00e+10 0.00 16200
+    C7H11(L)+P-C8H11(L)=>C7H10+H2+P-C8H10_i(L)                                                                                                        3.00e+11 0.00 17000
+    C7H11(L)+P-C8H11v(L)=>C7H10+H2+P-C8H10_i(L)                                                                                                       2.40e+11 0.00 15200
+    C7H11(L)+P-C8H13(L)=>C7H10+H2+P-C8H12_i(L)                                                                                                        6.00e+11 0.00 17000
+    C7H11(L)+P-C8H13v(L)=>C7H10+H2+P-C8H12v_i(L)                                                                                                      1.60e+11 0.00 15200
+    C7H11(L)+C28H42(L)=>C7H10+H2+C28H41_i(L)                                                                                                          1.05e+12 0.00 17000
+    C7H11(L)+C16H24(L)=>C7H10+H2+C16H23_i(L)                                                                                                          6.00e+11 0.00 17000
+
+
+    !\
+    !\Beta Scission reactions
+    
+    !\B-scission from internal radical
+        P-PB_i-P(L) => P-C8H12_t(L)+P-C8H11(L)                                                                                                        1.00e+13 0.00 29000
+        P-PBv_i-P(L) => P-C8H12v_t(L)+P-C8H11v(L)                                                                                                     1.00e+13 0.00 28000
+        
+        P-PBv-P(L)+P-PB_i-P(L) => C7H10+H2+C5H6+C4H6+P-C8H11(L)+P-C8H12v_t(L)                                                                         2.16e+15 0.00 29000
+        FORD/P-PBv-P(L) 1/
+        
+        0.75P-PBx-P(L)+P-PBx_i-P(L) => C4H6+0.5P-C8H13(L)+0.5P-C8H11(L)+P-PB_i-P(L)                                                                   3.00e+13 0.00 29000
+        FORD/P-PBx-P(L) 0/
+        0.75P-PBvx-P(L)+P-PBvx_i-P(L) => C4H6+0.5P-C8H13v(L)+0.5P-C8H11v(L)+P-PBv_i-P(L)                                                              3.00e+13 0.00 28000
+        FORD/P-PBvx-P(L) 0/
+        
+                
+    !\
+    !\B-scission from REC
+        P-C8H10_i(L)+P-PB-P(L) => 0.0740740740740741DIMER+0.0740740740740741TRIMER+0.148148148148148C16H24+0.148148148148148C28H42(L)+C8H10+P-C8H12_t(L)       2.16e+15 0.00 30000
+        FORD/P-PB-P(L) 1/
+        P-C8H10_i(L)+P-PBv-P(L) => 0.0740740740740741DIMER+0.0740740740740741TRIMER+0.148148148148148C16H24+0.148148148148148C28H42(L)+C8H10+P-C8H12v_t(L)      2.16e+15 0.00 30000
+        FORD/P-PBv-P(L) 1/
+        P-C8H10_i(L)+1.5P-PBx-P(L) => 0.0740740740740741DIMER+0.0740740740740741TRIMER+0.148148148148148C16H24+0.148148148148148C28H42(L)+C8H10+P-PBx_i-P(L)+0.5H2       2.16e+15 0.00 30000
+        FORD/P-PBx-P(L) 1/
+        P-C8H10_i(L)+1.5P-PBvx-P(L) => 0.0740740740740741DIMER+0.0740740740740741TRIMER+0.148148148148148C16H24+0.148148148148148C28H42(L)+C8H10+P-PBvx_i-P(L)+0.5H2      2.16e+15 0.00 30000
+        FORD/P-PBvx-P(L) 1/
+        P-C8H10_i(L)+P-C8H13(L) => C8H10+C8H13(L)                                                                                                     1.09e+15 0.00 30000
+        FORD/P-C8H13(L) 1/
+        P-C8H10_i(L)+P-C8H13v(L) => C8H10+C8H13(L)                                                                                                    1.09e+15 0.00 30000
+        FORD/P-C8H13v(L) 1/
+        P-C8H10_i(L)+P-C8H11(L) => C8H10+C8H11(L)                                                                                                     1.07e+15 0.00 30000
+        FORD/P-C8H11(L) 1/
+        P-C8H10_i(L)+P-C8H11v(L) => C8H10+C8H11(L)                                                                                                    1.07e+15 0.00 30000
+        FORD/P-C8H11(L) 1/
+
+        P-C8H12_i(L)+0.84375P-PB-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-C8H12_t(L)                                                 2.16e+15 0.00 29000
+        FORD/P-PB-P(L) 1/
+        P-C8H12_i(L)+0.84375P-PBv-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-C8H12_t(L)                                                2.16e+15 0.00 29000
+        FORD/P-PBv-P(L) 1/
+        P-C8H12_i(L)+1.34375P-PBx-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-PBx_i-P(L)+0.5H2                                          2.16e+15 0.00 29000
+        FORD/P-PBx-P(L) 1/
+        P-C8H12_i(L)+1.34375P-PBvx-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-PBvx_i-P(L)+0.5H2                                        2.16e+15 0.00 29000
+        FORD/P-PBvx-P(L) 1/
+        P-C8H12_i(L)+0.84375P-C8H13(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0.078125C8H11(L)+0.921875C8H13(L)                       1.09e+15 0.00 29000
+        FORD/P-C8H13(L) 1/
+        P-C8H12_i(L)+0.84375P-C8H13v(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0.078125C8H11(L)+0.921875C8H13(L)                      1.09e+15 0.00 29000
+        FORD/P-C8H13v(L) 1/
+        P-C8H12_i(L)+0.84375P-C8H11(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0.921875C8H11(L)+0.078125C8H13(L)                       1.07e+15 0.00 29000
+        FORD/P-C8H11(L) 1/
+        P-C8H12_i(L)+0.84375P-C8H11v(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0.921875C8H11(L)+0.078125C8H13(L)                      1.07e+15 0.00 29000
+        FORD/P-C8H11v(L) 1/
+        
+        P-C8H12v_i(L)+0.84375P-PB-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-C8H12v_t(L)                                               2.16e+15 0.00 28000
+        FORD/P-PB-P(L) 1/
+        P-C8H12v_i(L)+0.84375P-PBv-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-C8H12v_t(L)                                              2.16e+15 0.00 28000
+        FORD/P-PBv-P(L) 1/
+        P-C8H12v_i(L)+1.34375P-PBx-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-PBx_i-P(L)+0.5H2                                         2.16e+15 0.00 28000
+        FORD/P-PBx-P(L) 1/
+        P-C8H12v_i(L)+1.34375P-PBvx-P(L) => 0.125DIMER+0.125TRIMER+0.25C16H24+0.25C28H42(L)+P-PBvx_i-P(L)+0.5H2                                       2.16e+15 0.00 28000
+        FORD/P-PBvx-P(L) 1/
+        P-C8H12v_i(L)+0.84375P-C8H13(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0P-C8H12_t(L)+0.078125C8H11(L)+0.921875C8H13(L)        1.09e+15 0.00 28000
+        FORD/P-C8H13(L) 1/
+        P-C8H12v_i(L)+0.84375P-C8H13v(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0P-C8H12_t(L)+0.078125C8H11(L)+0.921875C8H13(L)       1.09e+15 0.00 28000
+        FORD/P-C8H13v(L) 1/
+        P-C8H12v_i(L)+0.84375P-C8H11(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0P-C8H12_t(L)+0.921875C8H11(L)+0.078125C8H13(L)        1.07e+15 0.00 28000
+        FORD/P-C8H11(L) 1/
+        P-C8H12v_i(L)+0.84375P-C8H11v(L) => 0.0625DIMER+0.0625TRIMER+0.125C16H24+0.125C28H42(L)+0P-C8H12_t(L)+0.921875C8H11(L)+0.078125C8H13(L)       1.07e+15 0.00 28000
+        FORD/P-C8H11v(L) 1/
+                    
+    !\
+    !\unzipping
+        P-C8H12_t(L)+0.25P-PB-P(L) => C4H6+P-C8H12_t(L)                                                                                               6.48e+15 0.00 26000
+        FORD/P-PB-P(L) 1/
+        P-C8H12_t(L)+0.25P-PBv-P(L) => C4H6+P-C8H12_t(L)                                                                                              6.48e+15 0.00 26000
+        FORD/P-PBv-P(L) 1/
+        P-C8H12_t(L)+0.75P-PBx-P(L) => C4H6+P-PBx_i-P(L)+0.5H2                                                                                        6.48e+15 0.00 26000
+        FORD/P-PBx-P(L) 1/
+        P-C8H12_t(L)+0.75P-PBvx-P(L) => C4H6+P-PBvx_i-P(L)+0.5H2                                                                                      6.48e+15 0.00 26000
+        FORD/P-PBvx-P(L) 1/
+        P-C8H12_t(L)+P-C8H13(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H13(L)                                                                  3.27e+15 0.00 26000
+        FORD/P-C8H13(L) 1/
+        P-C8H12_t(L)+P-C8H13v(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H13(L)                                                                 3.27e+15 0.00 26000
+        FORD/P-C8H13v(L) 1/
+        P-C8H12_t(L)+P-C8H11(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H11(L)                                                                  3.21e+15 0.00 26000
+        FORD/P-C8H11(L) 1/
+        P-C8H12_t(L)+P-C8H11v(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H11(L)                                                                 3.21e+15 0.00 26000
+        FORD/P-C8H11v(L) 1/
+                
+        P-C8H12v_t(L)+0.25P-PB-P(L) => C4H6+P-C8H12v_t(L)                                                                                             6.48e+15 0.00 25000
+        FORD/P-PB-P(L) 1/
+        P-C8H12v_t(L)+0.25P-PBv-P(L) => C4H6+P-C8H12v_t(L)                                                                                            6.48e+15 0.00 25000
+        FORD/P-PBv-P(L) 1/
+        P-C8H12v_t(L)+0.75P-PBx-P(L) => C4H6+P-PBx_i-P(L)+0.5H2                                                                                       6.48e+15 0.00 25000
+        FORD/P-PBx-P(L) 1/
+        P-C8H12v_t(L)+0.75P-PBvx-P(L) => C4H6+P-PBvx_i-P(L)+0.5H2                                                                                     6.48e+15 0.00 25000
+        FORD/P-PBvx-P(L) 1/
+        P-C8H12v_t(L)+P-C8H13(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H13(L)                                                                 3.27e+15 0.00 25000
+        FORD/P-C8H13(L) 1/
+        P-C8H12v_t(L)+P-C8H13v(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H13(L)                                                                3.27e+15 0.00 25000
+        FORD/P-C8H13v(L) 1/
+        P-C8H12v_t(L)+P-C8H11(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H11(L)                                                                 3.21e+15 0.00 25000
+        FORD/P-C8H11(L) 1/
+        P-C8H12v_t(L)+P-C8H11v(L) => C4H6+0.04TRIMER+0.08C16H24+0.08C28H42(L)+C8H11(L)                                                                3.21e+15 0.00 25000
+        FORD/P-C8H11v(L) 1/
+        
+    !\
+    
+    !\Backbiting and cyclo-addition reactions 
+        P-C8H12v_t(L)+0.625P-PBv-P(L) => 0.5TRIMER+0.5P-C8H12v_t(L)+0.5C7H11(L)+0.166666666C3H6+0.5P-C8H11v(L)                                        2.16e+11 0.00 16000
+        FORD/P-PBv-P(L) 1/
+        P-C8H12_t(L)+0.625P-PBv-P(L) => 0.5TRIMER+0.5P-C8H12v_t(L)+0.5C7H11(L)+0.166666666C3H6+0.5P-C8H11v(L)                                         2.16e+11 0.00 16000
+        FORD/P-PBv-P(L) 1/
+
+        P-C8H12_t(L)+0.5P-PB-P(L) => DIMER+P-C8H12_t(L)                                                                                               6.48e+10 0.00 16000
+        FORD/P-PB-P(L) 1/
+        P-C8H12v_t(L)+0.5P-PB-P(L) => DIMER+P-C8H12_t(L)                                                                                              6.48e+10 0.00 16000
+        FORD/P-PB-P(L) 1/
+
+        P-C8H12_t(L)+0.5P-PB-P(L) => VCH+P-C8H12_t(L)                                                                                                 1.00e+11 0.00 21000
+        P-C8H12v_t(L)+0.5P-PB-P(L) => VCH+P-C8H12_t(L)                                                                                                1.00e+11 0.00 21000
+
+        P-C8H10_i(L)+P-PB-P(L) => C5H6+P-C8H12_t(L)+0.5P-PB-P(L)+C2H2+0.333333333C3H6                                                                 1.73e+14 0.00 22500
+        FORD/P-PB-P(L) 1/
+        
+    !\
+
+    !\Beta-scission of LMW liquid-phase reactivity
+        C7H11(L)=>C4H6+C3H5(L)                                                                                                                        1.00e+13 0.00 28000
+        C8H13(L)=>1.25C4H6+0.25H2+C3H5(L)                                                                                                             1.00e+13 0.00 29000
+        
+        C8H11(L)=>VCH_i(L)                                                                                                                            1.00e+10 0.00 13900
+        VCH_i(L)=>C8H11(L)                                                                                                                            1.00e+13 0.00 24000
+        
+        C28H41_i(L)=>0.2C4H6+0.2DIMER+0.2TRIMER+0.33333333C16H24+0.066666667C28H42(L)+2C4H6+C8H11(L)                                                  1.00e+13 0.00 29000
+        
+        C16H23_i(L)=>C4H6+0.5DIMER+C8H11(L)                                                                                                           1.00e+13 0.00 29000
+
+    !\
+!\
+
+        
+    P-PB_i-P(L)+P-PB_i-P(L)=>2P-C8H11(L)+P-PB-P(L)                                                                                                    2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-PBv_i-P(L)=>P-C8H11(L)+P-C8H11v(L)+0.5P-PB-P(L)+0.5P-PBv-P(L)                                                                       2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-PBx_i-P(L)=>2P-C8H11(L)+P-PBx-P(L)                                                                                                  2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-PBvx_i-P(L)=>P-C8H11(L)+P-C8H11v(L)+0.5P-PBx-P(L)+0.5P-PBvx-P(L)                                                                    2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-C8H12_t(L)=>P-PB-P(L)+P-C8H11(L)                                                                                                    2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-C8H12v_t(L)=>P-PB-P(L)+P-C8H11v(L)                                                                                                  2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-C8H10_i(L)=>P-PB-P(L)+0.33333333333P-C8H11(L)+2.6666666666666C2H2                                                                   2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-C8H12_i(L)=>P-PB-P(L)+P-C8H11(L)                                                                                                    2.00e+11 1.00 6000
+    P-PB_i-P(L)+P-C8H12v_i(L)=>P-PB-P(L)+P-C8H11v(L)                                                                                                  2.00e+11 1.00 6000
+    P-PB_i-P(L)+C3H5(L) => P-PB-P(L)+C2H2+0.3333333C3H6                                                                                               2.00e+11 1.00 6000
+    P-PB_i-P(L)+C8H13(L) => P-PB-P(L)+DIMER                                                                                                           2.00e+11 1.00 6000
+    P-PB_i-P(L)+C8H11(L) => P-PB-P(L)+C8H10                                                                                                           2.00e+11 1.00 6000
+    P-PB_i-P(L)+VCH_i(L) => P-PB-P(L)+C8H10                                                                                                           2.00e+11 1.00 6000
+    P-PB_i-P(L)+C28H41_i(L) => 2.25P-PB-P(L)+C8H10                                                                                                    2.00e+11 1.00 6000
+    P-PB_i-P(L)+C16H23_i(L) => 1.5P-PB-P(L)+C8H10                                                                                                     2.00e+11 1.00 6000
+
+    P-PBv_i-P(L)+P-PBv_i-P(L)=>2P-C8H11v(L)+P-PBv-P(L)                                                                                                2.00e+11 1.00 7000
+    P-PBv_i-P(L)+P-PBx_i-P(L)=>P-C8H11(L)+P-C8H11v(L)+0.5P-PBx-P(L)+0.5P-PBvx-P(L)                                                                    2.00e+11 1.00 6000
+    P-PBv_i-P(L)+P-PBvx_i-P(L)=>2P-C8H11v(L)+P-PBvx-P(L)                                                                                              2.00e+11 1.00 6000
+    P-PBv_i-P(L)+P-C8H12_t(L)=>P-PBv-P(L)+P-C8H11(L)                                                                                                  2.00e+11 1.00 6000
+    P-PBv_i-P(L)+P-C8H12v_t(L)=>P-PBv-P(L)+P-C8H11v(L)                                                                                                2.00e+11 1.00 7000
+    P-PBv_i-P(L)+P-C8H10_i(L)=>P-PBv-P(L)+0.33333333333P-C8H11v(L)+2.6666666666666C2H2                                                                2.00e+11 1.00 6000
+    P-PBv_i-P(L)+P-C8H12_i(L)=>P-PBv-P(L)+P-C8H11(L)                                                                                                  2.00e+11 1.00 6000
+    P-PBv_i-P(L)+P-C8H12v_i(L)=>P-PBv-P(L)+P-C8H11v(L)                                                                                                2.00e+11 1.00 7000
+    P-PBv_i-P(L)+C3H5(L) => P-PBv-P(L)+C2H2+0.3333333C3H6                                                                                             2.00e+11 1.00 6000
+    P-PBv_i-P(L)+C8H13(L) => P-PBv-P(L)+DIMER                                                                                                         2.00e+11 1.00 6000
+    P-PBv_i-P(L)+C8H11(L) => P-PBv-P(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-PBv_i-P(L)+VCH_i(L) => P-PBv-P(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-PBv_i-P(L)+C28H41_i(L) => 2.25P-PBv-P(L)+C8H10                                                                                                  2.00e+11 1.00 6000
+    P-PBv_i-P(L)+C16H23_i(L) => 1.5P-PBv-P(L)+C8H10                                                                                                   2.00e+11 1.00 6000
+    
+    P-PBx_i-P(L)+P-PBx_i-P(L)=>2P-C8H11(L)+P-PBx-P(L)                                                                                                 2.00e+11 1.00 6000
+    P-PBx_i-P(L)+P-PBvx_i-P(L)=>P-C8H11(L)+P-C8H11v(L)+0.5P-PBx-P(L)+0.5P-PBvx-P(L)                                                                   2.00e+11 1.00 6000
+    P-PBx_i-P(L)+P-C8H12_t(L)=>P-PBx-P(L)+P-C8H11(L)                                                                                                  2.00e+11 1.00 6000
+    P-PBx_i-P(L)+P-C8H12v_t(L)=>P-PBx-P(L)+P-C8H11v(L)                                                                                                2.00e+11 1.00 6000
+    P-PBx_i-P(L)+P-C8H10_i(L)=>P-PBx-P(L)+0.33333333333P-C8H11(L)+2.6666666666666C2H2                                                                 2.00e+11 1.00 6000
+    P-PBx_i-P(L)+P-C8H12_i(L)=>P-PBx-P(L)+P-C8H11(L)                                                                                                  2.00e+11 1.00 6000
+    P-PBx_i-P(L)+P-C8H12v_i(L)=>P-PBx-P(L)+P-C8H11v(L)                                                                                                2.00e+11 1.00 6000
+    P-PBx_i-P(L)+C3H5(L) => P-PBx-P(L)+C2H2+0.3333333C3H6                                                                                             2.00e+11 1.00 6000
+    P-PBx_i-P(L)+C8H13(L) => P-PBx-P(L)+DIMER                                                                                                         2.00e+11 1.00 6000
+    P-PBx_i-P(L)+C8H11(L) => P-PBx-P(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-PBx_i-P(L)+VCH_i(L) => P-PBx-P(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-PBx_i-P(L)+C28H41_i(L) => 2.25P-PBx-P(L)+C8H10                                                                                                  2.00e+11 1.00 6000
+    P-PBx_i-P(L)+C16H23_i(L) => 1.5P-PBx-P(L)+C8H10                                                                                                   2.00e+11 1.00 6000
+    
+    P-PBvx_i-P(L)+P-PBvx_i-P(L)=>2P-C8H11v(L)+P-PBvx-P(L)                                                                                             2.00e+11 1.00 7000
+    P-PBvx_i-P(L)+P-C8H12_t(L)=>P-PBvx-P(L)+P-C8H11(L)                                                                                                2.00e+11 1.00 6000
+    P-PBvx_i-P(L)+P-C8H12v_t(L)=>P-PBvx-P(L)+P-C8H11v(L)                                                                                              2.00e+11 1.00 7000
+    P-PBvx_i-P(L)+P-C8H10_i(L)=>P-PBvx-P(L)+0.33333333333P-C8H11v(L)+2.6666666666666C2H2                                                              2.00e+11 1.00 7000
+    P-PBvx_i-P(L)+P-C8H12_i(L)=>P-PBvx-P(L)+P-C8H11(L)                                                                                                2.00e+11 1.00 6000
+    P-PBvx_i-P(L)+P-C8H12v_i(L)=>P-PBvx-P(L)+P-C8H11v(L)                                                                                              2.00e+11 1.00 7000
+    P-PBvx_i-P(L)+C3H5(L) => P-PBvx-P(L)+C2H2+0.3333333C3H6                                                                                           2.00e+11 1.00 6000
+    P-PBvx_i-P(L)+C8H13(L) => P-PBvx-P(L)+DIMER                                                                                                       2.00e+11 1.00 6000
+    P-PBvx_i-P(L)+C8H11(L) => P-PBvx-P(L)+C8H10                                                                                                       2.00e+11 1.00 6000
+    P-PBvx_i-P(L)+VCH_i(L) => P-PBvx-P(L)+C8H10                                                                                                       2.00e+11 1.00 6000
+    P-PBvx_i-P(L)+C28H41_i(L) => 2.25P-PBvx-P(L)+C8H10                                                                                                2.00e+11 1.00 6000
+    P-PBvx_i-P(L)+C16H23_i(L) => 1.5P-PBvx-P(L)+C8H10                                                                                                 2.00e+11 1.00 6000
+
+    P-C8H12_t(L)+P-C8H12_t(L)=>P-PB-P(L)                                                                                                              2.00e+11 1.00 6000
+    P-C8H12_t(L)+P-C8H12v_t(L)=>0.5P-PB-P(L)+0.5P-PBv-P(L)                                                                                            2.00e+11 1.00 6000
+    P-C8H12_t(L)+P-C8H10_i(L)=>2P-C8H11(L)                                                                                                            2.00e+11 1.00 6000
+    P-C8H12_t(L)+P-C8H12_i(L)=>P-PB-P(L)                                                                                                              2.00e+11 1.00 6000
+    P-C8H12_t(L)+P-C8H12v_i(L)=>0.5P-PB-P(L)+0.5P-PBv-P(L)                                                                                            2.00e+11 1.00 6000
+    P-C8H12_t(L)+C3H5(L) => P-C8H13(L)+C2H2+0.3333333C3H6                                                                                             2.00e+11 1.00 6000
+    P-C8H12_t(L)+C8H13(L) => P-C8H13(L)+DIMER                                                                                                         2.00e+11 1.00 6000
+    P-C8H12_t(L)+C8H11(L) => P-C8H13(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-C8H12_t(L)+VCH_i(L) => P-C8H13(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-C8H12_t(L)+C28H41_i(L) => P-C8H13(L)+1.25P-PB-P(L)+C8H10                                                                                        2.00e+11 1.00 6000
+    P-C8H12_t(L)+C16H23_i(L) => P-C8H13(L)+.5P-PB-P(L)+C8H10                                                                                          2.00e+11 1.00 6000
+
+    P-C8H12v_t(L)+P-C8H12v_t(L)=>P-PBv-P(L)                                                                                                           2.00e+11 1.00 7000
+    P-C8H12v_t(L)+P-C8H10_i(L)=>2P-C8H11v(L)                                                                                                          2.00e+11 1.00 7000
+    P-C8H12v_t(L)+P-C8H12_i(L)=>0.5P-PB-P(L)+0.5P-PBv-P(L)                                                                                            2.00e+11 1.00 6000
+    P-C8H12v_t(L)+P-C8H12v_i(L)=>P-PBv-P(L)                                                                                                           2.00e+11 1.00 7000
+    P-C8H12v_t(L)+C3H5(L) => P-C8H13v(L)+C2H2+0.3333333C3H6                                                                                           2.00e+11 1.00 6000
+    P-C8H12v_t(L)+C8H13(L) => P-C8H13v(L)+DIMER                                                                                                       2.00e+11 1.00 6000
+    P-C8H12v_t(L)+C8H11(L) => P-C8H13v(L)+C8H10                                                                                                       2.00e+11 1.00 6000
+    P-C8H12v_t(L)+VCH_i(L) => P-C8H13v(L)+C8H10                                                                                                       2.00e+11 1.00 6000
+    P-C8H12v_t(L)+C28H41_i(L) => P-C8H13v(L)+1.25P-PBv-P(L)+C8H10                                                                                     2.00e+11 1.00 6000
+    P-C8H12v_t(L)+C16H23_i(L) => P-C8H13v(L)+.5P-PBv-P(L)+C8H10                                                                                       2.00e+11 1.00 6000
+
+    P-C8H10_i(L)+P-C8H10_i(L)=>0.5P-PB-P(L)+4C2H2                                                                                                     2.00e+11 1.00 6000
+    P-C8H10_i(L)+P-C8H12_i(L)=>2P-C8H11(L)                                                                                                            2.00e+11 1.00 6000
+    P-C8H10_i(L)+P-C8H12v_i(L)=>P-C8H11(L)+P-C8H11v(L)                                                                                                2.00e+11 1.00 7000
+    P-C8H10_i(L)+C3H5(L) => P-C8H11(L)+C2H2+0.3333333C3H6                                                                                             2.00e+11 1.00 6000
+    P-C8H10_i(L)+C8H13(L) => P-C8H11(L)+DIMER                                                                                                         2.00e+11 1.00 6000
+    P-C8H10_i(L)+C8H11(L) => P-C8H11(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-C8H10_i(L)+VCH_i(L) => P-C8H11(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-C8H10_i(L)+C28H41_i(L) => P-C8H11(L)+1.25P-PB-P(L)+C8H10                                                                                        2.00e+11 1.00 6000
+    P-C8H10_i(L)+C16H23_i(L) => P-C8H11(L)+.5P-PB-P(L)+C8H10                                                                                          2.00e+11 1.00 6000
+
+    P-C8H12_i(L)+P-C8H12_i(L)=>P-PB-P(L)                                                                                                              2.00e+11 1.00 6000
+    P-C8H12_i(L)+P-C8H12v_i(L)=>0.5P-PB-P(L)+0.5P-PBv-P(L)                                                                                            2.00e+11 1.00 6000
+    P-C8H12_i(L)+C3H5(L) => P-C8H13(L)+C2H2+0.3333333C3H6                                                                                             2.00e+11 1.00 6000
+    P-C8H12_i(L)+C8H13(L) => P-C8H13(L)+DIMER                                                                                                         2.00e+11 1.00 6000
+    P-C8H12_i(L)+C8H11(L) => P-C8H13(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-C8H12_i(L)+VCH_i(L) => P-C8H13(L)+C8H10                                                                                                         2.00e+11 1.00 6000
+    P-C8H12_i(L)+C28H41_i(L) => P-C8H13(L)+1.25P-PB-P(L)+C8H10                                                                                        2.00e+11 1.00 6000
+    P-C8H12_i(L)+C16H23_i(L) => P-C8H13(L)+.5P-PB-P(L)+C8H10                                                                                          2.00e+11 1.00 6000
+
+    P-C8H12v_i(L)+P-C8H12v_i(L)=>P-PBv-P(L)                                                                                                           2.00e+11 1.00 7000
+    P-C8H12v_i(L)+C3H5(L) => P-C8H13(L)+C2H2+0.3333333C3H6                                                                                            2.00e+11 1.00 6000
+    P-C8H12v_i(L)+C8H13(L) => P-C8H13(L)+DIMER                                                                                                        2.00e+11 1.00 6000
+    P-C8H12v_i(L)+C8H11(L) => P-C8H13v(L)+C8H10                                                                                                       2.00e+11 1.00 6000
+    P-C8H12v_i(L)+VCH_i(L) => P-C8H13v(L)+C8H10                                                                                                       2.00e+11 1.00 6000
+    P-C8H12v_i(L)+C28H41_i(L) => P-C8H13v(L)+1.25P-PBv-P(L)+C8H10                                                                                     2.00e+11 1.00 6000
+    P-C8H12v_i(L)+C16H23_i(L) => P-C8H13v(L)+.5P-PBv-P(L)+C8H10                                                                                       2.00e+11 1.00 6000
+
+
+
+!\
+
+
+
+
+END
