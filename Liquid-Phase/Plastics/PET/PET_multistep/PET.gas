@@ -16,10 +16,14 @@ END
 SPECIES
 
  N2	HE
-
+ 
+ P-PET-P
 
  CO          CO2         H2          C6H6        BA          
  CH3CHO      VB          MVT         DIMER       EGDB        
+
+! Char species
+ G-H2        G-COs       CHARO       CHAR   
       
  
 
