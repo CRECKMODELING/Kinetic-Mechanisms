@@ -6,3 +6,4 @@
 *.xlsx
 *Output*
 *kinetics*
+.DS_Store
