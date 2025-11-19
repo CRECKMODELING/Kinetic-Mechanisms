@@ -1,8 +1,8 @@
 # NH3_34_272
 
-Kinetic mechanism with 34 species and 272 reactions for the pyrolysis and oxidation of NH3 and NH3/H2 mixtures.
-The present mechanism is not related to the CRECK_2003 but involves later versions
-of the kinetic mechanism.
+Kinetic mechanism with 34 species and 272 reactions for the pyrolysis and oxidation of NH<sub>3</sub> and NH<sub>3</sub>/H<sub>2</sub> mixtures. The present mechanism is not related to the CRECK_2003 but involves later versions of the kinetic mechanism.
+
+The repository includes the CHEMKIN-formatted files (<i>chem.dat</i>, <i>therm.dat</i>, <i>tran.dat</i>) and a Cantera-ready mechanism (<i>chem_LMR-R.yaml</i>), compatible with Cantera versions &ge; 3.1.0.
 
 To cite the mechanism please refer to the following main publication:
 - **Stagni, Alessandro, and Dinelli, Timoteo** "Impact of third-body colliders on ammonia pyrolysis and oxidation: Detailed kinetic modeling and mechanistic insights" Chemical Engineering Journal 526 (2025), 170737. [DOI](https://doi.org/10.1016/j.cej.2025.170737)
