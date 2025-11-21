@@ -1,0 +1,57 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: CRECK Kinetic Model
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
+authors:
+  - given-names: Tiziano
+    family-names: Faravelli
+    email: tiziano.faravelli@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0001-8382-7342'
+  - given-names: Alessio
+    family-names: Frassoldati
+    email: alessio.frassoldati@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0003-0264-438X'
+  - given-names: Alberto
+    family-names: Cuoci
+    email: alberto.cuoci@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0001-5653-0180'
+  - given-names: Marco
+    family-names: Mehl
+    email: marco.mehl@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0002-2227-5035'
+  - given-names: Matteo
+    family-names: Pelucchi
+    email: matteo.pelucchi@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0003-3106-0236'
+  - given-names: Alessandro
+    family-names: Stagni
+    email: alessandro.stagni@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0003-4339-7872'
+  - given-names: Luna
+    family-names: Pratali Maffei
+    email: luna.pratali@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0002-0681-0720'
+  - given-names: Andrea
+    family-names: Nobili
+    email: andrea.nobili@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0002-6247-8769'
+  - given-names: Andrea
+    family-names: Locaspi
+    email: andrea.locaspi@polimi.it
+    affiliation: Politecnico di Milano
+    orcid: 'https://orcid.org/0000-0002-4063-8047'
+repository-code: 'https://github.com/CRECKMODELING/Kinetic-Mechanisms'
+url: 'https://creckmodeling.chem.polimi.it/'
